@@ -1,0 +1,46 @@
+PODS:
+  - LBTATools (1.0.12)
+  - MaterialComponents/ActivityIndicator (111.0.0):
+    - MaterialComponents/Palettes
+    - MaterialComponents/private/Application
+    - MDFInternationalization
+    - MotionAnimator (~> 2.0)
+  - MaterialComponents/Palettes (111.0.0)
+  - MaterialComponents/private/Application (111.0.0)
+  - MDFInternationalization (2.0.0)
+  - MotionAnimator (2.8.1):
+    - MotionInterchange (~> 1.6)
+  - MotionInterchange (1.6.0)
+  - Networking (5.0.3)
+  - Sentry (5.2.0):
+    - Sentry/Core (= 5.2.0)
+  - Sentry/Core (5.2.0)
+
+DEPENDENCIES:
+  - LBTATools (~> 1.0.12)
+  - MaterialComponents/ActivityIndicator
+  - Networking (~> 5.0.3)
+  - Sentry (~> 5.2)
+
+SPEC REPOS:
+  trunk:
+    - LBTATools
+    - MaterialComponents
+    - MDFInternationalization
+    - MotionAnimator
+    - MotionInterchange
+    - Networking
+    - Sentry
+
+SPEC CHECKSUMS:
+  LBTATools: 389a901a01b9a56bea5682c40cd6e23530f40015
+  MaterialComponents: 533042da998b97ad13a6f544268f8026e8161cc5
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
+  MotionAnimator: ee16aa30567c5bae0fb2750c132915829cfaaf8a
+  MotionInterchange: ead0e3ae1f3a5fb539e289debbc7ae036160a10d
+  Networking: 66aa615a4bbc1b08c34409cde2c636e8c8daae8f
+  Sentry: 6e04bc3e11bf771ca79140a112de64dcfbc7d8cb
+
+PODFILE CHECKSUM: d6a2b9765904f8d12c025c8c2de3b92a14f5b3e2
+
+COCOAPODS: 1.9.3
