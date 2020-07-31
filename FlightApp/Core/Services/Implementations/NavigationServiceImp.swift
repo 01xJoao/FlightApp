@@ -23,13 +23,12 @@ public class NavigationServiceImp : NavigationService {
     
     public func navigateModal<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?) {
         let viewController: UIViewController = _getViewController(type: viewModel, args: arguments)
-        _containerViewController?.navigationController?.present(viewController, animated: true, completion: nil)
+        _containerViewController?.navigationController?.present(UINavigationController(rootViewController: viewController), animated: true, completion: nil)
     }
     
     public func navigateAndSetAsContainer<TViewModel : ViewModel>(viewModel: TViewModel.Type) {
         let viewController: UIViewController = _getViewController(type: viewModel, args: nil)
-        let navigationController = UINavigationController(rootViewController: viewController)
-        _setNewContainerViewController(navigationController)
+        _setNewContainerViewController(UINavigationController(rootViewController: viewController))
     }
     
     private func _getViewController<TViewModel : ViewModel>(type: TViewModel.Type, args: Any?) -> UIViewController {

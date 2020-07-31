@@ -10,6 +10,7 @@ import UIKit
 
 class MainViewController : BaseTabBarController<MainViewModel> {
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         _createTabBarController()
     }

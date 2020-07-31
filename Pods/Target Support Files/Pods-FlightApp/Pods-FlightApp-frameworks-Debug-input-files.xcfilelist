@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-FlightApp/Pods-FlightApp-frameworks.sh
+${BUILT_PRODUCTS_DIR}/DrawerView/DrawerView.framework
 ${BUILT_PRODUCTS_DIR}/LBTATools/LBTATools.framework
 ${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework
 ${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework

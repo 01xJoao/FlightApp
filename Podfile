@@ -17,5 +17,6 @@ target 'FlightApp' do
   pod 'Sentry', '~> 5.2'
   pod 'Networking', '~> 5.0.3'
   pod 'MaterialComponents/ActivityIndicator'
+  pod "DrawerView"
 
 end

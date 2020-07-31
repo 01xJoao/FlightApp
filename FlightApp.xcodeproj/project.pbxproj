@@ -37,6 +37,10 @@
 		9D477EE724D488500063870B /* FindFlightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EE624D488500063870B /* FindFlightsViewModel.swift */; };
 		9D477EE924D488610063870B /* AirportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EE824D488610063870B /* AirportsViewModel.swift */; };
 		9D477EEB24D48C170063870B /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EEA24D48C170063870B /* BaseTabBarController.swift */; };
+		9D477EEE24D4C9F30063870B /* CountryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EED24D4C9F30063870B /* CountryListViewController.swift */; };
+		9D477EF024D4CA2A0063870B /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EEF24D4CA2A0063870B /* CountryListViewModel.swift */; };
+		9D477EF424D4D6FD0063870B /* DatePickerModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EF324D4D6FD0063870B /* DatePickerModalView.swift */; };
+		9D477EF624D4E0F80063870B /* PassengersModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EF524D4E0F80063870B /* PassengersModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +91,10 @@
 		9D477EE624D488500063870B /* FindFlightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFlightsViewModel.swift; sourceTree = "<group>"; };
 		9D477EE824D488610063870B /* AirportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsViewModel.swift; sourceTree = "<group>"; };
 		9D477EEA24D48C170063870B /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		9D477EED24D4C9F30063870B /* CountryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewController.swift; sourceTree = "<group>"; };
+		9D477EEF24D4CA2A0063870B /* CountryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewModel.swift; sourceTree = "<group>"; };
+		9D477EF324D4D6FD0063870B /* DatePickerModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModalView.swift; sourceTree = "<group>"; };
+		9D477EF524D4E0F80063870B /* PassengersModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengersModalView.swift; sourceTree = "<group>"; };
 		E6F07099BD79910953DD1988 /* Pods-FlightAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightAppTests.debug.xcconfig"; path = "Target Support Files/Pods-FlightAppTests/Pods-FlightAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +152,7 @@
 		9D477E8C24D3521B0063870B /* FlightApp */ = {
 			isa = PBXGroup;
 			children = (
+				9D477EF124D4D6940063870B /* CustomViews */,
 				9D477EB424D420280063870B /* Helpers */,
 				9D477EB724D424AF0063870B /* Core */,
 				9D477ED124D4369B0063870B /* Views */,
@@ -256,6 +265,7 @@
 				9D477ED924D442310063870B /* AvailableFlightsViewModel.swift */,
 				9D477EE624D488500063870B /* FindFlightsViewModel.swift */,
 				9D477EE824D488610063870B /* AirportsViewModel.swift */,
+				9D477EEF24D4CA2A0063870B /* CountryListViewModel.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -274,8 +284,9 @@
 				9D477ED224D436A30063870B /* Bases */,
 				9D477ED524D439930063870B /* MainViewController.swift */,
 				9D477EE124D487C40063870B /* AirportsViewController */,
-				9D477ED724D4420B0063870B /* AvailableFlightsViewController.swift */,
 				9D477EE424D488030063870B /* FindFlightsViewController.swift */,
+				9D477EEC24D4C9C30063870B /* CountryListViewController */,
+				9D477ED724D4420B0063870B /* AvailableFlightsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +306,31 @@
 				9D477EE224D487E00063870B /* AirportsViewController.swift */,
 			);
 			path = AirportsViewController;
+			sourceTree = "<group>";
+		};
+		9D477EEC24D4C9C30063870B /* CountryListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EED24D4C9F30063870B /* CountryListViewController.swift */,
+			);
+			path = CountryListViewController;
+			sourceTree = "<group>";
+		};
+		9D477EF124D4D6940063870B /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EF224D4D6A70063870B /* BottomModals */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		9D477EF224D4D6A70063870B /* BottomModals */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EF324D4D6FD0063870B /* DatePickerModalView.swift */,
+				9D477EF524D4E0F80063870B /* PassengersModalView.swift */,
+			);
+			path = BottomModals;
 			sourceTree = "<group>";
 		};
 		BFBA4E1F804BCB8162A72607 /* Frameworks */ = {
@@ -477,6 +513,7 @@
 				9D477EC924D430310063870B /* ViewModelBase.swift in Sources */,
 				9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */,
 				9D477EC024D42D1A0063870B /* NavigationService.swift in Sources */,
+				9D477EF624D4E0F80063870B /* PassengersModalView.swift in Sources */,
 				9D477EB324D41EFE0063870B /* AppSetup.swift in Sources */,
 				9D477ECE24D4310F0063870B /* DynamicValue.swift in Sources */,
 				9D477ED424D436B20063870B /* BaseViewController.swift in Sources */,
@@ -495,6 +532,9 @@
 				9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */,
 				9D477EB624D4203C0063870B /* CustomUIExtensions.swift in Sources */,
 				9D477ECB24D430630063870B /* ViewModel.swift in Sources */,
+				9D477EF024D4CA2A0063870B /* CountryListViewModel.swift in Sources */,
+				9D477EF424D4D6FD0063870B /* DatePickerModalView.swift in Sources */,
+				9D477EEE24D4C9F30063870B /* CountryListViewController.swift in Sources */,
 				9D477EE524D488030063870B /* FindFlightsViewController.swift in Sources */,
 				9D477EDC24D468D40063870B /* Utils.swift in Sources */,
 				9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */,

@@ -58,7 +58,7 @@ public class BaseViewController<TViewModel : ViewModel> : UIViewController {
     }
     
     public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillDisappear(animated)
         _viewModel.disappearing()
     }
     

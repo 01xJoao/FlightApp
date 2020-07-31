@@ -28,6 +28,7 @@ public struct Core {
         DiContainer.register(AirportsViewModel.self, constructor: { AirportsViewModel() })
         DiContainer.register(FindFlightsViewModel.self, constructor: { FindFlightsViewModel() })
         DiContainer.register(AvailableFlightsViewModel.self, constructor: { AvailableFlightsViewModel() })
+        DiContainer.register(CountryListViewModel.self, constructor: { CountryListViewModel() })
     }
     
     private static func _registerViewControllers() {
@@ -35,6 +36,7 @@ public struct Core {
         DiContainer.registerViewController(AirportsViewModel.self, constructor: { AirportsViewController() })
         DiContainer.registerViewController(FindFlightsViewModel.self, constructor: { FindFlightsViewController() })
         DiContainer.registerViewController(AvailableFlightsViewModel.self, constructor: { AvailableFlightsViewController() })
+        DiContainer.registerViewController(CountryListViewModel.self, constructor: { CountryListViewController() })
     }
     
     public static func startApp() {

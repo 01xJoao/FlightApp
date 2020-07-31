@@ -13,5 +13,12 @@ class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewMo
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Available Flights"
+        navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 }
