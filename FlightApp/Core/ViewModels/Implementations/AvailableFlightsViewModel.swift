@@ -6,4 +6,8 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-import Foundation
+public class AvailableFlightsViewModel : ViewModelBase {
+    private func _canExecute() -> Bool {
+        return !isBusy.value
+    }
+}

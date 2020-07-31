@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,12 +11,32 @@
 		8170BC04471607F8B0ABEAD1 /* Pods_FlightAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA01FFDC8ABACABF52273F6 /* Pods_FlightAppTests.framework */; };
 		9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8D24D3521B0063870B /* AppDelegate.swift */; };
 		9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8F24D3521B0063870B /* SceneDelegate.swift */; };
-		9D477E9224D3521B0063870B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9124D3521B0063870B /* ViewController.swift */; };
+		9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9124D3521B0063870B /* ContainerViewController.swift */; };
 		9D477E9524D3521B0063870B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D477E9324D3521B0063870B /* Main.storyboard */; };
 		9D477E9824D3521B0063870B /* FlightApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9624D3521B0063870B /* FlightApp.xcdatamodeld */; };
 		9D477E9A24D3521D0063870B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D477E9924D3521D0063870B /* Assets.xcassets */; };
 		9D477E9D24D3521D0063870B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */; };
 		9D477EA824D3521D0063870B /* FlightAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EA724D3521D0063870B /* FlightAppTests.swift */; };
+		9D477EB324D41EFE0063870B /* AppSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EB224D41EFE0063870B /* AppSetup.swift */; };
+		9D477EB624D4203C0063870B /* CustomUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EB524D4203C0063870B /* CustomUIExtensions.swift */; };
+		9D477EB924D424C00063870B /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EB824D424C00063870B /* Core.swift */; };
+		9D477EBD24D4271B0063870B /* DiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EBC24D4271B0063870B /* DiContainer.swift */; };
+		9D477EC024D42D1A0063870B /* NavigationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EBF24D42D1A0063870B /* NavigationService.swift */; };
+		9D477EC424D42DD40063870B /* NavigationServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EC324D42DD40063870B /* NavigationServiceImp.swift */; };
+		9D477EC924D430310063870B /* ViewModelBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EC824D430310063870B /* ViewModelBase.swift */; };
+		9D477ECB24D430630063870B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477ECA24D430630063870B /* ViewModel.swift */; };
+		9D477ECE24D4310F0063870B /* DynamicValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477ECD24D4310F0063870B /* DynamicValue.swift */; };
+		9D477ED024D4352F0063870B /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477ECF24D4352F0063870B /* MainViewModel.swift */; };
+		9D477ED424D436B20063870B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477ED324D436B20063870B /* BaseViewController.swift */; };
+		9D477ED624D439930063870B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477ED524D439930063870B /* MainViewController.swift */; };
+		9D477ED824D4420B0063870B /* AvailableFlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477ED724D4420B0063870B /* AvailableFlightsViewController.swift */; };
+		9D477EDA24D442310063870B /* AvailableFlightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477ED924D442310063870B /* AvailableFlightsViewModel.swift */; };
+		9D477EDC24D468D40063870B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EDB24D468D40063870B /* Utils.swift */; };
+		9D477EE324D487E00063870B /* AirportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EE224D487E00063870B /* AirportsViewController.swift */; };
+		9D477EE524D488030063870B /* FindFlightsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EE424D488030063870B /* FindFlightsViewController.swift */; };
+		9D477EE724D488500063870B /* FindFlightsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EE624D488500063870B /* FindFlightsViewModel.swift */; };
+		9D477EE924D488610063870B /* AirportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EE824D488610063870B /* AirportsViewModel.swift */; };
+		9D477EEB24D48C170063870B /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EEA24D48C170063870B /* BaseTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +58,7 @@
 		9D477E8A24D3521B0063870B /* FlightApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D477E8D24D3521B0063870B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D477E8F24D3521B0063870B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9D477E9124D3521B0063870B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9D477E9124D3521B0063870B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		9D477E9424D3521B0063870B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D477E9724D3521B0063870B /* FlightApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlightApp.xcdatamodel; sourceTree = "<group>"; };
 		9D477E9924D3521D0063870B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -47,6 +67,26 @@
 		9D477EA324D3521D0063870B /* FlightAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D477EA724D3521D0063870B /* FlightAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightAppTests.swift; sourceTree = "<group>"; };
 		9D477EA924D3521D0063870B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9D477EB224D41EFE0063870B /* AppSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetup.swift; sourceTree = "<group>"; };
+		9D477EB524D4203C0063870B /* CustomUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIExtensions.swift; sourceTree = "<group>"; };
+		9D477EB824D424C00063870B /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		9D477EBC24D4271B0063870B /* DiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiContainer.swift; sourceTree = "<group>"; };
+		9D477EBF24D42D1A0063870B /* NavigationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationService.swift; sourceTree = "<group>"; };
+		9D477EC324D42DD40063870B /* NavigationServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationServiceImp.swift; sourceTree = "<group>"; };
+		9D477EC824D430310063870B /* ViewModelBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBase.swift; sourceTree = "<group>"; };
+		9D477ECA24D430630063870B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		9D477ECD24D4310F0063870B /* DynamicValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicValue.swift; sourceTree = "<group>"; };
+		9D477ECF24D4352F0063870B /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		9D477ED324D436B20063870B /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		9D477ED524D439930063870B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9D477ED724D4420B0063870B /* AvailableFlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableFlightsViewController.swift; sourceTree = "<group>"; };
+		9D477ED924D442310063870B /* AvailableFlightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableFlightsViewModel.swift; sourceTree = "<group>"; };
+		9D477EDB24D468D40063870B /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		9D477EE224D487E00063870B /* AirportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsViewController.swift; sourceTree = "<group>"; };
+		9D477EE424D488030063870B /* FindFlightsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFlightsViewController.swift; sourceTree = "<group>"; };
+		9D477EE624D488500063870B /* FindFlightsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFlightsViewModel.swift; sourceTree = "<group>"; };
+		9D477EE824D488610063870B /* AirportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportsViewModel.swift; sourceTree = "<group>"; };
+		9D477EEA24D48C170063870B /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		E6F07099BD79910953DD1988 /* Pods-FlightAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightAppTests.debug.xcconfig"; path = "Target Support Files/Pods-FlightAppTests/Pods-FlightAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,7 +118,6 @@
 				E6F07099BD79910953DD1988 /* Pods-FlightAppTests.debug.xcconfig */,
 				7363590CD8D0CA3A918EBB60 /* Pods-FlightAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -105,14 +144,18 @@
 		9D477E8C24D3521B0063870B /* FlightApp */ = {
 			isa = PBXGroup;
 			children = (
+				9D477EB424D420280063870B /* Helpers */,
+				9D477EB724D424AF0063870B /* Core */,
+				9D477ED124D4369B0063870B /* Views */,
 				9D477E8D24D3521B0063870B /* AppDelegate.swift */,
 				9D477E8F24D3521B0063870B /* SceneDelegate.swift */,
-				9D477E9124D3521B0063870B /* ViewController.swift */,
+				9D477E9124D3521B0063870B /* ContainerViewController.swift */,
 				9D477E9324D3521B0063870B /* Main.storyboard */,
 				9D477E9924D3521D0063870B /* Assets.xcassets */,
 				9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */,
 				9D477E9E24D3521D0063870B /* Info.plist */,
 				9D477E9624D3521B0063870B /* FlightApp.xcdatamodeld */,
+				9D477EB224D41EFE0063870B /* AppSetup.swift */,
 			);
 			path = FlightApp;
 			sourceTree = "<group>";
@@ -124,6 +167,134 @@
 				9D477EA924D3521D0063870B /* Info.plist */,
 			);
 			path = FlightAppTests;
+			sourceTree = "<group>";
+		};
+		9D477EB424D420280063870B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EB524D4203C0063870B /* CustomUIExtensions.swift */,
+				9D477EDB24D468D40063870B /* Utils.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9D477EB724D424AF0063870B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EC524D42FE00063870B /* ViewModels */,
+				9D477EC124D42D7E0063870B /* Services */,
+				9D477EBA24D426F00063870B /* Tools */,
+				9D477EB824D424C00063870B /* Core.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		9D477EBA24D426F00063870B /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				9D477ECC24D430E80063870B /* Observer */,
+				9D477EBB24D427020063870B /* DiContainer */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		9D477EBB24D427020063870B /* DiContainer */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EBC24D4271B0063870B /* DiContainer.swift */,
+			);
+			path = DiContainer;
+			sourceTree = "<group>";
+		};
+		9D477EBE24D42CDB0063870B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EBF24D42D1A0063870B /* NavigationService.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9D477EC124D42D7E0063870B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EBE24D42CDB0063870B /* Protocols */,
+				9D477EC224D42D9C0063870B /* Implementations */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		9D477EC224D42D9C0063870B /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EC324D42DD40063870B /* NavigationServiceImp.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		9D477EC524D42FE00063870B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EC624D42FFF0063870B /* Protocols */,
+				9D477EC724D4300F0063870B /* Implementations */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		9D477EC624D42FFF0063870B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9D477ECA24D430630063870B /* ViewModel.swift */,
+				9D477EC824D430310063870B /* ViewModelBase.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		9D477EC724D4300F0063870B /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				9D477ECF24D4352F0063870B /* MainViewModel.swift */,
+				9D477ED924D442310063870B /* AvailableFlightsViewModel.swift */,
+				9D477EE624D488500063870B /* FindFlightsViewModel.swift */,
+				9D477EE824D488610063870B /* AirportsViewModel.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
+		9D477ECC24D430E80063870B /* Observer */ = {
+			isa = PBXGroup;
+			children = (
+				9D477ECD24D4310F0063870B /* DynamicValue.swift */,
+			);
+			path = Observer;
+			sourceTree = "<group>";
+		};
+		9D477ED124D4369B0063870B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9D477ED224D436A30063870B /* Bases */,
+				9D477ED524D439930063870B /* MainViewController.swift */,
+				9D477EE124D487C40063870B /* AirportsViewController */,
+				9D477ED724D4420B0063870B /* AvailableFlightsViewController.swift */,
+				9D477EE424D488030063870B /* FindFlightsViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9D477ED224D436A30063870B /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				9D477ED324D436B20063870B /* BaseViewController.swift */,
+				9D477EEA24D48C170063870B /* BaseTabBarController.swift */,
+			);
+			path = Bases;
+			sourceTree = "<group>";
+		};
+		9D477EE124D487C40063870B /* AirportsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EE224D487E00063870B /* AirportsViewController.swift */,
+			);
+			path = AirportsViewController;
 			sourceTree = "<group>";
 		};
 		BFBA4E1F804BCB8162A72607 /* Frameworks */ = {
@@ -303,9 +474,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D477E9224D3521B0063870B /* ViewController.swift in Sources */,
+				9D477EC924D430310063870B /* ViewModelBase.swift in Sources */,
+				9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */,
+				9D477EC024D42D1A0063870B /* NavigationService.swift in Sources */,
+				9D477EB324D41EFE0063870B /* AppSetup.swift in Sources */,
+				9D477ECE24D4310F0063870B /* DynamicValue.swift in Sources */,
+				9D477ED424D436B20063870B /* BaseViewController.swift in Sources */,
+				9D477ED824D4420B0063870B /* AvailableFlightsViewController.swift in Sources */,
 				9D477E9824D3521B0063870B /* FlightApp.xcdatamodeld in Sources */,
+				9D477EEB24D48C170063870B /* BaseTabBarController.swift in Sources */,
+				9D477ED624D439930063870B /* MainViewController.swift in Sources */,
+				9D477EC424D42DD40063870B /* NavigationServiceImp.swift in Sources */,
+				9D477EDA24D442310063870B /* AvailableFlightsViewModel.swift in Sources */,
+				9D477ED024D4352F0063870B /* MainViewModel.swift in Sources */,
+				9D477EB924D424C00063870B /* Core.swift in Sources */,
+				9D477EE724D488500063870B /* FindFlightsViewModel.swift in Sources */,
+				9D477EE924D488610063870B /* AirportsViewModel.swift in Sources */,
+				9D477EBD24D4271B0063870B /* DiContainer.swift in Sources */,
+				9D477EE324D487E00063870B /* AirportsViewController.swift in Sources */,
 				9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */,
+				9D477EB624D4203C0063870B /* CustomUIExtensions.swift in Sources */,
+				9D477ECB24D430630063870B /* ViewModel.swift in Sources */,
+				9D477EE524D488030063870B /* FindFlightsViewController.swift in Sources */,
+				9D477EDC24D468D40063870B /* Utils.swift in Sources */,
 				9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

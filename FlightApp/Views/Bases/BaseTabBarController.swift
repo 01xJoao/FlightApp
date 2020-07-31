@@ -6,4 +6,8 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
+import UIKit
 import Foundation
+
+public class BaseTabBarController<TViewModel : ViewModel> : UITabBarController {}
+

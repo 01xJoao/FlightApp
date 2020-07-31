@@ -6,7 +6,7 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-public class AirPortsViewModel : ViewModelBase {
+public class AirportsViewModel : ViewModelBase {
     private func _canExecute() -> Bool {
         return !isBusy.value
     }

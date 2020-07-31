@@ -6,4 +6,26 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-import Foundation
+
+import UIKit
+
+class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchControllerDelegate {
+    var searchController : UISearchController!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Airports"
+        _configureSearchController()
+    }
+    
+    
+    private func _configureSearchController() {
+        let searchController = CustomSearchController()
+        searchController.delegate = self
+        self.navigationItem.searchController = searchController
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationItem.searchController!.searchBar.setSearch("Search")
+    }
+}

@@ -9,7 +9,7 @@
 import UIKit
 
 public protocol NavigationService {
-    func visibleViewController() -> UIViewController
+    func currentViewController() -> UIViewController
     
     func navigate<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?, animated: Bool)
     func navigateModal<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?)

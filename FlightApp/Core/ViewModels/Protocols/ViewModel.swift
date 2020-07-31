@@ -6,4 +6,11 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-import Foundation
+public protocol ViewModel {
+    func prepare(dataObject: Any);
+    func initialize()
+    func appearing()
+    func disappearing()
+    func backAction();
+    func dataNotify(dataObject: Any?);
+}

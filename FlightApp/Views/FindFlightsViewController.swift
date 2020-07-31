@@ -6,4 +6,11 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class FindFlightsViewController : BaseViewController<FindFlightsViewModel> {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Find Flights"
+    }
+}
