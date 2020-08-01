@@ -12,7 +12,6 @@
 		9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8D24D3521B0063870B /* AppDelegate.swift */; };
 		9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8F24D3521B0063870B /* SceneDelegate.swift */; };
 		9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9124D3521B0063870B /* ContainerViewController.swift */; };
-		9D477E9524D3521B0063870B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D477E9324D3521B0063870B /* Main.storyboard */; };
 		9D477E9824D3521B0063870B /* FlightApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9624D3521B0063870B /* FlightApp.xcdatamodeld */; };
 		9D477E9A24D3521D0063870B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D477E9924D3521D0063870B /* Assets.xcassets */; };
 		9D477E9D24D3521D0063870B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */; };
@@ -41,6 +40,13 @@
 		9D477EF024D4CA2A0063870B /* CountryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EEF24D4CA2A0063870B /* CountryListViewModel.swift */; };
 		9D477EF424D4D6FD0063870B /* DatePickerModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EF324D4D6FD0063870B /* DatePickerModalView.swift */; };
 		9D477EF624D4E0F80063870B /* PassengersModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EF524D4E0F80063870B /* PassengersModalView.swift */; };
+		9D477EF824D4E3300063870B /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EF724D4E3300063870B /* WebService.swift */; };
+		9D477EFB24D4E4080063870B /* AirportWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EFA24D4E4080063870B /* AirportWebService.swift */; };
+		9D477F0124D4E5100063870B /* AirportObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477F0024D4E5100063870B /* AirportObject.swift */; };
+		9D477F0424D4E8A80063870B /* AirportWebServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477F0324D4E8A80063870B /* AirportWebServiceImp.swift */; };
+		9D477F0624D4EB440063870B /* WebServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477F0524D4EB440063870B /* WebServiceImp.swift */; };
+		9D477F0A24D50BBD0063870B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477F0924D50BBD0063870B /* Enums.swift */; };
+		9D477F0C24D50C2E0063870B /* AppEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477F0B24D50C2E0063870B /* AppEndPoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +69,6 @@
 		9D477E8D24D3521B0063870B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D477E8F24D3521B0063870B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9D477E9124D3521B0063870B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		9D477E9424D3521B0063870B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9D477E9724D3521B0063870B /* FlightApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlightApp.xcdatamodel; sourceTree = "<group>"; };
 		9D477E9924D3521D0063870B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D477E9C24D3521D0063870B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -95,6 +100,13 @@
 		9D477EEF24D4CA2A0063870B /* CountryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListViewModel.swift; sourceTree = "<group>"; };
 		9D477EF324D4D6FD0063870B /* DatePickerModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModalView.swift; sourceTree = "<group>"; };
 		9D477EF524D4E0F80063870B /* PassengersModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengersModalView.swift; sourceTree = "<group>"; };
+		9D477EF724D4E3300063870B /* WebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		9D477EFA24D4E4080063870B /* AirportWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportWebService.swift; sourceTree = "<group>"; };
+		9D477F0024D4E5100063870B /* AirportObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportObject.swift; sourceTree = "<group>"; };
+		9D477F0324D4E8A80063870B /* AirportWebServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportWebServiceImp.swift; sourceTree = "<group>"; };
+		9D477F0524D4EB440063870B /* WebServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceImp.swift; sourceTree = "<group>"; };
+		9D477F0924D50BBD0063870B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		9D477F0B24D50C2E0063870B /* AppEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEndPoints.swift; sourceTree = "<group>"; };
 		E6F07099BD79910953DD1988 /* Pods-FlightAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightAppTests.debug.xcconfig"; path = "Target Support Files/Pods-FlightAppTests/Pods-FlightAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,15 +168,15 @@
 				9D477EB424D420280063870B /* Helpers */,
 				9D477EB724D424AF0063870B /* Core */,
 				9D477ED124D4369B0063870B /* Views */,
+				9D477E9124D3521B0063870B /* ContainerViewController.swift */,
 				9D477E8D24D3521B0063870B /* AppDelegate.swift */,
 				9D477E8F24D3521B0063870B /* SceneDelegate.swift */,
-				9D477E9124D3521B0063870B /* ContainerViewController.swift */,
-				9D477E9324D3521B0063870B /* Main.storyboard */,
 				9D477E9924D3521D0063870B /* Assets.xcassets */,
 				9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */,
 				9D477E9E24D3521D0063870B /* Info.plist */,
 				9D477E9624D3521B0063870B /* FlightApp.xcdatamodeld */,
 				9D477EB224D41EFE0063870B /* AppSetup.swift */,
+				9D477F0B24D50C2E0063870B /* AppEndPoints.swift */,
 			);
 			path = FlightApp;
 			sourceTree = "<group>";
@@ -183,6 +195,7 @@
 			children = (
 				9D477EB524D4203C0063870B /* CustomUIExtensions.swift */,
 				9D477EDB24D468D40063870B /* Utils.swift */,
+				9D477F0924D50BBD0063870B /* Enums.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -190,6 +203,7 @@
 		9D477EB724D424AF0063870B /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				9D477EFE24D4E4EA0063870B /* Models */,
 				9D477EC524D42FE00063870B /* ViewModels */,
 				9D477EC124D42D7E0063870B /* Services */,
 				9D477EBA24D426F00063870B /* Tools */,
@@ -218,7 +232,9 @@
 		9D477EBE24D42CDB0063870B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				9D477EF924D4E3B30063870B /* WebServices */,
 				9D477EBF24D42D1A0063870B /* NavigationService.swift */,
+				9D477EF724D4E3300063870B /* WebService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -235,7 +251,9 @@
 		9D477EC224D42D9C0063870B /* Implementations */ = {
 			isa = PBXGroup;
 			children = (
+				9D477F0224D4E8750063870B /* WebServices */,
 				9D477EC324D42DD40063870B /* NavigationServiceImp.swift */,
+				9D477F0524D4EB440063870B /* WebServiceImp.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -282,10 +300,10 @@
 			isa = PBXGroup;
 			children = (
 				9D477ED224D436A30063870B /* Bases */,
-				9D477ED524D439930063870B /* MainViewController.swift */,
 				9D477EE124D487C40063870B /* AirportsViewController */,
-				9D477EE424D488030063870B /* FindFlightsViewController.swift */,
 				9D477EEC24D4C9C30063870B /* CountryListViewController */,
+				9D477ED524D439930063870B /* MainViewController.swift */,
+				9D477EE424D488030063870B /* FindFlightsViewController.swift */,
 				9D477ED724D4420B0063870B /* AvailableFlightsViewController.swift */,
 			);
 			path = Views;
@@ -331,6 +349,38 @@
 				9D477EF524D4E0F80063870B /* PassengersModalView.swift */,
 			);
 			path = BottomModals;
+			sourceTree = "<group>";
+		};
+		9D477EF924D4E3B30063870B /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EFA24D4E4080063870B /* AirportWebService.swift */,
+			);
+			path = WebServices;
+			sourceTree = "<group>";
+		};
+		9D477EFE24D4E4EA0063870B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9D477EFF24D4E4F80063870B /* Objects */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9D477EFF24D4E4F80063870B /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				9D477F0024D4E5100063870B /* AirportObject.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		9D477F0224D4E8750063870B /* WebServices */ = {
+			isa = PBXGroup;
+			children = (
+				9D477F0324D4E8A80063870B /* AirportWebServiceImp.swift */,
+			);
+			path = WebServices;
 			sourceTree = "<group>";
 		};
 		BFBA4E1F804BCB8162A72607 /* Frameworks */ = {
@@ -428,7 +478,6 @@
 			files = (
 				9D477E9D24D3521D0063870B /* LaunchScreen.storyboard in Resources */,
 				9D477E9A24D3521D0063870B /* Assets.xcassets in Resources */,
-				9D477E9524D3521B0063870B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,23 +565,30 @@
 				9D477EF624D4E0F80063870B /* PassengersModalView.swift in Sources */,
 				9D477EB324D41EFE0063870B /* AppSetup.swift in Sources */,
 				9D477ECE24D4310F0063870B /* DynamicValue.swift in Sources */,
+				9D477F0C24D50C2E0063870B /* AppEndPoints.swift in Sources */,
 				9D477ED424D436B20063870B /* BaseViewController.swift in Sources */,
 				9D477ED824D4420B0063870B /* AvailableFlightsViewController.swift in Sources */,
+				9D477EFB24D4E4080063870B /* AirportWebService.swift in Sources */,
 				9D477E9824D3521B0063870B /* FlightApp.xcdatamodeld in Sources */,
 				9D477EEB24D48C170063870B /* BaseTabBarController.swift in Sources */,
+				9D477F0424D4E8A80063870B /* AirportWebServiceImp.swift in Sources */,
 				9D477ED624D439930063870B /* MainViewController.swift in Sources */,
 				9D477EC424D42DD40063870B /* NavigationServiceImp.swift in Sources */,
 				9D477EDA24D442310063870B /* AvailableFlightsViewModel.swift in Sources */,
 				9D477ED024D4352F0063870B /* MainViewModel.swift in Sources */,
 				9D477EB924D424C00063870B /* Core.swift in Sources */,
+				9D477F0124D4E5100063870B /* AirportObject.swift in Sources */,
 				9D477EE724D488500063870B /* FindFlightsViewModel.swift in Sources */,
+				9D477F0624D4EB440063870B /* WebServiceImp.swift in Sources */,
 				9D477EE924D488610063870B /* AirportsViewModel.swift in Sources */,
 				9D477EBD24D4271B0063870B /* DiContainer.swift in Sources */,
+				9D477F0A24D50BBD0063870B /* Enums.swift in Sources */,
 				9D477EE324D487E00063870B /* AirportsViewController.swift in Sources */,
 				9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */,
 				9D477EB624D4203C0063870B /* CustomUIExtensions.swift in Sources */,
 				9D477ECB24D430630063870B /* ViewModel.swift in Sources */,
 				9D477EF024D4CA2A0063870B /* CountryListViewModel.swift in Sources */,
+				9D477EF824D4E3300063870B /* WebService.swift in Sources */,
 				9D477EF424D4D6FD0063870B /* DatePickerModalView.swift in Sources */,
 				9D477EEE24D4C9F30063870B /* CountryListViewController.swift in Sources */,
 				9D477EE524D488030063870B /* FindFlightsViewController.swift in Sources */,
@@ -560,14 +616,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		9D477E9324D3521B0063870B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D477E9424D3521B0063870B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -19,8 +19,8 @@ public struct Core {
         //DiContainer.registerSingleton(ReportService.self) { ReportServiceImp() }
         //DiContainer.registerAsSingleton(AppSettingsService.self) { AppSettingsServiceImp() }
         //DiContainer.registerAsSingleton(DatabaseUserService.self) { DatabaseUserServiceImp(reportService: DiContainer.resolve()) }
-        //DiContainer.registerAsSingleton(WebService.self) { WebServiceImp(reportService: DiContainer.resolve()) }
-        //DiContainer.registerAsSingleton(UserWebService.self) { UserWebServiceImp(webService: DiContainer.resolve()) }
+        DiContainer.registerSingleton(WebService.self) { WebServiceImp() }
+        DiContainer.registerSingleton(AirportWebService.self) { AirportWebServiceImp(webService: DiContainer.resolve()) }
     }
     
     private static func _registerViewModels() {
