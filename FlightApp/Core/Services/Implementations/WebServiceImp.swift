@@ -10,7 +10,12 @@ import Foundation
 import Networking
 
 class WebServiceImp : WebService {
+    private let _reportService: ReportService
     private let _networking = Networking()
+    
+    init(reportService: ReportService) {
+        _reportService = reportService
+    }
     
     func getRequest<T>(baseUrl: baseURL, requestUri: String, completion: @escaping (T?) -> Void) -> String where T : Decodable, T : Encodable {
         let requestId = _networking.get(baseUrl.url + requestUri) { result in
@@ -21,6 +26,7 @@ class WebServiceImp : WebService {
     }
     
     func cancelRequest(_ id: String) {
+        _networking.cancel(id)
     }
     
     func _handleResult<T : Codable>(_ result: JSONResult, _ completion: (_ result: T?) -> Void ) {
@@ -30,8 +36,8 @@ class WebServiceImp : WebService {
                     let obj = try JSONDecoder().decode(T.self, from: response.data)
                     completion(obj)
                 } catch let error {
+                    _sendError(error, String(describing: T.self))
                     completion(nil)
-                    //_reportService.sendError(error: error, message: "Json serialization didn't worked for \(T.self) object with data \(response.dictionaryBody["data"]!)")
                 }
             
             case .failure(let response):
@@ -39,6 +45,10 @@ class WebServiceImp : WebService {
                 print(errorCode)
                 completion(nil)
         }
+    }
+    
+    func _sendError(_ error : Error, _ obj : String) {
+        _reportService.sendError(error: error, message: "Json serialization error on object: \(obj)")
     }
 }
 

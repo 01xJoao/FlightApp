@@ -14,10 +14,10 @@ enum baseURL : String {
     
     var url: String {
         switch self {
-        case .stations:
-            return AppEndPoints.stations
-        case .flights:
-            return AppEndPoints.flights
+            case .stations:
+                return AppEndPoints.stations
+            case .flights:
+                return AppEndPoints.flights
         }
     }
 }

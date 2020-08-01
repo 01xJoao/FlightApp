@@ -12,12 +12,7 @@ typealias CompletionHandler = (() -> Void)
 
 public class DynamicValue<T> {
     private var _observers = [String: CompletionHandler]()
-    
-    public var value : T {
-        didSet {
-            _notify()
-        }
-    }
+    public var value : T { didSet { _notify() } }
     
     init(_ value: T) {
         self.value = value

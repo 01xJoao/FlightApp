@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		7DA519099AFD0F0A663A777A /* Pods_FlightApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FE6E08AE9BCD875419BE2A /* Pods_FlightApp.framework */; };
 		8170BC04471607F8B0ABEAD1 /* Pods_FlightAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CA01FFDC8ABACABF52273F6 /* Pods_FlightAppTests.framework */; };
+		9D228BD724D57C6D00FF4A28 /* ReportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BD624D57C6D00FF4A28 /* ReportService.swift */; };
+		9D228BD924D57C7800FF4A28 /* ReportServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BD824D57C7800FF4A28 /* ReportServiceImp.swift */; };
+		9D228BDC24D5896A00FF4A28 /* Generics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BDB24D5896A00FF4A28 /* Generics.swift */; };
+		9D228BDE24D589B500FF4A28 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BDD24D589B500FF4A28 /* Constants.swift */; };
+		9D228BE024D58B8E00FF4A28 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BDF24D58B8E00FF4A28 /* Extensions.swift */; };
+		9D228BE324D58BFD00FF4A28 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BE224D58BFD00FF4A28 /* Command.swift */; };
+		9D228BE824D595D400FF4A28 /* Command{T}.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BE724D595D400FF4A28 /* Command{T}.swift */; };
 		9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8D24D3521B0063870B /* AppDelegate.swift */; };
 		9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8F24D3521B0063870B /* SceneDelegate.swift */; };
 		9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9124D3521B0063870B /* ContainerViewController.swift */; };
@@ -65,6 +72,13 @@
 		4C355197E3D665747D739C62 /* Pods-FlightApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightApp.release.xcconfig"; path = "Target Support Files/Pods-FlightApp/Pods-FlightApp.release.xcconfig"; sourceTree = "<group>"; };
 		7363590CD8D0CA3A918EBB60 /* Pods-FlightAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightAppTests.release.xcconfig"; path = "Target Support Files/Pods-FlightAppTests/Pods-FlightAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		797F640678A756993E245A4D /* Pods-FlightApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightApp.debug.xcconfig"; path = "Target Support Files/Pods-FlightApp/Pods-FlightApp.debug.xcconfig"; sourceTree = "<group>"; };
+		9D228BD624D57C6D00FF4A28 /* ReportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportService.swift; sourceTree = "<group>"; };
+		9D228BD824D57C7800FF4A28 /* ReportServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportServiceImp.swift; sourceTree = "<group>"; };
+		9D228BDB24D5896A00FF4A28 /* Generics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generics.swift; sourceTree = "<group>"; };
+		9D228BDD24D589B500FF4A28 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9D228BDF24D58B8E00FF4A28 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		9D228BE224D58BFD00FF4A28 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		9D228BE724D595D400FF4A28 /* Command{T}.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Command{T}.swift"; sourceTree = "<group>"; };
 		9D477E8A24D3521B0063870B /* FlightApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D477E8D24D3521B0063870B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D477E8F24D3521B0063870B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +155,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		9D228BE124D58BEE00FF4A28 /* Command */ = {
+			isa = PBXGroup;
+			children = (
+				9D228BE224D58BFD00FF4A28 /* Command.swift */,
+				9D228BE724D595D400FF4A28 /* Command{T}.swift */,
+			);
+			path = Command;
+			sourceTree = "<group>";
+		};
 		9D477E8124D3521B0063870B = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +215,9 @@
 				9D477EB524D4203C0063870B /* CustomUIExtensions.swift */,
 				9D477EDB24D468D40063870B /* Utils.swift */,
 				9D477F0924D50BBD0063870B /* Enums.swift */,
+				9D228BDB24D5896A00FF4A28 /* Generics.swift */,
+				9D228BDD24D589B500FF4A28 /* Constants.swift */,
+				9D228BDF24D58B8E00FF4A28 /* Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -211,18 +237,19 @@
 		9D477EBA24D426F00063870B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				9D228BE124D58BEE00FF4A28 /* Command */,
 				9D477ECC24D430E80063870B /* Observer */,
-				9D477EBB24D427020063870B /* DiContainer */,
+				9D477EBB24D427020063870B /* DependencyInjection */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
 		};
-		9D477EBB24D427020063870B /* DiContainer */ = {
+		9D477EBB24D427020063870B /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
 				9D477EBC24D4271B0063870B /* DiContainer.swift */,
 			);
-			path = DiContainer;
+			path = DependencyInjection;
 			sourceTree = "<group>";
 		};
 		9D477EBE24D42CDB0063870B /* Protocols */ = {
@@ -231,6 +258,7 @@
 				9D477EF924D4E3B30063870B /* WebServices */,
 				9D477EBF24D42D1A0063870B /* NavigationService.swift */,
 				9D477EF724D4E3300063870B /* WebService.swift */,
+				9D228BD624D57C6D00FF4A28 /* ReportService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -250,6 +278,7 @@
 				9D477F0224D4E8750063870B /* WebServices */,
 				9D477EC324D42DD40063870B /* NavigationServiceImp.swift */,
 				9D477F0524D4EB440063870B /* WebServiceImp.swift */,
+				9D228BD824D57C7800FF4A28 /* ReportServiceImp.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -590,12 +619,18 @@
 				9D477F0424D4E8A80063870B /* AirportWebServiceImp.swift in Sources */,
 				9D477ED624D439930063870B /* MainViewController.swift in Sources */,
 				9D477EC424D42DD40063870B /* NavigationServiceImp.swift in Sources */,
+				9D228BD724D57C6D00FF4A28 /* ReportService.swift in Sources */,
 				9D477EDA24D442310063870B /* AvailableFlightsViewModel.swift in Sources */,
+				9D228BE824D595D400FF4A28 /* Command{T}.swift in Sources */,
 				9D477ED024D4352F0063870B /* MainViewModel.swift in Sources */,
+				9D228BE324D58BFD00FF4A28 /* Command.swift in Sources */,
 				9D477EB924D424C00063870B /* Core.swift in Sources */,
 				9D477F0124D4E5100063870B /* AirportObject.swift in Sources */,
+				9D228BDE24D589B500FF4A28 /* Constants.swift in Sources */,
+				9D228BD924D57C7800FF4A28 /* ReportServiceImp.swift in Sources */,
 				9D477EE724D488500063870B /* FindFlightsViewModel.swift in Sources */,
 				9D477F0624D4EB440063870B /* WebServiceImp.swift in Sources */,
+				9D228BDC24D5896A00FF4A28 /* Generics.swift in Sources */,
 				9D477EE924D488610063870B /* AirportsViewModel.swift in Sources */,
 				9D477EBD24D4271B0063870B /* DiContainer.swift in Sources */,
 				9D477F0A24D50BBD0063870B /* Enums.swift in Sources */,
@@ -606,6 +641,7 @@
 				9D477EF024D4CA2A0063870B /* CountryListViewModel.swift in Sources */,
 				9D477EF824D4E3300063870B /* WebService.swift in Sources */,
 				9D477EF424D4D6FD0063870B /* DatePickerModalView.swift in Sources */,
+				9D228BE024D58B8E00FF4A28 /* Extensions.swift in Sources */,
 				9D477EEE24D4C9F30063870B /* CountryListViewController.swift in Sources */,
 				9D477EE524D488030063870B /* FindFlightsViewController.swift in Sources */,
 				9D477EDC24D468D40063870B /* Utils.swift in Sources */,

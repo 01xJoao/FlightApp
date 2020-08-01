@@ -16,16 +16,8 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
         super.viewDidLoad()
         self.title = "Airports"
         _configureSearchController()
-        
-        let airpotService : AirportWebService = DiContainer.resolve()
-        
-        _ = airpotService.getAvailableStations() { airportObj in self._completion(airportObj) }
     }
-    
-    private func _completion(_ airports: StationListObject?) {
-        print(airports)
-    }
-    
+
     private func _configureSearchController() {
         let searchController = CustomSearchController()
         searchController.delegate = self
