@@ -35,15 +35,10 @@ public class NavigationServiceImp : NavigationService {
         let viewModelName = String(describing: TViewModel.self)
         let viewController: UIViewController = DiContainer.resolveViewController(name: viewModelName)
         
-        if let vc = viewController as? BaseViewController<TViewModel> {
-            if(args != nil) {
+        if(args != nil) {
+            if let vc = viewController as? BaseViewController<TViewModel> {
                 vc.parameterData = args
             }
-        } else {
-//            let vc = viewController as! BaseCollectionViewController<TViewModel>
-//            if(args != nil) {
-//                vc.parameterData = args
-//            }
         }
     
         return viewController

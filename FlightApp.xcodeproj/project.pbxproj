@@ -23,6 +23,8 @@
 		9D228BF624D59EF400FF4A28 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF524D59EF400FF4A28 /* Airport.swift */; };
 		9D228BF824D5A11C00FF4A28 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF724D5A11C00FF4A28 /* Market.swift */; };
 		9D228BFA24D5A12A00FF4A28 /* MarketObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF924D5A12A00FF4A28 /* MarketObject.swift */; };
+		9D228C0324D5B03200FF4A28 /* AirportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228C0224D5B03200FF4A28 /* AirportCell.swift */; };
+		9D228C0724D5C3EF00FF4A28 /* AirportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228C0624D5C3EF00FF4A28 /* AirportListView.swift */; };
 		9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8D24D3521B0063870B /* AppDelegate.swift */; };
 		9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8F24D3521B0063870B /* SceneDelegate.swift */; };
 		9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9124D3521B0063870B /* ContainerViewController.swift */; };
@@ -93,6 +95,8 @@
 		9D228BF524D59EF400FF4A28 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
 		9D228BF724D5A11C00FF4A28 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		9D228BF924D5A12A00FF4A28 /* MarketObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketObject.swift; sourceTree = "<group>"; };
+		9D228C0224D5B03200FF4A28 /* AirportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportCell.swift; sourceTree = "<group>"; };
+		9D228C0624D5C3EF00FF4A28 /* AirportListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportListView.swift; sourceTree = "<group>"; };
 		9D477E8A24D3521B0063870B /* FlightApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D477E8D24D3521B0063870B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D477E8F24D3521B0063870B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +215,22 @@
 				9D228BF724D5A11C00FF4A28 /* Market.swift */,
 			);
 			path = DataStructures;
+			sourceTree = "<group>";
+		};
+		9D228C0124D5B01F00FF4A28 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9D228C0224D5B03200FF4A28 /* AirportCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9D228C0824D5C44600FF4A28 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				9D228C0624D5C3EF00FF4A28 /* AirportListView.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 		9D477E8124D3521B0063870B = {
@@ -397,6 +417,8 @@
 		9D477EE124D487C40063870B /* AirportsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9D228C0824D5C44600FF4A28 /* List */,
+				9D228C0124D5B01F00FF4A28 /* Cells */,
 				9D477EE224D487E00063870B /* AirportsViewController.swift */,
 			);
 			path = AirportsViewController;
@@ -677,8 +699,10 @@
 				9D477ED624D439930063870B /* MainViewController.swift in Sources */,
 				9D477EC424D42DD40063870B /* NavigationServiceImp.swift in Sources */,
 				9D228BD724D57C6D00FF4A28 /* ReportService.swift in Sources */,
+				9D228C0324D5B03200FF4A28 /* AirportCell.swift in Sources */,
 				9D477EDA24D442310063870B /* AvailableFlightsViewModel.swift in Sources */,
 				9D228BE824D595D400FF4A28 /* Command{T}.swift in Sources */,
+				9D228C0724D5C3EF00FF4A28 /* AirportListView.swift in Sources */,
 				9D477ED024D4352F0063870B /* MainViewModel.swift in Sources */,
 				9D228BE324D58BFD00FF4A28 /* Command.swift in Sources */,
 				9D477EB924D424C00063870B /* Core.swift in Sources */,

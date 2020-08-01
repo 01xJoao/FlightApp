@@ -8,6 +8,8 @@
 
 
 import UIKit
+import LBTATools
+import Foundation
 
 class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchControllerDelegate {
     var searchController : UISearchController!
@@ -25,7 +27,7 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewDidAppear(animated)
         self.navigationItem.searchController!.searchBar.setSearch("Search")
     }
 }

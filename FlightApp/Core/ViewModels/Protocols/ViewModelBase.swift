@@ -7,27 +7,18 @@
 //
 
 public class ViewModelBase : ViewModel {
-
     private let _navigationService: NavigationService = DiContainer.resolve()
-
+    public let isBusy : DynamicValue<Bool> = DynamicValue<Bool>(false)
+    
     public var navigationService: NavigationService {
-        get {
-            return _navigationService
-        }
+        get { return _navigationService }
     }
     
-    public var isBusy : DynamicValue<Bool> = DynamicValue<Bool>(false)
-    
     public func prepare(dataObject: Any) {}
-    
     public func initialize() {}
-    
     public func appearing() {}
-    
     public func disappearing() {}
-    
     public func backAction() {}
-    
     public func dataNotify(dataObject: Any?) {}
 }
 

@@ -13,7 +13,6 @@ class MainViewController : BaseTabBarController<MainViewModel> {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         _createTabBarController()
-        print(L10N.localize(key: "findflights_passengers"))
     }
     
     private func _createTabBarController() {
