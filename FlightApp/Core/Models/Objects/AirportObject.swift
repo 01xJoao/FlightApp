@@ -9,7 +9,7 @@
 import Foundation
 
 struct StationListObject: Codable {
-    let stations: [AirportObject]
+    let stations: [AirportObject]?
 }
 
 struct AirportObject : Codable {
@@ -19,7 +19,7 @@ struct AirportObject : Codable {
     let countryName : String
     let latitude : String
     let longitude : String
-    let tripCardImageURL: String?
+    let tripCardImageUrl: String?
     let markets: [MarketObject]
 }
 

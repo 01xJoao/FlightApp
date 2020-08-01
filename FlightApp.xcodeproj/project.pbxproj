@@ -16,7 +16,7 @@
 		9D477E9A24D3521D0063870B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D477E9924D3521D0063870B /* Assets.xcassets */; };
 		9D477E9D24D3521D0063870B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */; };
 		9D477EA824D3521D0063870B /* FlightAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EA724D3521D0063870B /* FlightAppTests.swift */; };
-		9D477EB324D41EFE0063870B /* AppSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EB224D41EFE0063870B /* AppSetup.swift */; };
+		9D477EB324D41EFE0063870B /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EB224D41EFE0063870B /* AppConfiguration.swift */; };
 		9D477EB624D4203C0063870B /* CustomUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EB524D4203C0063870B /* CustomUIExtensions.swift */; };
 		9D477EB924D424C00063870B /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EB824D424C00063870B /* Core.swift */; };
 		9D477EBD24D4271B0063870B /* DiContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EBC24D4271B0063870B /* DiContainer.swift */; };
@@ -76,7 +76,7 @@
 		9D477EA324D3521D0063870B /* FlightAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlightAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D477EA724D3521D0063870B /* FlightAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightAppTests.swift; sourceTree = "<group>"; };
 		9D477EA924D3521D0063870B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9D477EB224D41EFE0063870B /* AppSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSetup.swift; sourceTree = "<group>"; };
+		9D477EB224D41EFE0063870B /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		9D477EB524D4203C0063870B /* CustomUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIExtensions.swift; sourceTree = "<group>"; };
 		9D477EB824D424C00063870B /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		9D477EBC24D4271B0063870B /* DiContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiContainer.swift; sourceTree = "<group>"; };
@@ -164,19 +164,15 @@
 		9D477E8C24D3521B0063870B /* FlightApp */ = {
 			isa = PBXGroup;
 			children = (
+				9D477E9E24D3521D0063870B /* Info.plist */,
+				9D477E9624D3521B0063870B /* FlightApp.xcdatamodeld */,
+				9D477F0B24D50C2E0063870B /* AppEndPoints.swift */,
+				9D477F0E24D519C90063870B /* Assets */,
+				9D477F0D24D519910063870B /* AppSetup */,
 				9D477EF124D4D6940063870B /* CustomViews */,
 				9D477EB424D420280063870B /* Helpers */,
 				9D477EB724D424AF0063870B /* Core */,
 				9D477ED124D4369B0063870B /* Views */,
-				9D477E9124D3521B0063870B /* ContainerViewController.swift */,
-				9D477E8D24D3521B0063870B /* AppDelegate.swift */,
-				9D477E8F24D3521B0063870B /* SceneDelegate.swift */,
-				9D477E9924D3521D0063870B /* Assets.xcassets */,
-				9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */,
-				9D477E9E24D3521D0063870B /* Info.plist */,
-				9D477E9624D3521B0063870B /* FlightApp.xcdatamodeld */,
-				9D477EB224D41EFE0063870B /* AppSetup.swift */,
-				9D477F0B24D50C2E0063870B /* AppEndPoints.swift */,
 			);
 			path = FlightApp;
 			sourceTree = "<group>";
@@ -383,6 +379,26 @@
 			path = WebServices;
 			sourceTree = "<group>";
 		};
+		9D477F0D24D519910063870B /* AppSetup */ = {
+			isa = PBXGroup;
+			children = (
+				9D477E8D24D3521B0063870B /* AppDelegate.swift */,
+				9D477E8F24D3521B0063870B /* SceneDelegate.swift */,
+				9D477EB224D41EFE0063870B /* AppConfiguration.swift */,
+				9D477E9124D3521B0063870B /* ContainerViewController.swift */,
+			);
+			path = AppSetup;
+			sourceTree = "<group>";
+		};
+		9D477F0E24D519C90063870B /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				9D477E9924D3521D0063870B /* Assets.xcassets */,
+				9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		BFBA4E1F804BCB8162A72607 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -563,7 +579,7 @@
 				9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */,
 				9D477EC024D42D1A0063870B /* NavigationService.swift in Sources */,
 				9D477EF624D4E0F80063870B /* PassengersModalView.swift in Sources */,
-				9D477EB324D41EFE0063870B /* AppSetup.swift in Sources */,
+				9D477EB324D41EFE0063870B /* AppConfiguration.swift in Sources */,
 				9D477ECE24D4310F0063870B /* DynamicValue.swift in Sources */,
 				9D477F0C24D50C2E0063870B /* AppEndPoints.swift in Sources */,
 				9D477ED424D436B20063870B /* BaseViewController.swift in Sources */,

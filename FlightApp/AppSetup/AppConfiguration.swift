@@ -8,15 +8,14 @@
 
 import UIKit
 
-public class AppSetup {
-    
-    public static func configure() {
+public struct AppConfiguration {
+    static public func initializeApp() {
         Core.initialize()
         _setViewAppearance()
         Core.startApp()
     }
     
-    private static func _setViewAppearance(){
+    private static func _setViewAppearance() {
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
             appearance.backgroundColor = UIColor.Theme.mainBlue
