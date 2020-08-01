@@ -16,6 +16,10 @@
 		9D228BE024D58B8E00FF4A28 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BDF24D58B8E00FF4A28 /* Extensions.swift */; };
 		9D228BE324D58BFD00FF4A28 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BE224D58BFD00FF4A28 /* Command.swift */; };
 		9D228BE824D595D400FF4A28 /* Command{T}.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BE724D595D400FF4A28 /* Command{T}.swift */; };
+		9D228BEC24D5985800FF4A28 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D228BEB24D5985800FF4A28 /* en.json */; };
+		9D228BEE24D5987200FF4A28 /* pt.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D228BED24D5987200FF4A28 /* pt.json */; };
+		9D228BF124D59C5600FF4A28 /* L10N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF024D59C5600FF4A28 /* L10N.swift */; };
+		9D228BF324D59C9400FF4A28 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF224D59C9400FF4A28 /* Literal.swift */; };
 		9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8D24D3521B0063870B /* AppDelegate.swift */; };
 		9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8F24D3521B0063870B /* SceneDelegate.swift */; };
 		9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9124D3521B0063870B /* ContainerViewController.swift */; };
@@ -79,6 +83,10 @@
 		9D228BDF24D58B8E00FF4A28 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		9D228BE224D58BFD00FF4A28 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		9D228BE724D595D400FF4A28 /* Command{T}.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Command{T}.swift"; sourceTree = "<group>"; };
+		9D228BEB24D5985800FF4A28 /* en.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
+		9D228BED24D5987200FF4A28 /* pt.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pt.json; sourceTree = "<group>"; };
+		9D228BF024D59C5600FF4A28 /* L10N.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10N.swift; sourceTree = "<group>"; };
+		9D228BF224D59C9400FF4A28 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
 		9D477E8A24D3521B0063870B /* FlightApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D477E8D24D3521B0063870B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D477E8F24D3521B0063870B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +172,32 @@
 			path = Command;
 			sourceTree = "<group>";
 		};
+		9D228BE924D5983600FF4A28 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9D228BEA24D5984200FF4A28 /* Localizations */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		9D228BEA24D5984200FF4A28 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				9D228BEB24D5985800FF4A28 /* en.json */,
+				9D228BED24D5987200FF4A28 /* pt.json */,
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
+		9D228BEF24D59C4200FF4A28 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				9D228BF024D59C5600FF4A28 /* L10N.swift */,
+				9D228BF224D59C9400FF4A28 /* Literal.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		9D477E8124D3521B0063870B = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +221,7 @@
 		9D477E8C24D3521B0063870B /* FlightApp */ = {
 			isa = PBXGroup;
 			children = (
+				9D228BE924D5983600FF4A28 /* Resources */,
 				9D477E9E24D3521D0063870B /* Info.plist */,
 				9D477E9624D3521B0063870B /* FlightApp.xcdatamodeld */,
 				9D477F0B24D50C2E0063870B /* AppEndPoints.swift */,
@@ -237,6 +272,7 @@
 		9D477EBA24D426F00063870B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				9D228BEF24D59C4200FF4A28 /* Localization */,
 				9D228BE124D58BEE00FF4A28 /* Command */,
 				9D477ECC24D430E80063870B /* Observer */,
 				9D477EBB24D427020063870B /* DependencyInjection */,
@@ -521,8 +557,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D228BEC24D5985800FF4A28 /* en.json in Resources */,
 				9D477E9D24D3521D0063870B /* LaunchScreen.storyboard in Resources */,
 				9D477E9A24D3521D0063870B /* Assets.xcassets in Resources */,
+				9D228BEE24D5987200FF4A28 /* pt.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +666,7 @@
 				9D477F0124D4E5100063870B /* AirportObject.swift in Sources */,
 				9D228BDE24D589B500FF4A28 /* Constants.swift in Sources */,
 				9D228BD924D57C7800FF4A28 /* ReportServiceImp.swift in Sources */,
+				9D228BF124D59C5600FF4A28 /* L10N.swift in Sources */,
 				9D477EE724D488500063870B /* FindFlightsViewModel.swift in Sources */,
 				9D477F0624D4EB440063870B /* WebServiceImp.swift in Sources */,
 				9D228BDC24D5896A00FF4A28 /* Generics.swift in Sources */,
@@ -636,6 +675,7 @@
 				9D477F0A24D50BBD0063870B /* Enums.swift in Sources */,
 				9D477EE324D487E00063870B /* AirportsViewController.swift in Sources */,
 				9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */,
+				9D228BF324D59C9400FF4A28 /* Literal.swift in Sources */,
 				9D477EB624D4203C0063870B /* CustomUIExtensions.swift in Sources */,
 				9D477ECB24D430630063870B /* ViewModel.swift in Sources */,
 				9D477EF024D4CA2A0063870B /* CountryListViewModel.swift in Sources */,
