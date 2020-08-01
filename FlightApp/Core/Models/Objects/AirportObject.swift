@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct StationListObject: Codable {
+public struct StationListObject: Codable {
     let stations: [AirportObject]?
 }
 
-struct AirportObject : Codable {
+public struct AirportObject : Codable {
     let code : String
     let name : String
     let alias: [String]
@@ -21,8 +21,4 @@ struct AirportObject : Codable {
     let longitude : String
     let tripCardImageUrl: String?
     let markets: [MarketObject]
-}
-
-struct MarketObject: Codable {
-    let code: String
 }

@@ -20,6 +20,9 @@
 		9D228BEE24D5987200FF4A28 /* pt.json in Resources */ = {isa = PBXBuildFile; fileRef = 9D228BED24D5987200FF4A28 /* pt.json */; };
 		9D228BF124D59C5600FF4A28 /* L10N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF024D59C5600FF4A28 /* L10N.swift */; };
 		9D228BF324D59C9400FF4A28 /* Literal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF224D59C9400FF4A28 /* Literal.swift */; };
+		9D228BF624D59EF400FF4A28 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF524D59EF400FF4A28 /* Airport.swift */; };
+		9D228BF824D5A11C00FF4A28 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF724D5A11C00FF4A28 /* Market.swift */; };
+		9D228BFA24D5A12A00FF4A28 /* MarketObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF924D5A12A00FF4A28 /* MarketObject.swift */; };
 		9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8D24D3521B0063870B /* AppDelegate.swift */; };
 		9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8F24D3521B0063870B /* SceneDelegate.swift */; };
 		9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9124D3521B0063870B /* ContainerViewController.swift */; };
@@ -87,6 +90,9 @@
 		9D228BED24D5987200FF4A28 /* pt.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = pt.json; sourceTree = "<group>"; };
 		9D228BF024D59C5600FF4A28 /* L10N.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10N.swift; sourceTree = "<group>"; };
 		9D228BF224D59C9400FF4A28 /* Literal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Literal.swift; sourceTree = "<group>"; };
+		9D228BF524D59EF400FF4A28 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
+		9D228BF724D5A11C00FF4A28 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
+		9D228BF924D5A12A00FF4A28 /* MarketObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketObject.swift; sourceTree = "<group>"; };
 		9D477E8A24D3521B0063870B /* FlightApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D477E8D24D3521B0063870B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D477E8F24D3521B0063870B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +202,15 @@
 				9D228BF224D59C9400FF4A28 /* Literal.swift */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		9D228BF424D59EDA00FF4A28 /* DataStructures */ = {
+			isa = PBXGroup;
+			children = (
+				9D228BF524D59EF400FF4A28 /* Airport.swift */,
+				9D228BF724D5A11C00FF4A28 /* Market.swift */,
+			);
+			path = DataStructures;
 			sourceTree = "<group>";
 		};
 		9D477E8124D3521B0063870B = {
@@ -423,6 +438,7 @@
 		9D477EFE24D4E4EA0063870B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9D228BF424D59EDA00FF4A28 /* DataStructures */,
 				9D477EFF24D4E4F80063870B /* Objects */,
 			);
 			path = Models;
@@ -432,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				9D477F0024D4E5100063870B /* AirportObject.swift */,
+				9D228BF924D5A12A00FF4A28 /* MarketObject.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -642,6 +659,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D228BF624D59EF400FF4A28 /* Airport.swift in Sources */,
 				9D477EC924D430310063870B /* ViewModelBase.swift in Sources */,
 				9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */,
 				9D477EC024D42D1A0063870B /* NavigationService.swift in Sources */,
@@ -649,6 +667,7 @@
 				9D477EB324D41EFE0063870B /* AppConfiguration.swift in Sources */,
 				9D477ECE24D4310F0063870B /* DynamicValue.swift in Sources */,
 				9D477F0C24D50C2E0063870B /* AppEndPoints.swift in Sources */,
+				9D228BFA24D5A12A00FF4A28 /* MarketObject.swift in Sources */,
 				9D477ED424D436B20063870B /* BaseViewController.swift in Sources */,
 				9D477ED824D4420B0063870B /* AvailableFlightsViewController.swift in Sources */,
 				9D477EFB24D4E4080063870B /* AirportWebService.swift in Sources */,
@@ -676,6 +695,7 @@
 				9D477EE324D487E00063870B /* AirportsViewController.swift in Sources */,
 				9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */,
 				9D228BF324D59C9400FF4A28 /* Literal.swift in Sources */,
+				9D228BF824D5A11C00FF4A28 /* Market.swift in Sources */,
 				9D477EB624D4203C0063870B /* CustomUIExtensions.swift in Sources */,
 				9D477ECB24D430630063870B /* ViewModel.swift in Sources */,
 				9D477EF024D4CA2A0063870B /* CountryListViewModel.swift in Sources */,
