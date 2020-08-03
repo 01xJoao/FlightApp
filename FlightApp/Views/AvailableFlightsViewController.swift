@@ -12,7 +12,7 @@ import Foundation
 class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Available Flights"
+        //self.title = "Available Flights"
         navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }

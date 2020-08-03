@@ -6,8 +6,4 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-public class MainViewModel : ViewModelBase {
-    private func _canExecute() -> Bool {
-        return !isBusy.value
-    }
-}
+public class MainViewModel : ViewModelBase {}

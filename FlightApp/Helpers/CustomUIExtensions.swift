@@ -24,7 +24,7 @@ extension UIColor {
     static var babyBlue = UIColor().fromRGBA(red: 229, green: 238, blue: 255, alpha: 1.0)
     static var darkBlue = UIColor().fromRGBA(red: 36, green: 94, blue: 229, alpha: 1.0)
     static var white = UIColor().fromRGBA(red: 255, green: 255, blue: 255, alpha: 1.0)
-    static var darkerWhite = UIColor().fromRGBA(red: 248, green: 250, blue: 251, alpha: 1.0)
+    static var darkerWhite = UIColor().fromRGBA(red: 245, green: 245, blue: 245, alpha: 1.0)
     static var black = UIColor().fromRGBA(red: 0, green: 0, blue: 0, alpha: 1.0)
     static var grey = UIColor().fromRGBA(red: 233, green: 233, blue: 233, alpha: 1.0)
     static var babyGrey = UIColor().fromRGBA(red: 241, green: 241, blue: 241, alpha: 1.0)

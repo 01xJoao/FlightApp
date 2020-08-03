@@ -47,3 +47,20 @@ func createActivityIndicatory(view : UIView) -> UIActivityIndicatorView {
     
     return activityView
 }
+
+func backgroundRoundBorderView(color : UIColor = UIColor.Theme.darkerWhite, radius : CGFloat = 8) -> UIView {
+    let backgrounView = UIView()
+    backgrounView.backgroundColor = color
+    backgrounView.layer.cornerRadius = radius
+    backgrounView.layer.masksToBounds = true;
+    
+    return backgrounView
+}
+
+func getImageInBlue(_ imageName : String) -> UIImageView {
+    let imageView = UIImageView(image: UIImage(named: imageName), contentMode: .scaleAspectFit)
+    imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
+    imageView.tintColor = UIColor.Theme.mainBlue
+    
+    return imageView
+}

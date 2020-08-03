@@ -17,8 +17,8 @@ class MainViewController : BaseTabBarController<MainViewModel> {
     
     private func _createTabBarController() {
         self.viewControllers = [
-            _createViewTab("Airports", "AirportsViewModel", UIImage(named: "Airport")!),
-            _createViewTab("Find Flights", "FindFlightsViewModel", UIImage(named: "FindFlights")!),
+            _createViewTab(L10N.localize(key: "airports_title"), String(describing: AirportsViewModel.self), UIImage(named: "Airport")!),
+            _createViewTab(L10N.localize(key: "findflights_title"), String(describing: FindFlightsViewModel.self), UIImage(named: "FindFlights")!),
         ]
     }
     

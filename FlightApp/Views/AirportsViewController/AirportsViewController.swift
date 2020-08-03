@@ -36,15 +36,7 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
         searchController.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = searchController
     }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.searchCommand.executeIf(searchText)
-    }
-    
-    func willDismissSearchController(_ searchController: UISearchController) {
-         self._dataSourceProvider.airports = self.viewModel.airports.data.value
-    }
-    
+
     private func _configureTableView() {
         self.view.addSubview(_tableView)
         _tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +54,6 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
         })
     }
     
-    
     private func _configureActivityView() {
         _activityIndicatorView = createActivityIndicatory(view: self.view)
         
@@ -73,6 +64,14 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
                 self._activityIndicatorView?.stopAnimating()
             }
         })
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchCommand.executeIf(searchText)
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+         self._dataSourceProvider.airports = self.viewModel.airports.data.value
     }
     
     override func viewDidAppear(_ animated: Bool) {

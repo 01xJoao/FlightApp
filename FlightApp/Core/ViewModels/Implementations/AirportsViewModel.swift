@@ -71,7 +71,6 @@ public class AirportsViewModel : ViewModelBase {
         let airportSeachList = _airports.data.value.filter { airport in airport.containSearch(search) }
         
         _airportSearchList.data.value.removeAll()
-        
         _airportSearchList.addAll(object: airportSeachList)
     }
     
