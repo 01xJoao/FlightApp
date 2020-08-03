@@ -38,3 +38,12 @@ class DeformSquare : UIView {
         path.fill()
     }
 }
+
+func createActivityIndicatory(view : UIView) -> UIActivityIndicatorView {
+    let activityView = UIActivityIndicatorView(style: .large)
+    activityView.center = view.center
+    view.addSubview(activityView)
+    activityView.startAnimating()
+    
+    return activityView
+}

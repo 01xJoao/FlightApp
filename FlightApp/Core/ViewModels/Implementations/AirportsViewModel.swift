@@ -11,7 +11,13 @@ import Foundation
 public class AirportsViewModel : ViewModelBase {
     private let _airportWebService : AirportWebService
     
-    public var airports: DynamicValueList<Airport> = DynamicValueList<Airport>()
+    private let _airports: DynamicValueList<Airport> = DynamicValueList<Airport>()
+    
+    public var airports : DynamicValueList<Airport> {
+        get {
+            return _airports
+        }
+    }
     
     init(airportWebService: AirportWebService) {
         self._airportWebService = airportWebService
@@ -35,14 +41,15 @@ public class AirportsViewModel : ViewModelBase {
     }
     
     private func _airportsCompletion(_ stationList : StationListObject?) {
+        isBusy.value = false
+        
         var airportList: [Airport] = []
         
         stationList?.stations?.forEach{ airport in
             airportList.append(Airport(airport))
         }
         
-        airports.addAll(object: airportList)
-        isBusy.value = false
+        _airports.addAll(object: airportList)
     }
     
     private func _canExecute() -> Bool {

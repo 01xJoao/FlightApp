@@ -15,6 +15,7 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
     private let searchController = CustomSearchController()
     private let tableView = UITableView()
     private lazy var dataSourceProvider = AirportDataSource(tableView: tableView)
+    private var activityIndicatorView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,17 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
     
     private func _setupView() {
         _configureSearchController()
+        _configureTableView()
+        _configureActivityView()
+    }
+    
+    private func _configureSearchController() {
+        let searchController = CustomSearchController()
+        searchController.delegate = self
+        self.navigationItem.searchController = searchController
+    }
+    
+    private func _configureTableView() {
         self.view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.anchor(top: self.view.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor)
@@ -36,10 +48,17 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
         })
     }
     
-    private func _configureSearchController() {
-        let searchController = CustomSearchController()
-        searchController.delegate = self
-        self.navigationItem.searchController = searchController
+    
+    private func _configureActivityView() {
+        activityIndicatorView = createActivityIndicatory(view: self.view)
+        
+        viewModel.isBusy.addObserver(self, completionHandler: {
+            if(self.viewModel.isBusy.value){
+                self.activityIndicatorView?.startAnimating()
+            } else {
+                self.activityIndicatorView?.stopAnimating()
+            }
+        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
