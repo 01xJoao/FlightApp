@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DynamicValueList<T> : NSObject {
+public class DynamicValueList<T> : NSObject {
     var data: DynamicValue<[T]> = DynamicValue([])
     
     func add(object: T) {

@@ -39,6 +39,39 @@ extension UIColor {
     }
 }
 
+final class ShadowView: UIView {
+    private let cornerRadius: CGFloat
+    private var shadowLayer: CAShapeLayer!
+    
+    init(cornerRadius : CGFloat) {
+        self.cornerRadius = cornerRadius
+        super.init(frame: CGRect())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if shadowLayer == nil {
+            shadowLayer = CAShapeLayer()
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+            shadowLayer.fillColor = UIColor.white.cgColor
+
+            shadowLayer.shadowColor = UIColor.darkGray.cgColor
+            shadowLayer.shadowPath = shadowLayer.path
+            shadowLayer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+            shadowLayer.shadowOpacity = 0.4
+            shadowLayer.shadowRadius = 2
+
+            layer.insertSublayer(shadowLayer, at: 0)
+            //layer.insertSublayer(shadowLayer, below: nil) // also works
+        }
+    }
+}
+
 class NavigationController: UINavigationController {
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -77,5 +110,11 @@ extension UISearchBar {
 extension UIViewController {
     var className: String {
         return NSStringFromClass(self.classForCoder).components(separatedBy: ".").last!
+    }
+}
+
+extension UIView {
+     public func removeAllSubViews() {
+          self.subviews.forEach({ $0.removeFromSuperview() })
     }
 }

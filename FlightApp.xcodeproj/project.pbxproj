@@ -24,7 +24,6 @@
 		9D228BF824D5A11C00FF4A28 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF724D5A11C00FF4A28 /* Market.swift */; };
 		9D228BFA24D5A12A00FF4A28 /* MarketObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF924D5A12A00FF4A28 /* MarketObject.swift */; };
 		9D228C0324D5B03200FF4A28 /* AirportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228C0224D5B03200FF4A28 /* AirportCell.swift */; };
-		9D228C0724D5C3EF00FF4A28 /* AirportListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228C0624D5C3EF00FF4A28 /* AirportListView.swift */; };
 		9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8D24D3521B0063870B /* AppDelegate.swift */; };
 		9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8F24D3521B0063870B /* SceneDelegate.swift */; };
 		9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9124D3521B0063870B /* ContainerViewController.swift */; };
@@ -63,6 +62,8 @@
 		9D477F0624D4EB440063870B /* WebServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477F0524D4EB440063870B /* WebServiceImp.swift */; };
 		9D477F0A24D50BBD0063870B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477F0924D50BBD0063870B /* Enums.swift */; };
 		9D477F0C24D50C2E0063870B /* AppEndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477F0B24D50C2E0063870B /* AppEndPoints.swift */; };
+		9D6B0C9B24D6E24500127669 /* AirportDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B0C9A24D6E24500127669 /* AirportDataSource.swift */; };
+		9DC0DE2324D5D8DA00BFBA55 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DE2224D5D8DA00BFBA55 /* CustomViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +97,6 @@
 		9D228BF724D5A11C00FF4A28 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		9D228BF924D5A12A00FF4A28 /* MarketObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketObject.swift; sourceTree = "<group>"; };
 		9D228C0224D5B03200FF4A28 /* AirportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportCell.swift; sourceTree = "<group>"; };
-		9D228C0624D5C3EF00FF4A28 /* AirportListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportListView.swift; sourceTree = "<group>"; };
 		9D477E8A24D3521B0063870B /* FlightApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D477E8D24D3521B0063870B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D477E8F24D3521B0063870B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -139,6 +139,8 @@
 		9D477F0524D4EB440063870B /* WebServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceImp.swift; sourceTree = "<group>"; };
 		9D477F0924D50BBD0063870B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		9D477F0B24D50C2E0063870B /* AppEndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEndPoints.swift; sourceTree = "<group>"; };
+		9D6B0C9A24D6E24500127669 /* AirportDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDataSource.swift; sourceTree = "<group>"; };
+		9DC0DE2224D5D8DA00BFBA55 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		E6F07099BD79910953DD1988 /* Pods-FlightAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlightAppTests.debug.xcconfig"; path = "Target Support Files/Pods-FlightAppTests/Pods-FlightAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,14 +225,6 @@
 				9D228C0224D5B03200FF4A28 /* AirportCell.swift */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		9D228C0824D5C44600FF4A28 /* List */ = {
-			isa = PBXGroup;
-			children = (
-				9D228C0624D5C3EF00FF4A28 /* AirportListView.swift */,
-			);
-			path = List;
 			sourceTree = "<group>";
 		};
 		9D477E8124D3521B0063870B = {
@@ -417,8 +411,7 @@
 		9D477EE124D487C40063870B /* AirportsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				9D228C0824D5C44600FF4A28 /* List */,
-				9D228C0124D5B01F00FF4A28 /* Cells */,
+				9D6B0C9924D6E23200127669 /* AirportTableData */,
 				9D477EE224D487E00063870B /* AirportsViewController.swift */,
 			);
 			path = AirportsViewController;
@@ -436,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				9D477EF224D4D6A70063870B /* BottomModals */,
+				9DC0DE2224D5D8DA00BFBA55 /* CustomViews.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -501,6 +495,15 @@
 				9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		9D6B0C9924D6E23200127669 /* AirportTableData */ = {
+			isa = PBXGroup;
+			children = (
+				9D228C0124D5B01F00FF4A28 /* Cells */,
+				9D6B0C9A24D6E24500127669 /* AirportDataSource.swift */,
+			);
+			path = AirportTableData;
 			sourceTree = "<group>";
 		};
 		BFBA4E1F804BCB8162A72607 /* Frameworks */ = {
@@ -702,7 +705,6 @@
 				9D228C0324D5B03200FF4A28 /* AirportCell.swift in Sources */,
 				9D477EDA24D442310063870B /* AvailableFlightsViewModel.swift in Sources */,
 				9D228BE824D595D400FF4A28 /* Command{T}.swift in Sources */,
-				9D228C0724D5C3EF00FF4A28 /* AirportListView.swift in Sources */,
 				9D477ED024D4352F0063870B /* MainViewModel.swift in Sources */,
 				9D228BE324D58BFD00FF4A28 /* Command.swift in Sources */,
 				9D477EB924D424C00063870B /* Core.swift in Sources */,
@@ -720,12 +722,14 @@
 				9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */,
 				9D228BF324D59C9400FF4A28 /* Literal.swift in Sources */,
 				9D228BF824D5A11C00FF4A28 /* Market.swift in Sources */,
+				9D6B0C9B24D6E24500127669 /* AirportDataSource.swift in Sources */,
 				9D477EB624D4203C0063870B /* CustomUIExtensions.swift in Sources */,
 				9D477ECB24D430630063870B /* ViewModel.swift in Sources */,
 				9D477EF024D4CA2A0063870B /* CountryListViewModel.swift in Sources */,
 				9D477EF824D4E3300063870B /* WebService.swift in Sources */,
 				9D477EF424D4D6FD0063870B /* DatePickerModalView.swift in Sources */,
 				9D228BE024D58B8E00FF4A28 /* Extensions.swift in Sources */,
+				9DC0DE2324D5D8DA00BFBA55 /* CustomViews.swift in Sources */,
 				9D477EEE24D4C9F30063870B /* CountryListViewController.swift in Sources */,
 				9D477EE524D488030063870B /* FindFlightsViewController.swift in Sources */,
 				9D477EDC24D468D40063870B /* Utils.swift in Sources */,

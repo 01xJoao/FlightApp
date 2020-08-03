@@ -25,7 +25,7 @@ public struct Core {
     
     private static func _registerViewModels() {
         DiContainer.register(MainViewModel.self, constructor: { MainViewModel() })
-        DiContainer.register(AirportsViewModel.self, constructor: { AirportsViewModel() })
+        DiContainer.register(AirportsViewModel.self, constructor: { AirportsViewModel(airportWebService: DiContainer.resolve()) })
         DiContainer.register(FindFlightsViewModel.self, constructor: { FindFlightsViewModel() })
         DiContainer.register(AvailableFlightsViewModel.self, constructor: { AvailableFlightsViewModel() })
         DiContainer.register(CountryListViewModel.self, constructor: { CountryListViewModel() })

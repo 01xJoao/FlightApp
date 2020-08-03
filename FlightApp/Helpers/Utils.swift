@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageLoader
 
 public struct Utils {
     //public let keyWindow: UIWindow = UIApplication.shared.windows.first {$0.isKeyWindow}!
@@ -16,4 +17,26 @@ public struct Utils {
         let jsonResult = try? JSONSerialization.jsonObject(with: jsonData!) as? NSDictionary
         return jsonResult ?? ["" : ""]
     }
+    
+//    public static func loadWebImage(imageUrl : String!) -> UIImageView {
+////        print("Entrou")
+////        if(imageUrl.isEmpty) {
+////            return UIImage()
+////        }
+////
+////        let url = URL(string: imageUrl)!
+////        let data = try? Data(contentsOf: url)
+////
+////        if let imageData = data {
+////            let image = UIImage(data: imageData)
+////            return image!
+////        } else {
+////            return UIImage()
+////        }
+//        
+//        if(imageUrl.isEmpty) {
+//            return UIImage()
+//        }
+//        
+//    }
 }

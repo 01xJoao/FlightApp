@@ -12,14 +12,30 @@ import LBTATools
 import Foundation
 
 class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchControllerDelegate {
-    var searchController : UISearchController!
+    private let searchController = CustomSearchController()
+    private let tableView = UITableView()
+    private lazy var dataSourceProvider = AirportDataSource(tableView: tableView)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Airports"
-        _configureSearchController()
+        _setupView()
     }
-
+    
+    private func _setupView() {
+        _configureSearchController()
+        self.view.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.anchor(top: self.view.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor)
+        
+        tableView.dataSource = dataSourceProvider
+        tableView.delegate = dataSourceProvider
+        
+        viewModel.airports.data.addObserver(self, completionHandler: {
+            self.dataSourceProvider.airports = self.viewModel.airports.data.value
+        })
+    }
+    
     private func _configureSearchController() {
         let searchController = CustomSearchController()
         searchController.delegate = self

@@ -18,5 +18,6 @@ target 'FlightApp' do
   pod 'Networking', '~> 5.0.3'
   pod 'MaterialComponents/ActivityIndicator'
   pod "DrawerView"
+  pod 'ImageLoader'
 
 end

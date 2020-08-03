@@ -6,6 +6,8 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
+import Foundation
+
 public struct Airport {
     private var _airport: AirportObject
     
@@ -25,6 +27,10 @@ public struct Airport {
         return _airport.alias
     }
     
+    public func getCountryName() -> String {
+        return _airport.countryName.uppercased()
+    }
+    
     public func getLatitude() -> String {
         return _airport.latitude
     }
@@ -33,8 +39,12 @@ public struct Airport {
         return _airport.longitude
     }
     
-    public func getImageUrl() -> String? {
-        return _airport.tripCardImageUrl ?? ""
+    public func getImageUrl() -> URL? {
+        if(_airport.tripCardImageUrl != nil) {
+            return URL(string: _airport.tripCardImageUrl!)
+        }
+        
+        return nil
     }
     
     public func getMarkets() -> [Market] {

@@ -1,5 +1,6 @@
 PODS:
   - DrawerView (1.3.1)
+  - ImageLoader (0.15.0)
   - LBTATools (1.0.12)
   - MaterialComponents/ActivityIndicator (111.0.0):
     - MaterialComponents/Palettes
@@ -19,6 +20,7 @@ PODS:
 
 DEPENDENCIES:
   - DrawerView
+  - ImageLoader
   - LBTATools (~> 1.0.12)
   - MaterialComponents/ActivityIndicator
   - Networking (~> 5.0.3)
@@ -27,6 +29,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - DrawerView
+    - ImageLoader
     - LBTATools
     - MaterialComponents
     - MDFInternationalization
@@ -37,6 +40,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   DrawerView: 0c7e6c40e5076b2fb64c394fa5fc8166ff917eff
+  ImageLoader: e0635d52020d64dc7687e3a3b14dc53212ac0442
   LBTATools: 389a901a01b9a56bea5682c40cd6e23530f40015
   MaterialComponents: 533042da998b97ad13a6f544268f8026e8161cc5
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
@@ -45,6 +49,6 @@ SPEC CHECKSUMS:
   Networking: 66aa615a4bbc1b08c34409cde2c636e8c8daae8f
   Sentry: 6e04bc3e11bf771ca79140a112de64dcfbc7d8cb
 
-PODFILE CHECKSUM: e8bed569b157d306eb055387750f44dd5f622034
+PODFILE CHECKSUM: 2221f8d50ce658d84d19b3bba57d7789c8c09c02
 
 COCOAPODS: 1.9.3
