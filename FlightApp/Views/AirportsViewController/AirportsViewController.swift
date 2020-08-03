@@ -11,15 +11,15 @@ import UIKit
 import LBTATools
 import Foundation
 
-class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchControllerDelegate {
-    private let searchController = CustomSearchController()
-    private let tableView = UITableView()
-    private lazy var dataSourceProvider = AirportDataSource(tableView: tableView)
-    private var activityIndicatorView: UIActivityIndicatorView?
+class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchControllerDelegate, UISearchBarDelegate {
+    private let _searchController = CustomSearchController()
+    private let _tableView = UITableView()
+    private lazy var _dataSourceProvider = AirportDataSource(tableView: _tableView)
+    private var _activityIndicatorView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Airports"
+        self.title = viewModel.airportsTitleLabel
         _setupView()
     }
     
@@ -32,38 +32,52 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
     private func _configureSearchController() {
         let searchController = CustomSearchController()
         searchController.delegate = self
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = searchController
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        viewModel.searchCommand.executeIf(searchText)
+    }
+    
+    func willDismissSearchController(_ searchController: UISearchController) {
+         self._dataSourceProvider.airports = self.viewModel.airports.data.value
+    }
+    
     private func _configureTableView() {
-        self.view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.anchor(top: self.view.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor)
-        
-        tableView.dataSource = dataSourceProvider
-        tableView.delegate = dataSourceProvider
+        self.view.addSubview(_tableView)
+        _tableView.translatesAutoresizingMaskIntoConstraints = false
+        _tableView.anchor(top: self.view.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor)
+
+        _tableView.dataSource = _dataSourceProvider
+        _tableView.delegate = _dataSourceProvider
         
         viewModel.airports.data.addObserver(self, completionHandler: {
-            self.dataSourceProvider.airports = self.viewModel.airports.data.value
+            self._dataSourceProvider.airports = self.viewModel.airports.data.value
+        })
+        
+        viewModel.searchAirports.data.addObserver(self, completionHandler: {
+            self._dataSourceProvider.airports = self.viewModel.searchAirports.data.value
         })
     }
     
     
     private func _configureActivityView() {
-        activityIndicatorView = createActivityIndicatory(view: self.view)
+        _activityIndicatorView = createActivityIndicatory(view: self.view)
         
         viewModel.isBusy.addObserver(self, completionHandler: {
             if(self.viewModel.isBusy.value){
-                self.activityIndicatorView?.startAnimating()
+                self._activityIndicatorView?.startAnimating()
             } else {
-                self.activityIndicatorView?.stopAnimating()
+                self._activityIndicatorView?.stopAnimating()
             }
         })
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.navigationItem.searchController!.searchBar.setSearch("Search")
+        self.navigationItem.searchController!.searchBar.setSearch(viewModel.searchLabel)
     }
 }
 

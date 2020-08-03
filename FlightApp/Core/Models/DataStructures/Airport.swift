@@ -56,4 +56,20 @@ public struct Airport {
         
         return marketList
     }
+    
+    public func containSearch(_ searchString: String) -> Bool {
+        if(searchString.isEmpty) {
+            return true
+        }
+        
+        if(_airport.name.lowercased().contains(searchString.lowercased())) {
+            return true
+        }
+        
+        if(_airport.code.lowercased().contains(searchString.lowercased())) {
+            return true
+        }
+        
+        return false
+    }
 }
