@@ -12,7 +12,7 @@ import Foundation
 class CountryListViewController : BaseViewController<CountryListViewModel>, UISearchControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Origin"
+        self.title = viewModel.title
         _configureSearchController()
     }
     
@@ -25,6 +25,6 @@ class CountryListViewController : BaseViewController<CountryListViewModel>, UISe
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.navigationItem.searchController!.searchBar.setSearch("Search")
+        self.navigationItem.searchController!.searchBar.setSearch(viewModel.searchLabel)
     }
 }

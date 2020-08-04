@@ -157,10 +157,10 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     @objc fileprivate func _originCountryButtonAction() {
-        print("clicked")
+        viewModel.openCountryListViewCommand.executeIf(.origin)
     }
     
     @objc fileprivate func _destinationCountryButtonAction() {
-        print("clicked")
+        viewModel.openCountryListViewCommand.executeIf(.destination)
     }
 }

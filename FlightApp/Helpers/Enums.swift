@@ -21,3 +21,8 @@ enum baseURL : String {
         }
     }
 }
+
+public enum FlightCountryType {
+    case origin
+    case destination
+}

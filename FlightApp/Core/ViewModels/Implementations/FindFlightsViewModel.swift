@@ -7,6 +7,18 @@
 //
 
 public class FindFlightsViewModel : ViewModelBase {
+    private var _openCountryListViewCommand: WPCommand<FlightCountryType>?
+    public var openCountryListViewCommand: WPCommand<FlightCountryType> {
+       get {
+           _openCountryListViewCommand ??= WPCommand<FlightCountryType>(_openCountryListView, canExecute: _canExecute)
+           return _openCountryListViewCommand!
+       }
+    }
+    
+    private func _openCountryListView(_ flightCountryType : FlightCountryType) {
+        navigationService.navigateModal(viewModel: CountryListViewModel.self, arguments: flightCountryType)
+    }
+    
     private func _canExecute() -> Bool {
         return !isBusy.value
     }
