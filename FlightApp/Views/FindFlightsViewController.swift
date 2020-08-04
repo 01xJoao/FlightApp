@@ -16,22 +16,24 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
 
     private func _setupView() {
+        formViewAlignment = .top
+        formContainerStackView.spacing = 12
+        formContainerStackView.layoutMargins = .init(top: 12, left: 12, bottom: 100, right: 12)
+        
         let flightPlacesView = backgroundRoundBorderView()
         flightPlacesView.constrainHeight(150)
         
-        let topCountryStack = countriesFormView(imageName: "Airplane1", subtitleLabel: "From", countryLabel: "London")
-        let bottomCountryStack = countriesFormView(imageName: "Airplane2", subtitleLabel: "To", countryLabel: "Spain")
+        _addSwapCountriesStack(flightPlacesView)
+        _addCountriesStackAndSeparator(flightPlacesView)
+
+        formContainerStackView.addArrangedSubview(flightPlacesView)
+        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: "Departure", valueLabel: "24 Feb, Wed"))
+        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: "Passengers", valueLabel: "1 Adult"))
         
-        let countriesStack = UIView().stack(
-            topCountryStack,
-            bottomCountryStack,
-            spacing: 28
-        )
-        
-        flightPlacesView.addSubview(countriesStack)
-        countriesStack.anchor(top: nil, leading: flightPlacesView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 22, bottom: 0, right: 0))
-        countriesStack.centerYAnchor.constraint(equalTo: flightPlacesView.centerYAnchor).isActive = true
-        
+        _submitButton()
+    }
+    
+    func _addSwapCountriesStack(_ flightPlacesView : UIView) {
         let label1 = UILabel(text: "LTN", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.darkGrey, textAlignment: .center, numberOfLines: 1)
         let label2 = UILabel(text: "PAR", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.darkGrey, textAlignment: .center, numberOfLines: 1)
         
@@ -47,24 +49,31 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         flightPlacesView.addSubview(swapStack)
         swapStack.anchor(top: nil, leading: nil, bottom: nil, trailing: flightPlacesView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 22))
         swapStack.centerYAnchor.constraint(equalTo: flightPlacesView.centerYAnchor).isActive = true
+    }
+    
+    func _addCountriesStackAndSeparator(_ flightPlacesView : UIView) {
+        let topCountryStack = countriesFormView(imageName: "Airplane1", subtitleLabel: "From", countryLabel: "London")
+        let bottomCountryStack = countriesFormView(imageName: "Airplane2", subtitleLabel: "To", countryLabel: "Spain")
+        
+        let countriesStack = UIView().stack(
+            topCountryStack,
+            bottomCountryStack,
+            spacing: 28
+        )
+        
+        flightPlacesView.addSubview(countriesStack)
+        countriesStack.anchor(top: nil, leading: flightPlacesView.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 0, left: 22, bottom: 0, right: 0))
+        countriesStack.centerYAnchor.constraint(equalTo: flightPlacesView.centerYAnchor).isActive = true
         
         let separatorLine = UIView()
         separatorLine.constrainHeight(1.5)
         separatorLine.backgroundColor = UIColor.Theme.grey
         
         flightPlacesView.addSubview(separatorLine)
-        separatorLine.anchor(top: nil, leading: countriesStack.leadingAnchor, bottom: nil, trailing: swapStack.leadingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 18))
+        separatorLine.anchor(top: nil, leading: countriesStack.leadingAnchor, bottom: nil,
+                             trailing: flightPlacesView.subviews.first!.leadingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 18))
         separatorLine.centerYAnchor.constraint(equalTo: flightPlacesView.centerYAnchor).isActive = true
 
-        formViewAlignment = .top
-        formContainerStackView.addArrangedSubview(flightPlacesView)
-        formContainerStackView.spacing = 12
-        formContainerStackView.layoutMargins = .init(top: 12, left: 12, bottom: 100, right: 12)
-        
-        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: "Departure", valueLabel: "24 Feb, Wed"))
-        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: "Passengers", valueLabel: "1 Adult"))
-        
-        _submitButton()
     }
     
     func countriesFormView(imageName : String, subtitleLabel : String, countryLabel : String) -> UIView {

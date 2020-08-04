@@ -10,60 +10,71 @@ import UIKit
 import ImageLoader
 
 class AirportCell: UITableViewCell {
-    let mainView = UIView()
-    
     public func config(_ airport : Airport) {
         self.removeAllSubViews()
+        _createCard(airport)
+    }
+    
+    private func _createCard(_ airport : Airport) {
+        let cardView = backgroundRoundBorderView(color: UIColor.Theme.white, radius: 5)
+
+        _addBackgroundImage(cardView, airport.getImageUrl())
+        _addTitle(cardView, name: airport.getName(), code: airport.getCode())
+        _addDeformSquareAndLocationStack(cardView, latitude: airport.getLatitude(), longitude: airport.getLongitude())
+        _createCardShadow()
         
+        self.addSubview(cardView)
+        cardView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 5, left: 10, bottom: 5, right: 10))
+    }
+    
+    private func _createCardShadow() {
         let shadowView = ShadowView(cornerRadius: 5)
-        
         self.addSubview(shadowView)
         shadowView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 5, left: 10, bottom: 5, right: 10))
-
-        let mainView = UIView()
-        mainView.layer.cornerRadius = 5
-        mainView.layer.masksToBounds = true;
-        
-        self.addSubview(mainView)
-        mainView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 5, left: 10, bottom: 5, right: 10))
-
+    }
+    
+    private func _addBackgroundImage(_ cardView: UIView, _ imageURL : URL?) {
         let backgroundImage = UIImageView()
         backgroundImage.contentMode = .scaleAspectFill
         
-        if(airport.getImageUrl() != nil) {
-            ImageLoader.request(with: airport.getImageUrl()!, onCompletion: { image ,_ ,_ in
+        cardView.addSubview(backgroundImage)
+        backgroundImage.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: cardView.bottomAnchor, trailing: cardView.trailingAnchor)
+        
+        if(imageURL != nil) {
+            ImageLoader.request(with: imageURL!, onCompletion: { image ,_ ,_ in
                 DispatchQueue.main.async {
                     backgroundImage.image = image
                 }
             })
         }
-
-        mainView.addSubview(backgroundImage)
-        backgroundImage.anchor(top: mainView.topAnchor, leading: mainView.leadingAnchor, bottom: mainView.bottomAnchor, trailing: mainView.trailingAnchor)
-        
-        let title = UILabel.init(text: airport.getName(), font: .systemFont(ofSize: 30, weight: .bold), textColor: UIColor.Theme.white, textAlignment: .left, numberOfLines: 0)
+    }
+    
+    private func _addTitle(_ cardView: UIView, name : String, code : String) {
+        let title = UILabel.init(text: name, font: .systemFont(ofSize: 30, weight: .bold), textColor: UIColor.Theme.white, textAlignment: .left, numberOfLines: 0)
         title.setupShadow(opacity: 0.65, radius: 2, offset: CGSize(width: 0.5, height: 0.5), color: UIColor.Theme.black)
         
-        let subtitle = UILabel.init(text: airport.getCode(), font: .systemFont(ofSize: 21, weight: .bold), textColor: UIColor.Theme.white, textAlignment: .left, numberOfLines: 0)
+        let subtitle = UILabel.init(text: code, font: .systemFont(ofSize: 21, weight: .bold), textColor: UIColor.Theme.white, textAlignment: .left, numberOfLines: 0)
         subtitle.setupShadow(opacity: 0.8, radius: 2, offset: CGSize(width: 0.5, height: 0.5), color: UIColor.Theme.black)
 
-        mainView.stack(
+        cardView.stack(
             title,
             subtitle,
             UIView(),
             spacing: 2,
             alignment: .top
         ).padLeft(5)
-        
+    }
+    
+    private func _addDeformSquareAndLocationStack(_ cardView: UIView, latitude: String, longitude: String) {
         let deformSquare = DeformSquare()
         deformSquare.constrainHeight(50)
 
-        mainView.addSubview(deformSquare)
-        deformSquare.anchor(top: nil, leading: mainView.leadingAnchor, bottom: mainView.bottomAnchor, trailing: mainView.trailingAnchor)
+        cardView.addSubview(deformSquare)
+        deformSquare.anchor(top: nil, leading: cardView.leadingAnchor, bottom: cardView.bottomAnchor, trailing: cardView.trailingAnchor)
 
 
-        let latitudeLabel = UILabel.init(text: airport.getLatitude(), font: .systemFont(ofSize: 9, weight: .semibold), textColor: UIColor.Theme.black , textAlignment: .right, numberOfLines: 0)
-        let longitudeLabel = UILabel.init(text: airport.getLongitude(), font: .systemFont(ofSize: 9, weight: .semibold), textColor: UIColor.Theme.black, textAlignment: .right, numberOfLines: 0)
+        let latitudeLabel = UILabel.init(text: latitude, font: .systemFont(ofSize: 9, weight: .semibold), textColor: UIColor.Theme.black , textAlignment: .right, numberOfLines: 0)
+        let longitudeLabel = UILabel.init(text: longitude, font: .systemFont(ofSize: 9, weight: .semibold), textColor: UIColor.Theme.black, textAlignment: .right, numberOfLines: 0)
 
         let locationImage = getImageInBlue("Location")
         locationImage.withHeight(25).withWidth(25)
