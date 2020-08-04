@@ -113,12 +113,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     func _submitButton() {
-        let button = UIButton(title: "Let's go", titleColor: UIColor.Theme.darkBlue, font: .boldSystemFont(ofSize: 20),
-                              backgroundColor: UIColor.Theme.babyBlue, target: self, action: #selector(_submitButtonAction))
-        
-        button.layer.cornerRadius = 6
-        button.layer.masksToBounds = true;
-        button.constrainHeight(52)
+        let button = createMainBlueButton(name: "Let's go", target: self, action: #selector(_submitButtonAction))
         
         self.view.addSubview(button)
         button.anchor(top: nil, leading: self.view.safeAreaLayoutGuide.leadingAnchor, bottom: self.view.safeAreaLayoutGuide.bottomAnchor,

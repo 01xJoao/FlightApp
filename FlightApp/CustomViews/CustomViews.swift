@@ -64,3 +64,14 @@ func getImageInBlue(_ imageName : String) -> UIImageView {
     
     return imageView
 }
+
+func createMainBlueButton(name : String, target : Any, action : Selector) -> UIButton {
+    let button = UIButton(title: name, titleColor: UIColor.Theme.darkBlue, font: .boldSystemFont(ofSize: 20),
+                          backgroundColor: UIColor.Theme.babyBlue, target: target, action: action)
+    
+    button.layer.cornerRadius = 6
+    button.layer.masksToBounds = true;
+    button.constrainHeight(52)
+    
+    return button
+}
