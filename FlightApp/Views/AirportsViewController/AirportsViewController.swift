@@ -27,6 +27,7 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
         _configureSearchController()
         _configureTableView()
         _configureActivityView()
+        _createObservers()
     }
     
     private func _configureSearchController() {
@@ -39,19 +40,13 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
 
     private func _configureTableView() {
         self.view.addSubview(_tableView)
+        
         _tableView.translatesAutoresizingMaskIntoConstraints = false
-        _tableView.anchor(top: self.view.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, bottom: self.view.bottomAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor)
+        _tableView.anchor(top: self.view.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor,
+                          bottom: self.view.bottomAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor)
 
         _tableView.dataSource = _dataSourceProvider
         _tableView.delegate = _dataSourceProvider
-        
-        viewModel.airports.data.addObserver(self, completionHandler: {
-            self._dataSourceProvider.airports = self.viewModel.airports.data.value
-        })
-        
-        viewModel.searchAirports.data.addObserver(self, completionHandler: {
-            self._dataSourceProvider.airports = self.viewModel.searchAirports.data.value
-        })
     }
     
     private func _configureActivityView() {
@@ -63,6 +58,16 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
             } else {
                 self._activityIndicatorView?.stopAnimating()
             }
+        })
+    }
+    
+    private func _createObservers() {
+        viewModel.airports.data.addObserver(self, completionHandler: {
+            self._dataSourceProvider.airports = self.viewModel.airports.data.value
+        })
+        
+        viewModel.searchAirports.data.addObserver(self, completionHandler: {
+            self._dataSourceProvider.airports = self.viewModel.searchAirports.data.value
         })
     }
     

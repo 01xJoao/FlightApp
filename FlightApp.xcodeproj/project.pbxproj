@@ -392,11 +392,11 @@
 			isa = PBXGroup;
 			children = (
 				9D477ED224D436A30063870B /* Bases */,
-				9D477EE124D487C40063870B /* AirportsViewController */,
-				9D477EEC24D4C9C30063870B /* CountryListViewController */,
 				9D477ED524D439930063870B /* MainViewController.swift */,
+				9D477EE124D487C40063870B /* AirportsViewController */,
 				9D477EE424D488030063870B /* FindFlightsViewController.swift */,
-				9D477ED724D4420B0063870B /* AvailableFlightsViewController.swift */,
+				9D4CF6CF24D8EBBE00BB0F01 /* AvailableFlightsViewController */,
+				9D477EEC24D4C9C30063870B /* CountryListViewController */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -498,6 +498,14 @@
 				9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		9D4CF6CF24D8EBBE00BB0F01 /* AvailableFlightsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9D477ED724D4420B0063870B /* AvailableFlightsViewController.swift */,
+			);
+			path = AvailableFlightsViewController;
 			sourceTree = "<group>";
 		};
 		9D6B0C9924D6E23200127669 /* AirportTableData */ = {
