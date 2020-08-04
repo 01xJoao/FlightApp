@@ -16,6 +16,8 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
 
     private func _setupView() {
+        _clearButton()
+        
         formViewAlignment = .top
         formContainerStackView.spacing = 12
         formContainerStackView.layoutMargins = .init(top: 12, left: 12, bottom: 100, right: 12)
@@ -27,13 +29,17 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         _addCountriesStackAndSeparator(flightPlacesView)
 
         formContainerStackView.addArrangedSubview(flightPlacesView)
-        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: "Departure", valueLabel: "24 Feb, Wed"))
-        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: "Passengers", valueLabel: "1 Adult"))
+        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.departureLabel, valueLabel: "24 Feb, Wed"))
+        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.passengersLabel, valueLabel: "1 Adult"))
         
         _submitButton()
     }
     
-    func _addSwapCountriesStack(_ flightPlacesView : UIView) {
+    private func _clearButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.clearLabel, style: .plain, target: self, action: #selector(_clearButtonAction))
+    }
+    
+    private func _addSwapCountriesStack(_ flightPlacesView : UIView) {
         let label1 = UILabel(text: "LTN", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.darkGrey, textAlignment: .center, numberOfLines: 1)
         let label2 = UILabel(text: "PAR", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.darkGrey, textAlignment: .center, numberOfLines: 1)
         
@@ -51,9 +57,9 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         swapStack.centerYAnchor.constraint(equalTo: flightPlacesView.centerYAnchor).isActive = true
     }
     
-    func _addCountriesStackAndSeparator(_ flightPlacesView : UIView) {
-        let topCountryStack = countriesFormView(imageName: "Airplane1", subtitleLabel: "From", countryLabel: "London")
-        let bottomCountryStack = countriesFormView(imageName: "Airplane2", subtitleLabel: "To", countryLabel: "Spain")
+    private func _addCountriesStackAndSeparator(_ flightPlacesView : UIView) {
+        let topCountryStack = _countriesFormView(imageName: "Airplane1", subtitleLabel: viewModel.originLabel, countryLabel: "London")
+        let bottomCountryStack = _countriesFormView(imageName: "Airplane2", subtitleLabel: viewModel.destinationLabel, countryLabel: "Spain")
         
         let countriesStack = UIView().stack(
             topCountryStack,
@@ -73,12 +79,21 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         separatorLine.anchor(top: nil, leading: countriesStack.leadingAnchor, bottom: nil,
                              trailing: flightPlacesView.subviews.first!.leadingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 18))
         separatorLine.centerYAnchor.constraint(equalTo: flightPlacesView.centerYAnchor).isActive = true
-
+        
+        let button = UIButton(title: "", titleColor: .clear, font: .systemFont(ofSize: 0), backgroundColor: .clear, target: self, action: #selector(_originCountryButtonAction))
+        flightPlacesView.addSubview(button)
+        button.anchor(top: countriesStack.topAnchor, leading: countriesStack.leadingAnchor, bottom: separatorLine.topAnchor, trailing: separatorLine.trailingAnchor,
+                      padding: .init(top: 0, left: 0, bottom: 3, right: 5))
+        
+        let button2 = UIButton(title: "", titleColor: .clear, font: .systemFont(ofSize: 0), backgroundColor: .clear, target: self, action: #selector(_destinationCountryButtonAction))
+        flightPlacesView.addSubview(button2)
+        button2.anchor(top: separatorLine.bottomAnchor, leading: countriesStack.leadingAnchor, bottom: countriesStack.bottomAnchor, trailing: separatorLine.trailingAnchor,
+                       padding: .init(top: 3, left: 0, bottom: 0, right: 5))
+        
     }
     
-    func countriesFormView(imageName : String, subtitleLabel : String, countryLabel : String) -> UIView {
+    private func _countriesFormView(imageName : String, subtitleLabel : String, countryLabel : String) -> UIView {
         let imageView = getImageInBlue(imageName)
-        
         let countriesDetails = _cardDetails(descriptionLabel: subtitleLabel, valueLabel: countryLabel)
         
         let countriesStack = UIView().hstack(
@@ -91,8 +106,18 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         return countriesStack
     }
     
+    private func _cardDetails(descriptionLabel : String, valueLabel : String) -> UIView {
+        let cardDescription = UIView().stack(
+            UILabel(text: descriptionLabel, font: .systemFont(ofSize: 12, weight: .medium), textColor: UIColor.Theme.darkGrey, textAlignment: .left, numberOfLines: 1),
+            UILabel(text: valueLabel, font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1),
+            spacing: 4
+        )
+        
+        return cardDescription
+    }
     
-    func _formCard(descriptionLabel : String, valueLabel : String) -> UIView {
+    
+    private func _formCard(descriptionLabel : String, valueLabel : String) -> UIView {
         let cardView = backgroundRoundBorderView()
         cardView.constrainHeight(90)
         
@@ -107,30 +132,35 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
             alignment: .center
         ).padLeft(22).padRight(22)
         
+        let button = UIButton(title: "", titleColor: .clear, font: .systemFont(ofSize: 0), backgroundColor: .clear, target: self, action: #selector(_originCountryButtonAction))
+        cardView.addSubview(button)
+        button.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: cardView.bottomAnchor, trailing: cardView.trailingAnchor, padding: .allSides(5))
+        
         return cardView
     }
     
     
-    func _cardDetails(descriptionLabel : String, valueLabel : String) -> UIView {
-        let cardDescription = UIView().stack(
-            UILabel(text: descriptionLabel, font: .systemFont(ofSize: 12, weight: .medium), textColor: UIColor.Theme.darkGrey, textAlignment: .left, numberOfLines: 1),
-            UILabel(text: valueLabel, font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1),
-            spacing: 4
-        )
-        
-        return cardDescription
-    }
-    
-    func _submitButton() {
-        let button = createMainBlueButton(name: "Let's go", target: self, action: #selector(_submitButtonAction))
+    private func _submitButton() {
+        let button = createMainBlueButton(name: viewModel.letsGoLabel, target: self, action: #selector(_submitButtonAction))
         
         self.view.addSubview(button)
         button.anchor(top: nil, leading: self.view.safeAreaLayoutGuide.leadingAnchor, bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
                       trailing: self.view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 12, bottom: 15, right: 12))
     }
     
+    @objc fileprivate func _clearButtonAction() {
+        print("clicked")
+    }
+    
     @objc fileprivate func _submitButtonAction() {
         print("clicked")
     }
     
+    @objc fileprivate func _originCountryButtonAction() {
+        print("clicked")
+    }
+    
+    @objc fileprivate func _destinationCountryButtonAction() {
+        print("clicked")
+    }
 }
