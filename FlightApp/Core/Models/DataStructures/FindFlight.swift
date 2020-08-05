@@ -33,11 +33,11 @@ public struct FindFlight {
     
     public func getDeparture() -> String {
         let df = DateFormatter()
-        df.dateFormat = "dd MM"
+        df.dateFormat = "d MMMM"
         
         var date = df.string(from: _findFlight.departure)
         
-        date = "\(date), \(String(describing: _findFlight.departure.dayOfTheWeek()))"
+        date = "\(date), \(String(describing: _findFlight.departure.dayOfTheWeek()!))."
         
         return date
     }
@@ -78,10 +78,15 @@ public struct FindFlight {
         _findFlight.originCode = _findFlight.destinationCode
         
         _findFlight.destinationName = originName
-        _findFlight.originCode = originCode
+        _findFlight.destinationCode = originCode
     }
     
     public mutating func clear() {
         _findFlight = FindFlightObject()
+    }
+    
+    public mutating func clearDestination() {
+        _findFlight.destinationName = ""
+        _findFlight.destinationCode = ""
     }
 }

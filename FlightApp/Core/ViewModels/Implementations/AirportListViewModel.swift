@@ -53,13 +53,16 @@ public class AirportListViewModel : ViewModelBase {
         _title = airportSearch.flightAirportType == FlightAirportType.origin ? originLabel : destinationLabel
         _flightAirportType = airportSearch.flightAirportType
         _airports = airportSearch.airports!
-        
         _createAirportList(market: airportSearch.market!)
     }
     
     private func _createAirportList(market : String) {
+        if(market.isEmpty) {
+            return
+        }
+        
         if(_flightAirportType == FlightAirportType.destination) {
-            _airports?.data.value.removeAll(where: { $0.containsMarket(market) })
+            _airports?.data.value.removeAll(where: { !$0.containsMarket(market) })
         }
     }
     

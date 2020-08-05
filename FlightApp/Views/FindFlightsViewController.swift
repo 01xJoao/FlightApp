@@ -9,14 +9,13 @@
 import UIKit
 
 class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
-    private var _originCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.darkGrey, textAlignment: .center, numberOfLines: 1)
-    private var _destinationCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.darkGrey, textAlignment: .center, numberOfLines: 1)
+    private var _originCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 18), textColor: UIColor.Theme.darkGrey, textAlignment: .center)
+    private var _originNameLabel = UILabel(text:"", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
+    private var _destinationCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 18), textColor: UIColor.Theme.darkGrey,textAlignment: .center)
+    private var _destinationNameLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
     
-    private let _originNameLabel =  UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1)
-    private let _destinationNameLabel  = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1)
-    
-    private let _departureLabel =  UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1)
-    private let _passengersLabel  = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1)
+    private let _departureLabel =  UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
+    private let _passengersLabel  = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
     
     
     override func viewDidLoad() {
@@ -27,9 +26,9 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
 
     private func _setupView() {
         _createObservers()
-        
-        _clearButton()
-        
+        _createClearButton()
+        _setDefaultData()
+
         formViewAlignment = .top
         formContainerStackView.spacing = 12
         formContainerStackView.layoutMargins = .init(top: 12, left: 12, bottom: 100, right: 12)
@@ -49,19 +48,41 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     
     private func _createObservers() {
         viewModel.findFlight.addObserver(self, completionHandler: {
-            self._originCodeLabel.text = self.viewModel.findFlight.value.getOriginCode()
-            self._originNameLabel.text = self.viewModel.findFlight.value.getOriginName()
+            self._setAirportNamesAndCodes(self._originCodeLabel, self._originNameLabel,
+                                          "ORI", "Select Origin",
+                                          self.viewModel.findFlight.value.getOriginCode(),
+                                          self.viewModel.findFlight.value.getOriginName())
             
-            self._destinationCodeLabel.text = self.viewModel.findFlight.value.getDestinationCode()
-            self._destinationNameLabel.text = self.viewModel.findFlight.value.getDestinationName()
+            self._setAirportNamesAndCodes(self._destinationCodeLabel, self._destinationNameLabel,
+                                          "DES", "Select Destination",
+                                          self.viewModel.findFlight.value.getDestinationCode(),
+                                          self.viewModel.findFlight.value.getDestinationName())
             
             self._departureLabel.text = self.viewModel.findFlight.value.getDeparture()
             //self._passengersLabel.text = self.viewModel.findFlight.value.getPassengers()
         })
     }
     
-    private func _clearButton() {
+    private func _setAirportNamesAndCodes(_ labelCode : UILabel, _ labelName : UILabel, _ placeholderCode : String,
+                                          _ placeholderName : String, _ code : String = "", _ name : String = "") {
+        
+        labelCode.text = code.isEmpty ? placeholderCode : code
+        labelCode.font = code.isEmpty ? .systemFont(ofSize: 16, weight: .medium) : .boldSystemFont(ofSize: 16)
+        labelCode.textColor = code.isEmpty ? UIColor.Theme.darkGrey : UIColor.Theme.strongGrey
+        
+        labelName.text = name.isEmpty ? placeholderName : name
+        labelName.font = name.isEmpty ? .italicSystemFont(ofSize: 14) : .boldSystemFont(ofSize: 16)
+        labelName.textColor = name.isEmpty ? UIColor.Theme.strongGrey : UIColor.Theme.black
+    }
+    
+    private func _createClearButton() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.clearLabel, style: .plain, target: self, action: #selector(_clearButtonAction))
+    }
+    
+    private func _setDefaultData() {
+        _departureLabel.text = self.viewModel.findFlight.value.getDeparture()
+        _setAirportNamesAndCodes(_originCodeLabel, _originNameLabel, "ORI", "Select Origin" )
+        _setAirportNamesAndCodes(_destinationCodeLabel, _destinationNameLabel, "DES", "Select Destination")
     }
     
     private func _addSwapCountriesStack(_ flightPlacesView : UIView) {
@@ -77,6 +98,11 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         flightPlacesView.addSubview(swapStack)
         swapStack.anchor(top: nil, leading: nil, bottom: nil, trailing: flightPlacesView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 22))
         swapStack.centerYAnchor.constraint(equalTo: flightPlacesView.centerYAnchor).isActive = true
+        
+        let button = UIButton(title: "", titleColor: .clear, font: .systemFont(ofSize: 0), backgroundColor: .clear, target: self, action: #selector(_swapButtonAction))
+        
+        flightPlacesView.addSubview(button)
+        button.anchor(top: swapStack.topAnchor, leading: swapStack.leadingAnchor, bottom: swapStack.bottomAnchor, trailing: swapStack.trailingAnchor)
     }
     
     private func _addCountriesStackAndSeparator(_ flightPlacesView : UIView) {
@@ -104,13 +130,13 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         
         let button = UIButton(title: "", titleColor: .clear, font: .systemFont(ofSize: 0), backgroundColor: .clear, target: self, action: #selector(_originCountryButtonAction))
         flightPlacesView.addSubview(button)
-        button.anchor(top: countriesStack.topAnchor, leading: countriesStack.leadingAnchor, bottom: separatorLine.topAnchor, trailing: separatorLine.trailingAnchor,
-                      padding: .init(top: 0, left: 0, bottom: 3, right: 5))
+        button.anchor(top: flightPlacesView.topAnchor, leading: countriesStack.leadingAnchor, bottom: separatorLine.topAnchor, trailing: separatorLine.trailingAnchor,
+                      padding: .init(top: 5, left: 0, bottom: 3, right: 5))
         
         let button2 = UIButton(title: "", titleColor: .clear, font: .systemFont(ofSize: 0), backgroundColor: .clear, target: self, action: #selector(_destinationCountryButtonAction))
         flightPlacesView.addSubview(button2)
-        button2.anchor(top: separatorLine.bottomAnchor, leading: countriesStack.leadingAnchor, bottom: countriesStack.bottomAnchor, trailing: separatorLine.trailingAnchor,
-                       padding: .init(top: 3, left: 0, bottom: 0, right: 5))
+        button2.anchor(top: separatorLine.bottomAnchor, leading: countriesStack.leadingAnchor, bottom: flightPlacesView.bottomAnchor, trailing: separatorLine.trailingAnchor,
+                       padding: .init(top: 3, left: 0, bottom: 5, right: 5))
         
     }
     
@@ -137,7 +163,6 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         
         return cardDescription
     }
-    
     
     private func _formCard(descriptionLabel : String, label : UILabel) -> UIView {
         let cardView = backgroundRoundBorderView()
@@ -170,11 +195,11 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     @objc fileprivate func _clearButtonAction() {
-        print("clicked")
+        viewModel.clearCommand.executeIf()
     }
     
-    @objc fileprivate func _submitButtonAction() {
-        print("clicked")
+    @objc fileprivate func _swapButtonAction() {
+        viewModel.swapAirportsCommand.executeIf()
     }
     
     @objc fileprivate func _originCountryButtonAction() {
@@ -183,5 +208,9 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     
     @objc fileprivate func _destinationCountryButtonAction() {
         viewModel.openAirportListViewCommand.executeIf(.destination)
+    }
+    
+    @objc fileprivate func _submitButtonAction() {
+        print("clicked")
     }
 }

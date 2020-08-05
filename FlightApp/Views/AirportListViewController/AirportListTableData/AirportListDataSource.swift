@@ -57,4 +57,8 @@ class AirportListDataSource : NSObject, UITableViewDataSource, UITableViewDelega
         let item = airportList[indexPath.row]
         selectRowAction?.execute(item.getCode())
     }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 }

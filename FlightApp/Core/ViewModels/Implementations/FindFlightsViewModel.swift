@@ -29,13 +29,41 @@ public class FindFlightsViewModel : ViewModelBase {
        }
     }
     
+    private var _clearCommand: Command?
+    public var clearCommand: Command {
+       get {
+           _clearCommand ??= Command(_clearFlightData, canExecute: _canExecute)
+           return _clearCommand!
+       }
+    }
+    
+    private var _swapAirportsCommand: Command?
+    public var swapAirportsCommand: Command {
+       get {
+           _swapAirportsCommand ??= Command(_swapAirports, canExecute: _canExecute)
+           return _swapAirportsCommand!
+       }
+    }
+    
     public override func prepare(dataObject: Any) {
         _airports = (dataObject as! DynamicValueList<Airport>)
     }
     
     private func _openAirportListView(_ flightAirportType : FlightAirportType) {
-        let airportObject = AirportSearchObject(airports: airports, market: _findFlight.value.getOriginCode(), flightAirportType: flightAirportType)
+        let airportList = DynamicValueList<Airport>()
+        airportList.addAll(object: _airports.data.value)
+        
+        let airportObject = AirportSearchObject(airports: airportList, market: _findFlight.value.getOriginCode(), flightAirportType: flightAirportType)
         navigationService.navigateModal(viewModel: AirportListViewModel.self, arguments: airportObject)
+    }
+    
+    
+    private func _clearFlightData() {
+        _findFlight.value.clear()
+    }
+    
+    private func _swapAirports() {
+        _findFlight.value.swapAirports()
     }
     
     public override func dataNotify(dataObject: Any?) {
@@ -52,6 +80,14 @@ public class FindFlightsViewModel : ViewModelBase {
         
         if(airportSearch.flightAirportType == .origin) {
             _findFlight.value.setOrigin(originName: airport.getName(), originCode: airport.getCode())
+            
+            if(!_findFlight.value.getDestinationCode().isEmpty) {
+                let airportDestination = airports.data.value.first(where: { $0.getCode() == _findFlight.value.getDestinationCode() })!
+                
+                if(!airportDestination.containsMarket(airportSearch.market!)) {
+                     _findFlight.value.clearDestination()
+                 }
+            }
         } else {
             _findFlight.value.setDestination(destinationName: airport.getName(), destinationCode: airport.getCode())
         }

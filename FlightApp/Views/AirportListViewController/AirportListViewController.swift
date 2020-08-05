@@ -44,6 +44,7 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
 
         _tableView.dataSource = _dataSourceProvider
         _tableView.delegate = _dataSourceProvider
+        _tableView.delaysContentTouches = false
         
         _dataSourceProvider.selectRowAction = viewModel.closeViewCommand
         _dataSourceProvider.airportList = viewModel.airports.data.value

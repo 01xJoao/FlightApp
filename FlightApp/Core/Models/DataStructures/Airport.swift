@@ -79,6 +79,10 @@ public struct Airport {
             return true
         }
         
+        if(_airport.countryName.lowercased().contains(searchString.lowercased())) {
+            return true
+        }
+        
         return false
     }
 }
