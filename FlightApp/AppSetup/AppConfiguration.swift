@@ -25,6 +25,7 @@ public struct AppConfiguration {
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().compactAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            
             UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.Theme.white], for: .normal)
         } else {
             UINavigationBar.appearance().tintColor = UIColor.Theme.white

@@ -33,6 +33,7 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = searchController
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.close, target: self, action: #selector(_closeButton))
     }
     
     private func _configureTableView() {
@@ -70,5 +71,9 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.navigationItem.searchController!.searchBar.setSearch(viewModel.searchLabel)
+    }
+    
+    @objc fileprivate func _closeButton() {
+        //ViewModel close command
     }
 }

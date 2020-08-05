@@ -17,8 +17,6 @@ public struct Core {
         DiContainer.registerSingleton(NavigationService.self) { NavigationServiceImp() }
         //DiContainer.registerSingleton(DialogService.self) { DialogServiceImp(navigationService: DiContainer.resolve()) }
         DiContainer.registerSingleton(ReportService.self) { ReportServiceImp() }
-        //DiContainer.registerAsSingleton(AppSettingsService.self) { AppSettingsServiceImp() }
-        //DiContainer.registerAsSingleton(DatabaseUserService.self) { DatabaseUserServiceImp(reportService: DiContainer.resolve()) }
         DiContainer.registerSingleton(WebService.self) { WebServiceImp(reportService: DiContainer.resolve()) }
         DiContainer.registerSingleton(AirportWebService.self) { AirportWebServiceImp(webService: DiContainer.resolve()) }
     }
