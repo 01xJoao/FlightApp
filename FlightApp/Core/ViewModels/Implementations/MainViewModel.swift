@@ -45,5 +45,4 @@ public class MainViewModel : ViewModelBase {
         
         _airports.addAll(object: airportList)
     }
-    
 }

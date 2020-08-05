@@ -15,7 +15,7 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
     private let _searchController = CustomSearchController()
     private let _tableView = UITableView()
     private lazy var _dataSourceProvider = AirportDataSource(tableView: _tableView)
-    private var _activityIndicatorView: UIActivityIndicatorView?
+    private var _activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
     
     private func _configureActivityView() {
         _activityIndicatorView = createActivityIndicatory(view: self.view)
-        _activityIndicatorView?.startAnimating();
+        _activityIndicatorView.startAnimating();
     }
     
     private func _createObservers() {

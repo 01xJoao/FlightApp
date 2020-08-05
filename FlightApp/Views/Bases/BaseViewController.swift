@@ -54,7 +54,13 @@ public class BaseViewController<TViewModel : ViewModel> : UIViewController {
     
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        _setAsVisibleViewController()
         _viewModel.appearing()
+    }
+    
+    private func _setAsVisibleViewController() {
+        let navigationService : NavigationService = DiContainer.resolve()
+        navigationService.setVisibleViewController(String(describing: type(of: self)))
     }
     
     public override func viewWillDisappear(_ animated: Bool) {

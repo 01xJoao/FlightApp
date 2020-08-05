@@ -9,10 +9,10 @@
 import Foundation
 
 public class AirportsViewModel : ViewModelBase {
-    private var _airports: DynamicValueList<Airport>?
+    private var _airports : DynamicValueList<Airport>!
     public var airports : DynamicValueList<Airport> {
         get {
-            return _airports!
+            return _airports
         }
     }
     

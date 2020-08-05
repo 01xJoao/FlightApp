@@ -9,11 +9,11 @@
 import Foundation
 
 public struct AirportSearchObject {
-    let airports : DynamicValueList<Airport>
+    let airports : DynamicValueList<Airport>?
     let market : String?
     let flightAirportType : FlightAirportType
     
-    init(airports : DynamicValueList<Airport>, market : String?, flightAirportType : FlightAirportType) {
+    init(airports : DynamicValueList<Airport>?, market : String?, flightAirportType : FlightAirportType) {
         self.airports = airports
         self.market = market
         self.flightAirportType = flightAirportType

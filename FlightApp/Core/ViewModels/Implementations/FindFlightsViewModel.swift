@@ -14,10 +14,10 @@ public class FindFlightsViewModel : ViewModelBase {
         }
     }
     
-    private var _airports : DynamicValueList<Airport>?
+    private var _airports : DynamicValueList<Airport>!
     public var airports : DynamicValueList<Airport> {
         get {
-            return _airports!
+            return _airports
         }
     }
     
@@ -37,6 +37,26 @@ public class FindFlightsViewModel : ViewModelBase {
         let airportObject = AirportSearchObject(airports: airports, market: _findFlight.value.getOriginCode(), flightAirportType: flightAirportType)
         navigationService.navigateModal(viewModel: AirportListViewModel.self, arguments: airportObject)
     }
+    
+    public override func dataNotify(dataObject: Any?) {
+        let airportSearch = dataObject as! AirportSearchObject
+        _manageAirportSelected(airportSearch)
+    }
+    
+    private func _manageAirportSelected(_ airportSearch : AirportSearchObject) {
+        if(airportSearch.market!.isEmpty){
+            return
+        }
+        
+        let airport = airports.data.value.first(where: { $0.getCode() == airportSearch.market })!
+        
+        if(airportSearch.flightAirportType == .origin) {
+            _findFlight.value.setOrigin(originName: airport.getName(), originCode: airport.getCode())
+        } else {
+            _findFlight.value.setDestination(destinationName: airport.getName(), destinationCode: airport.getCode())
+        }
+    }
+    
     
     private func _canExecute() -> Bool {
         return !isBusy.value

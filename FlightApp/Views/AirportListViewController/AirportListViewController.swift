@@ -13,7 +13,6 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
     private let _searchController = CustomSearchController()
     private let _tableView = UITableView()
     private lazy var _dataSourceProvider = AirportListDataSource(tableView: _tableView)
-    private var _activityIndicatorView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +45,7 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
         _tableView.dataSource = _dataSourceProvider
         _tableView.delegate = _dataSourceProvider
         
+        _dataSourceProvider.selectRowAction = viewModel.closeViewCommand
         _dataSourceProvider.airportList = viewModel.airports.data.value
     }
     
@@ -74,6 +74,6 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
     }
     
     @objc fileprivate func _closeButton() {
-        //ViewModel close command
+        viewModel.closeViewCommand.execute("")
     }
 }

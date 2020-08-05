@@ -27,7 +27,6 @@
 		9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8D24D3521B0063870B /* AppDelegate.swift */; };
 		9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8F24D3521B0063870B /* SceneDelegate.swift */; };
 		9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9124D3521B0063870B /* ContainerViewController.swift */; };
-		9D477E9824D3521B0063870B /* FlightApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9624D3521B0063870B /* FlightApp.xcdatamodeld */; };
 		9D477E9A24D3521D0063870B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D477E9924D3521D0063870B /* Assets.xcassets */; };
 		9D477E9D24D3521D0063870B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D477E9B24D3521D0063870B /* LaunchScreen.storyboard */; };
 		9D477EA824D3521D0063870B /* FlightAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477EA724D3521D0063870B /* FlightAppTests.swift */; };
@@ -108,7 +107,6 @@
 		9D477E8D24D3521B0063870B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D477E8F24D3521B0063870B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9D477E9124D3521B0063870B /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
-		9D477E9724D3521B0063870B /* FlightApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlightApp.xcdatamodel; sourceTree = "<group>"; };
 		9D477E9924D3521D0063870B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9D477E9C24D3521D0063870B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9D477E9E24D3521D0063870B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -267,7 +265,6 @@
 			children = (
 				9D228BE924D5983600FF4A28 /* Resources */,
 				9D477E9E24D3521D0063870B /* Info.plist */,
-				9D477E9624D3521B0063870B /* FlightApp.xcdatamodeld */,
 				9D477F0B24D50C2E0063870B /* AppEndPoints.swift */,
 				9D477F0E24D519C90063870B /* Assets */,
 				9D477F0D24D519910063870B /* AppSetup */,
@@ -751,7 +748,6 @@
 				9D477ED424D436B20063870B /* BaseViewController.swift in Sources */,
 				9D477ED824D4420B0063870B /* AvailableFlightsViewController.swift in Sources */,
 				9D477EFB24D4E4080063870B /* AirportWebService.swift in Sources */,
-				9D477E9824D3521B0063870B /* FlightApp.xcdatamodeld in Sources */,
 				9D477EEB24D48C170063870B /* BaseTabBarController.swift in Sources */,
 				9D477F0424D4E8A80063870B /* AirportWebServiceImp.swift in Sources */,
 				9D5E2A5F24D9F41600CEC5CF /* FindFlight.swift in Sources */,
@@ -1058,19 +1054,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		9D477E9624D3521B0063870B /* FlightApp.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9D477E9724D3521B0063870B /* FlightApp.xcdatamodel */,
-			);
-			currentVersion = 9D477E9724D3521B0063870B /* FlightApp.xcdatamodel */;
-			path = FlightApp.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9D477E8224D3521B0063870B /* Project object */;
 }

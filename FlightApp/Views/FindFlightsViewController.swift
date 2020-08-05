@@ -9,6 +9,16 @@
 import UIKit
 
 class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
+    private var _originCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.darkGrey, textAlignment: .center, numberOfLines: 1)
+    private var _destinationCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.darkGrey, textAlignment: .center, numberOfLines: 1)
+    
+    private let _originNameLabel =  UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1)
+    private let _destinationNameLabel  = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1)
+    
+    private let _departureLabel =  UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1)
+    private let _passengersLabel  = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1)
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = viewModel.findFlightsTitleLabel
@@ -16,6 +26,8 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
 
     private func _setupView() {
+        _createObservers()
+        
         _clearButton()
         
         formViewAlignment = .top
@@ -29,10 +41,23 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         _addCountriesStackAndSeparator(flightPlacesView)
 
         formContainerStackView.addArrangedSubview(flightPlacesView)
-        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.departureLabel, valueLabel: "24 Feb, Wed"))
-        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.passengersLabel, valueLabel: "1 Adult"))
+        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.departureLabel, label: _departureLabel))
+        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.passengersLabel, label: _passengersLabel))
         
         _submitButton()
+    }
+    
+    private func _createObservers() {
+        viewModel.findFlight.addObserver(self, completionHandler: {
+            self._originCodeLabel.text = self.viewModel.findFlight.value.getOriginCode()
+            self._originNameLabel.text = self.viewModel.findFlight.value.getOriginName()
+            
+            self._destinationCodeLabel.text = self.viewModel.findFlight.value.getDestinationCode()
+            self._destinationNameLabel.text = self.viewModel.findFlight.value.getDestinationName()
+            
+            self._departureLabel.text = self.viewModel.findFlight.value.getDeparture()
+            //self._passengersLabel.text = self.viewModel.findFlight.value.getPassengers()
+        })
     }
     
     private func _clearButton() {
@@ -40,15 +65,12 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     private func _addSwapCountriesStack(_ flightPlacesView : UIView) {
-        let label1 = UILabel(text: "LTN", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.darkGrey, textAlignment: .center, numberOfLines: 1)
-        let label2 = UILabel(text: "PAR", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.darkGrey, textAlignment: .center, numberOfLines: 1)
-        
         let swapImageView = getImageInBlue("Swap")
         
         let swapStack = UIView().stack(
-            label1,
+            _originCodeLabel,
             swapImageView,
-            label2,
+            _destinationCodeLabel,
             spacing: 10
         )
         
@@ -58,8 +80,8 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     private func _addCountriesStackAndSeparator(_ flightPlacesView : UIView) {
-        let topCountryStack = _countriesFormView(imageName: "Airplane1", subtitleLabel: viewModel.originLabel, countryLabel: "London")
-        let bottomCountryStack = _countriesFormView(imageName: "Airplane2", subtitleLabel: viewModel.destinationLabel, countryLabel: "Spain")
+        let topCountryStack = _countriesFormView(imageName: "Airplane1", subtitleLabel: viewModel.originLabel, countryLabel: _originNameLabel)
+        let bottomCountryStack = _countriesFormView(imageName: "Airplane2", subtitleLabel: viewModel.destinationLabel, countryLabel: _destinationNameLabel)
         
         let countriesStack = UIView().stack(
             topCountryStack,
@@ -92,9 +114,9 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         
     }
     
-    private func _countriesFormView(imageName : String, subtitleLabel : String, countryLabel : String) -> UIView {
+    private func _countriesFormView(imageName : String, subtitleLabel : String, countryLabel : UILabel) -> UIView {
         let imageView = getImageInBlue(imageName)
-        let countriesDetails = _cardDetails(descriptionLabel: subtitleLabel, valueLabel: countryLabel)
+        let countriesDetails = _cardDetails(descriptionLabel: subtitleLabel, label: countryLabel)
         
         let countriesStack = UIView().hstack(
             imageView,
@@ -106,10 +128,10 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         return countriesStack
     }
     
-    private func _cardDetails(descriptionLabel : String, valueLabel : String) -> UIView {
+    private func _cardDetails(descriptionLabel : String, label : UILabel) -> UIView {
         let cardDescription = UIView().stack(
             UILabel(text: descriptionLabel, font: .systemFont(ofSize: 12, weight: .medium), textColor: UIColor.Theme.darkGrey, textAlignment: .left, numberOfLines: 1),
-            UILabel(text: valueLabel, font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left, numberOfLines: 1),
+            label,
             spacing: 4
         )
         
@@ -117,11 +139,11 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     
-    private func _formCard(descriptionLabel : String, valueLabel : String) -> UIView {
+    private func _formCard(descriptionLabel : String, label : UILabel) -> UIView {
         let cardView = backgroundRoundBorderView()
         cardView.constrainHeight(90)
         
-        let details = _cardDetails(descriptionLabel: descriptionLabel, valueLabel: valueLabel)
+        let details = _cardDetails(descriptionLabel: descriptionLabel, label: label)
         let imageView = getImageInBlue("DownArrow")
         
         cardView.hstack(
@@ -138,7 +160,6 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         
         return cardView
     }
-    
     
     private func _submitButton() {
         let button = createMainBlueButton(name: viewModel.letsGoLabel, target: self, action: #selector(_submitButtonAction))

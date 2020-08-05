@@ -28,10 +28,10 @@ public class ViewModelBase : ViewModel {
     public func dataNotify(dataObject: Any?) {}
 }
 
-public class ViewModelBaseWithArguments<TObject> : ViewModelBase {
-    public override func prepare(dataObject: Any) {
-        prepare(data: dataObject as! TObject)
-    }
-    
-    public func prepare(data: TObject) {}
-}
+//public class ViewModelBaseWithArguments<TObject> : ViewModelBase {
+//    public override func prepare(dataObject: Any) {
+//        prepare(data: dataObject as! TObject)
+//    }
+//
+//    public func prepare(data: TObject) {}
+//}

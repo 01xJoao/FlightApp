@@ -11,6 +11,7 @@ import Foundation
 
 public class NavigationServiceImp : NavigationService {
     private var _containerViewController : ContainerViewController?
+    private var _viewControllerStack: [String] = []
     
     public func currentViewController() -> UIViewController {
         return _containerViewController!
@@ -51,25 +52,34 @@ public class NavigationServiceImp : NavigationService {
     }
     
     public func close(arguments: Any?, animated: Bool) {
+        _viewControllerStack.removeLast()
+        
         _containerViewController?.navigationController?.popViewController(animated: animated)
-        _notifyView(arguments, _visibleViewController())
+        _notifyView(arguments)
     }
     
     public func closeModal(arguments: Any?) {
+        _viewControllerStack.removeLast()
+        
         _containerViewController?.navigationController?.dismiss(animated: true, completion: nil)
-        _notifyView(arguments, _visibleViewController())
+        _notifyView(arguments)
     }
     
-    private func _visibleViewController() -> String! {
-        return _containerViewController?.children.last?.children.last?.className
+    public func setVisibleViewController(_ visibleViewController : String) {
+        _viewControllerStack.append(visibleViewController)
     }
     
-    private func _notifyView(_ args: Any?, _ view : String ) {
-        if(args != nil) {
+//    private func _visibleViewController() -> String! {
+//        return _containerViewController?.children.last?.children.last?.className
+//    }
+    
+    
+    private func _notifyView(_ arguments: Any?) {
+        if(arguments != nil) {
             NotificationCenter.default.post(
-                name: NSNotification.Name(rawValue: view),
+                name: NSNotification.Name(rawValue: _viewControllerStack.last!),
                 object: nil,
-                userInfo: ["arguments": args!])
+                userInfo: ["arguments": arguments!])
         }
     }
 }

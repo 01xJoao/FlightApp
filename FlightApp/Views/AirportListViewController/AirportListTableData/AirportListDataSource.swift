@@ -14,7 +14,9 @@ class AirportListDataSource : NSObject, UITableViewDataSource, UITableViewDelega
     private let _cellIdentifier = "AirportListCell"
     private let _tableView : UITableView
     
-    open var airportList = [Airport]() {
+    var selectRowAction : WPCommand<String>?
+    
+    var airportList = [Airport]() {
         didSet {
             DispatchQueue.main.async {
                 self._tableView.reloadData()
@@ -49,5 +51,10 @@ class AirportListDataSource : NSObject, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = airportList[indexPath.row]
+        selectRowAction?.execute(item.getCode())
     }
 }
