@@ -6,4 +6,44 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-public class MainViewModel : ViewModelBase {}
+import Foundation
+
+public class MainViewModel : ViewModelBase {
+    private let _airportWebService : AirportWebService
+    
+    private let _airports: DynamicValueList<Airport> = DynamicValueList<Airport>()
+    public var airports : DynamicValueList<Airport> {
+        get {
+            return _airports
+        }
+    }
+    
+    init(airportWebService: AirportWebService) {
+        self._airportWebService = airportWebService
+    }
+    
+    public override func initialize() {
+        _fetchStations()
+    }
+    
+    private func _fetchStations() {
+        isBusy.value = true
+        
+        DispatchQueue.main.async {
+            _ = self._airportWebService.getAvailableStations(completion: { stationList in self._airportsCompletion(stationList) })
+        }
+    }
+    
+    private func _airportsCompletion(_ stationList : StationListObject?) {
+        isBusy.value = false
+        
+        var airportList: [Airport] = []
+        
+        stationList?.stations?.forEach{ airport in
+            airportList.append(Airport(airport))
+        }
+        
+        _airports.addAll(object: airportList)
+    }
+    
+}

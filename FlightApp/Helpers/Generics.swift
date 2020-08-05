@@ -26,4 +26,8 @@ public class DynamicValueList<T> : NSObject {
     func removeAll() {
         data.value.removeAll()
     }
+    
+    func notifyList() {
+        data.notify()
+    }
 }

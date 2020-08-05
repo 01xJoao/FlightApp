@@ -7,16 +7,35 @@
 //
 
 public class FindFlightsViewModel : ViewModelBase {
-    private var _openCountryListViewCommand: WPCommand<FlightCountryType>?
-    public var openCountryListViewCommand: WPCommand<FlightCountryType> {
+    private let _findFlight : DynamicValue<FindFlight> = DynamicValue<FindFlight>(FindFlight(FindFlightObject()))
+    public var findFlight : DynamicValue<FindFlight> {
+        get {
+            return _findFlight
+        }
+    }
+    
+    private var _airports : DynamicValueList<Airport>?
+    public var airports : DynamicValueList<Airport> {
+        get {
+            return _airports!
+        }
+    }
+    
+    private var _openAirportListViewCommand: WPCommand<FlightAirportType>?
+    public var openAirportListViewCommand: WPCommand<FlightAirportType> {
        get {
-           _openCountryListViewCommand ??= WPCommand<FlightCountryType>(_openCountryListView, canExecute: _canExecute)
-           return _openCountryListViewCommand!
+           _openAirportListViewCommand ??= WPCommand<FlightAirportType>(_openAirportListView, canExecute: _canExecute)
+           return _openAirportListViewCommand!
        }
     }
     
-    private func _openCountryListView(_ flightCountryType : FlightCountryType) {
-        navigationService.navigateModal(viewModel: CountryListViewModel.self, arguments: flightCountryType)
+    public override func prepare(dataObject: Any) {
+        _airports = (dataObject as! DynamicValueList<Airport>)
+    }
+    
+    private func _openAirportListView(_ flightAirportType : FlightAirportType) {
+        let airportObject = AirportSearchObject(airports: airports, market: _findFlight.value.getOriginCode(), flightAirportType: flightAirportType)
+        navigationService.navigateModal(viewModel: AirportListViewModel.self, arguments: airportObject)
     }
     
     private func _canExecute() -> Bool {

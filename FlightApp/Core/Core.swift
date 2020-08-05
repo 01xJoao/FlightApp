@@ -24,11 +24,11 @@ public struct Core {
     }
     
     private static func _registerViewModels() {
-        DiContainer.register(MainViewModel.self, constructor: { MainViewModel() })
-        DiContainer.register(AirportsViewModel.self, constructor: { AirportsViewModel(airportWebService: DiContainer.resolve()) })
+        DiContainer.register(MainViewModel.self, constructor: { MainViewModel(airportWebService: DiContainer.resolve()) })
+        DiContainer.register(AirportsViewModel.self, constructor: { AirportsViewModel() })
         DiContainer.register(FindFlightsViewModel.self, constructor: { FindFlightsViewModel() })
         DiContainer.register(AvailableFlightsViewModel.self, constructor: { AvailableFlightsViewModel() })
-        DiContainer.register(CountryListViewModel.self, constructor: { CountryListViewModel() })
+        DiContainer.register(AirportListViewModel.self, constructor: { AirportListViewModel() })
     }
     
     private static func _registerViewControllers() {
@@ -36,7 +36,7 @@ public struct Core {
         DiContainer.registerViewController(AirportsViewModel.self, constructor: { AirportsViewController() })
         DiContainer.registerViewController(FindFlightsViewModel.self, constructor: { FindFlightsViewController() })
         DiContainer.registerViewController(AvailableFlightsViewModel.self, constructor: { AvailableFlightsViewController() })
-        DiContainer.registerViewController(CountryListViewModel.self, constructor: { CountryListViewController() })
+        DiContainer.registerViewController(AirportListViewModel.self, constructor: { AirportListViewController() })
     }
     
     public static func startApp() {

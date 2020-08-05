@@ -1,5 +1,5 @@
 //
-//  AirportsViewController.swift
+//  CountryListViewModel.swift
 //  FlightApp
 //
 //  Created by João Palma on 31/07/2020.
@@ -8,8 +8,15 @@
 
 import Foundation
 
-public class AirportsViewModel : ViewModelBase {
-    private var _airports: DynamicValueList<Airport>?
+public class AirportListViewModel : ViewModelBase {
+    private var _title: String?
+    public var title : String {
+        get {
+            return _title!
+        }
+    }
+    
+    private var _airports : DynamicValueList<Airport>?
     public var airports : DynamicValueList<Airport> {
         get {
             return _airports!
@@ -26,13 +33,23 @@ public class AirportsViewModel : ViewModelBase {
     private var _searchCommand: WPCommand<String>?
     public var searchCommand: WPCommand<String> {
         get {
-            _searchCommand ??= WPCommand<String>(_search, canExecute: _canExecute)
+            _searchCommand ??= WPCommand<String>(_search)
             return _searchCommand!
         }
     }
-
+    
     public override func prepare(dataObject: Any) {
-        _airports = (dataObject as! DynamicValueList<Airport>)
+        let airportSearch = dataObject as! AirportSearchObject
+        _title = airportSearch.flightAirportType == FlightAirportType.origin ? originLabel : destinationLabel
+        _airports = airportSearch.airports
+        
+        _createAirportList(airportType: airportSearch.flightAirportType, market: airportSearch.market!)
+    }
+    
+    private func _createAirportList(airportType : FlightAirportType, market : String) {
+        if(airportType == FlightAirportType.destination) {
+            _airports?.data.value.removeAll(where: { $0.containsMarket(market) })
+        }
     }
     
     private func _search(search : String) {
@@ -42,11 +59,9 @@ public class AirportsViewModel : ViewModelBase {
         _airportSearchList.addAll(object: airportSeachList)
     }
     
-    private func _canExecute() -> Bool {
-        return !isBusy.value
-    }
-    
     //L10N Strings
-    public let airportsTitleLabel: String = L10N.localize(key: "airports_title")
+    private let originLabel: String = L10N.localize(key: "findflights_origin")
+    private let destinationLabel: String = L10N.localize(key: "findflights_destination")
     public let searchLabel: String = L10N.localize(key: "global_search")
+    
 }

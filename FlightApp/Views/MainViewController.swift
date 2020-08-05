@@ -17,14 +17,16 @@ class MainViewController : BaseTabBarController<MainViewModel> {
     
     private func _createTabBarController() {
         self.viewControllers = [
-            _createViewTab(L10N.localize(key: "airports_title"), String(describing: AirportsViewModel.self), UIImage(named: "Airport")!),
-            _createViewTab(L10N.localize(key: "findflights_title"), String(describing: FindFlightsViewModel.self), UIImage(named: "FindFlights")!),
+            _createViewTab(AirportsViewModel.self, L10N.localize(key: "airports_title"),  UIImage(named: "Airport")!),
+            _createViewTab(FindFlightsViewModel.self, L10N.localize(key: "findflights_title"), UIImage(named: "FindFlights")!),
         ]
     }
     
-    private func _createViewTab(_ title : String, _ viewModelName : String, _ image : UIImage) -> UIViewController{
-        let viewController: UIViewController = DiContainer.resolveViewController(name: viewModelName)
+    private func _createViewTab<TViewModel : ViewModel>(_ vm : TViewModel.Type, _ title : String, _ image : UIImage) -> UIViewController{
+        let viewController: BaseViewController<TViewModel> = DiContainer.resolveViewController(name: String(describing: vm.self))
+        viewController.parameterData = viewModel.airports
         viewController.tabBarItem = UITabBarItem(title: title, image: image.withTintColor(UIColor.Theme.darkGrey), selectedImage: image.withTintColor(UIColor.Theme.mainBlue))
+        
         let navigationController = UINavigationController();
         navigationController.pushViewController(viewController, animated: false);
         return navigationController;

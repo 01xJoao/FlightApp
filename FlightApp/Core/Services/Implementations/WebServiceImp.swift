@@ -37,12 +37,10 @@ class WebServiceImp : WebService {
                     completion(obj)
                 } catch let error {
                     _sendError(error, String(describing: T.self))
-                    completion(nil)
                 }
             
             case .failure(let response):
-                let errorCode = response.error.code
-                print(errorCode)
+                _sendError(response.error, "Fail to handle Json Result")
                 completion(nil)
         }
     }

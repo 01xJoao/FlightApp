@@ -71,7 +71,6 @@ public class FormBaseViewController<TViewModel : ViewModel> : BaseViewController
     }
     
     
-    
 //    fileprivate func setupKeyboardNotifications() {
 //        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)

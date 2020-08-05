@@ -28,7 +28,7 @@ public struct Airport {
     }
     
     public func getCountryName() -> String {
-        return _airport.countryName.uppercased()
+        return _airport.countryName
     }
     
     public func getLatitude() -> String {
@@ -56,6 +56,15 @@ public struct Airport {
         
         return marketList
     }
+    
+    public func containsMarket(_ market : String) -> Bool {
+        if _airport.markets.contains(where: { $0.code == market }) {
+            return true
+        }
+        
+        return false
+    }
+    
     
     public func containSearch(_ searchString: String) -> Bool {
         if(searchString.isEmpty) {

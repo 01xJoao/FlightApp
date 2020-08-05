@@ -8,7 +8,10 @@
 
 import Foundation
 
-infix operator ??=
-func ??= <T>(left: inout T?, right: T) {
-    left = left ?? right
+extension Date {
+    func dayOfTheWeek() -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E"
+        return dateFormatter.string(from: self as Date)
+    }
 }

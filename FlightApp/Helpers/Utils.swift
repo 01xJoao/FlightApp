@@ -9,6 +9,11 @@
 import UIKit
 import ImageLoader
 
+infix operator ??=
+func ??= <T>(left: inout T?, right: T) {
+    left = left ?? right
+}
+
 public struct Utils {
     //public let keyWindow: UIWindow = UIApplication.shared.windows.first {$0.isKeyWindow}!
     

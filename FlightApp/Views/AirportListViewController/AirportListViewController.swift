@@ -1,32 +1,29 @@
 //
-//  AirportsViewController.swift
+//  CountryListViewController.swift
 //  FlightApp
 //
 //  Created by João Palma on 31/07/2020.
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-
 import UIKit
-import LBTATools
 import Foundation
 
-class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchControllerDelegate, UISearchBarDelegate {
+class AirportListViewController : BaseViewController<AirportListViewModel>, UISearchControllerDelegate, UISearchBarDelegate {
     private let _searchController = CustomSearchController()
     private let _tableView = UITableView()
-    private lazy var _dataSourceProvider = AirportDataSource(tableView: _tableView)
+    private lazy var _dataSourceProvider = AirportListDataSource(tableView: _tableView)
     private var _activityIndicatorView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = viewModel.airportsTitleLabel
+        self.title = viewModel.title
         _setupView()
     }
     
     private func _setupView() {
         _configureSearchController()
         _configureTableView()
-        _configureActivityView()
         _createObservers()
     }
     
@@ -37,7 +34,7 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
         searchController.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = searchController
     }
-
+    
     private func _configureTableView() {
         self.view.addSubview(_tableView)
         
@@ -47,42 +44,31 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
 
         _tableView.dataSource = _dataSourceProvider
         _tableView.delegate = _dataSourceProvider
+        
+        _dataSourceProvider.airportList = viewModel.airports.data.value
     }
     
-    private func _configureActivityView() {
-        _activityIndicatorView = createActivityIndicatory(view: self.view)
-        _activityIndicatorView?.startAnimating();
-    }
     
     private func _createObservers() {
         viewModel.airports.data.addObserver(self, completionHandler: {
-            self._stopLoadingAnimation()
-            self._dataSourceProvider.airports = self.viewModel.airports.data.value
+            self._dataSourceProvider.airportList = self.viewModel.airports.data.value
         })
         
         viewModel.searchAirports.data.addObserver(self, completionHandler: {
-            self._dataSourceProvider.airports = self.viewModel.searchAirports.data.value
+            self._dataSourceProvider.airportList = self.viewModel.searchAirports.data.value
         })
     }
     
-    private func _stopLoadingAnimation() {
-        if(_activityIndicatorView!.isAnimating) {
-            _activityIndicatorView?.stopAnimating()
-        }
-    }
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        viewModel.searchCommand.executeIf(searchText)
-    }
+        viewModel.searchCommand.execute(searchText)
+     }
+     
+     func willDismissSearchController(_ searchController: UISearchController) {
+        _dataSourceProvider.airportList = viewModel.airports.data.value
+     }
     
-    func willDismissSearchController(_ searchController: UISearchController) {
-         _dataSourceProvider.airports = viewModel.airports.data.value
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         self.navigationItem.searchController!.searchBar.setSearch(viewModel.searchLabel)
     }
 }
-
-
