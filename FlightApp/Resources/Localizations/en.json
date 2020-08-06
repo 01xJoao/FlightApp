@@ -27,4 +27,5 @@
     "availableflights_depart": "Depart",
     "availableflights_arrive": "Arrive",
     "availableflights_flight": "Flight nr.",
+    "availableflights_noflights": "No flights available"
 }

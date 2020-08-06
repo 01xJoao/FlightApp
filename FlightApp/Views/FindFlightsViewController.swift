@@ -116,7 +116,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     private func _addSwapCountriesStack(_ flightPlacesView : UIView) {
-        let swapImageView = getImageInBlue("Swap")
+        let swapImageView = changeImageColor("Swap")
         
         let swapStack = UIView().stack(
             _originCodeLabel,
@@ -171,7 +171,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     private func _countriesFormView(imageName : String, subtitleLabel : String, countryLabel : UILabel) -> UIView {
-        let imageView = getImageInBlue(imageName)
+        let imageView = changeImageColor(imageName)
         let countriesDetails = _cardDetails(descriptionLabel: subtitleLabel, label: countryLabel)
         
         let countriesStack = UIView().hstack(
@@ -199,7 +199,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         cardView.constrainHeight(90)
         
         let details = _cardDetails(descriptionLabel: descriptionLabel, label: label)
-        let imageView = getImageInBlue("DownArrow")
+        let imageView = changeImageColor("DownArrow")
         
         cardView.hstack(
             details,
@@ -245,7 +245,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         datePickerVC.config(date: viewModel.findFlight.value.getDepartureDate(), titleLabel: viewModel.departureLabel, confirmLabel: viewModel.confirmLabel, handler: _datePickerSelection)
         
         _drawerDepartureView = viewModel.navigationService.currentViewController().addDrawerView(withViewController: datePickerVC)
-        _drawerDepartureView!.partiallyOpenHeight = 400
+        _drawerDepartureView!.partiallyOpenHeight = LocalConstants.DatePickerModalHeight
         _drawerDepartureView!.snapPositions = [.partiallyOpen, .closed]
     }
     
@@ -259,12 +259,13 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     
     @objc fileprivate func _passengersAction() {
         let passengersVC = PassengersModalView()
+        
         passengersVC.config(passengers: viewModel.findFlight.value.getPassengers(), titleLabel: viewModel.passengersLabel,
                             applyLabel: viewModel.applyLabel, handler: _passengersSelection,
                             labels: [viewModel.adultsLabel, viewModel.teensLabel, viewModel.childrenLabel])
         
         _drawerPassengersView = viewModel.navigationService.currentViewController().addDrawerView(withViewController: passengersVC)
-        _drawerPassengersView!.partiallyOpenHeight = 325
+        _drawerPassengersView!.partiallyOpenHeight = LocalConstants.PassengersModalHeight
         _drawerPassengersView!.snapPositions = [.partiallyOpen, .closed]
     }
     

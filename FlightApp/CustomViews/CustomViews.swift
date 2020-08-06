@@ -56,10 +56,10 @@ func backgroundRoundBorderView(color : UIColor = UIColor.Theme.darkerWhite, radi
     return backgrounView
 }
 
-func getImageInBlue(_ imageName : String) -> UIImageView {
+func changeImageColor(_ imageName : String, _ color : UIColor = UIColor.Theme.mainBlue) -> UIImageView {
     let imageView = UIImageView(image: UIImage(named: imageName), contentMode: .scaleAspectFit)
     imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
-    imageView.tintColor = UIColor.Theme.mainBlue
+    imageView.tintColor = color
     
     return imageView
 }
@@ -91,4 +91,67 @@ public func createModalTopBar(_ view : UIView, topBar : UIView, titleLabel : Str
     topBar.addSubview(button)
     button.anchor(top: topBar.topAnchor, leading: nil, bottom: nil, trailing: topBar.trailingAnchor,
                   padding: .init(top: 0, left: 0, bottom: 0, right: 20))
+}
+
+class ShadowView: UIView {
+    private let cornerRadius: CGFloat
+    private var shadowLayer: CAShapeLayer!
+    
+    init(cornerRadius : CGFloat) {
+        self.cornerRadius = cornerRadius
+        super.init(frame: CGRect())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if shadowLayer == nil {
+            shadowLayer = CAShapeLayer()
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+            shadowLayer.fillColor = UIColor.white.cgColor
+
+            shadowLayer.shadowColor = UIColor.darkGray.cgColor
+            shadowLayer.shadowPath = shadowLayer.path
+            shadowLayer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+            shadowLayer.shadowOpacity = 0.4
+            shadowLayer.shadowRadius = 2
+
+            layer.insertSublayer(shadowLayer, at: 0)
+            //layer.insertSublayer(shadowLayer, below: nil) // also works
+        }
+    }
+}
+
+
+public func createDashedLine() -> UIView {
+    let dashedLine = UIView()
+    
+    let layer = CALayer()
+
+    let shapeLayer = CAShapeLayer()
+    shapeLayer.strokeColor = UIColor.Theme.white.cgColor
+    shapeLayer.lineWidth = 1.5
+    shapeLayer.lineDashPattern = [4, 4]
+    
+    let path = CGMutablePath()
+    path.addLines(between: [CGPoint(x:0, y: 0), CGPoint(x: 140, y: 0)])
+    shapeLayer.path = path
+    layer.addSublayer(shapeLayer)
+    
+    dashedLine.layer.addSublayer(layer)
+    
+    return dashedLine
+}
+
+public func createCircle() -> UIView {
+    let circle = UIView(backgroundColor: UIColor.Theme.white)
+    
+    circle.withWidth(8).withHeight(8)
+    circle.layer.cornerRadius = 4
+    
+    return circle
 }

@@ -20,14 +20,14 @@ public struct FlightDetail {
     public func getDepartTime() -> String {
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "hh:mm"
-        let date = Utils.getDateFromIso(_flight.time.first ?? "")
+        let date = DateFormatter.date(fromISO8601String: _flight.time.first ?? "")!
         return dateFormatterPrint.string(from: date)
     }
     
     public func getArriveTime() -> String {
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "hh:mm"
-        let date = Utils.getDateFromIso(_flight.time.last ?? "")
+         let date = DateFormatter.date(fromISO8601String: _flight.time.first ?? "")!
         return dateFormatterPrint.string(from: date)
     }
     

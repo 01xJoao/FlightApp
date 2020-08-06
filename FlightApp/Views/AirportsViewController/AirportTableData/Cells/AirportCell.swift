@@ -76,7 +76,7 @@ class AirportCell: UITableViewCell {
         let latitudeLabel = UILabel.init(text: latitude, font: .systemFont(ofSize: 9, weight: .semibold), textColor: UIColor.Theme.black , textAlignment: .right, numberOfLines: 0)
         let longitudeLabel = UILabel.init(text: longitude, font: .systemFont(ofSize: 9, weight: .semibold), textColor: UIColor.Theme.black, textAlignment: .right, numberOfLines: 0)
 
-        let locationImage = getImageInBlue("Location")
+        let locationImage = changeImageColor("Location")
         locationImage.withHeight(25).withWidth(25)
         locationImage.setupShadow(opacity: 0.5, radius: 1, offset: CGSize(width: 1, height: 1), color: UIColor.Theme.black)
 

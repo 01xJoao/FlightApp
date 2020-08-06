@@ -25,12 +25,21 @@ public struct AppConfiguration {
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().compactAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
-            
             UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.Theme.white], for: .normal)
         } else {
             UINavigationBar.appearance().tintColor = UIColor.Theme.white
             UINavigationBar.appearance().barTintColor = UIColor.Theme.white
             UINavigationBar.appearance().isTranslucent = false
         }
+    }
+    
+    public static func customNavbarAppearence() -> UINavigationBarAppearance {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.Theme.white]
+        navBarAppearance.backgroundColor = UIColor.Theme.mainBlue
+        navBarAppearance.shadowColor = .clear
+        navBarAppearance.shadowImage = UIImage()
+        
+        return navBarAppearance
     }
 }
