@@ -19,12 +19,13 @@ public struct Core {
         DiContainer.registerSingleton(ReportService.self) { ReportServiceImp() }
         DiContainer.registerSingleton(WebService.self) { WebServiceImp(reportService: DiContainer.resolve()) }
         DiContainer.registerSingleton(AirportWebService.self) { AirportWebServiceImp(webService: DiContainer.resolve()) }
+        DiContainer.registerSingleton(FindFlightsWebService.self) { FindFlightsWebServiceImp(webService: DiContainer.resolve()) }
     }
     
     private static func _registerViewModels() {
         DiContainer.register(MainViewModel.self, constructor: { MainViewModel(airportWebService: DiContainer.resolve()) })
         DiContainer.register(AirportsViewModel.self, constructor: { AirportsViewModel() })
-        DiContainer.register(FindFlightsViewModel.self, constructor: { FindFlightsViewModel() })
+        DiContainer.register(FindFlightsViewModel.self, constructor: { FindFlightsViewModel(findFlightsWebService: DiContainer.resolve()) })
         DiContainer.register(AvailableFlightsViewModel.self, constructor: { AvailableFlightsViewModel() })
         DiContainer.register(AirportListViewModel.self, constructor: { AirportListViewModel() })
     }

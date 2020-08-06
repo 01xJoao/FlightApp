@@ -9,6 +9,12 @@
 import Foundation
 
 public class FindFlightsViewModel : ViewModelBase {
+    let _findFlightsWebService: FindFlightsWebService
+    
+    init (findFlightsWebService : FindFlightsWebService) {
+        _findFlightsWebService = findFlightsWebService
+    }
+    
     public var passengersValue : String {
         get {
             return _getPassengers()
@@ -69,16 +75,34 @@ public class FindFlightsViewModel : ViewModelBase {
         }
     }
     
+    private var _submitButtonCommand : Command?
+    public var submitButtonCommand : Command {
+        get {
+            _submitButtonCommand ??= Command(_submitFindFlight, canExecute: _canExecute)
+            return _submitButtonCommand!
+        }
+    }
+    
     public override func prepare(dataObject: Any) {
         _airports = (dataObject as! DynamicValueList<Airport>)
     }
     
     private func _openAirportListView(_ flightAirportType : FlightAirportType) {
-        let airportList = DynamicValueList<Airport>()
-        airportList.addAll(object: _airports.data.value)
+        if(_canOpenAirportList(flightAirportType)) {
+            let airportList = DynamicValueList<Airport>()
+            airportList.addAll(object: _airports.data.value)
+            
+            let airportObject = AirportSearchObject(airports: airportList, market: _findFlight.value.getOriginCode(), flightAirportType: flightAirportType)
+            navigationService.navigateModal(viewModel: AirportListViewModel.self, arguments: airportObject)
+        }
+    }
+    
+    private func _canOpenAirportList(_ flightAirportType : FlightAirportType) -> Bool{
+        if(flightAirportType == FlightAirportType.destination && _findFlight.value.getOriginCode().isEmpty){
+            return false;
+        }
         
-        let airportObject = AirportSearchObject(airports: airportList, market: _findFlight.value.getOriginCode(), flightAirportType: flightAirportType)
-        navigationService.navigateModal(viewModel: AirportListViewModel.self, arguments: airportObject)
+        return true
     }
     
     private func _clearFlightData() {
@@ -86,7 +110,13 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     private func _swapAirports() {
-        _findFlight.value.swapAirports()
+        if(_canSwapAirports()) {
+            _findFlight.value.swapAirports()
+        }
+    }
+    
+    private func _canSwapAirports() -> Bool {
+        return !_findFlight.value.getDestinationCode().isEmpty
     }
     
     private func _setDeparture(date : Date) {
@@ -117,6 +147,20 @@ public class FindFlightsViewModel : ViewModelBase {
         }
         
         return passengers
+    }
+    
+    private func _submitFindFlight() {
+        if(_canFindFlight()) {
+            
+        }
+    }
+    
+    private func _canFindFlight() -> Bool {
+        if(_findFlight.value.getOriginCode().isEmpty || _findFlight.value.getDestinationCode().isEmpty) {
+            return false
+        }
+        
+        return true
     }
     
     public override func dataNotify(dataObject: Any?) {

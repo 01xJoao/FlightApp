@@ -48,7 +48,6 @@ public class AirportListViewModel : ViewModelBase {
         }
     }
     
-    
     public override func prepare(dataObject: Any) {
         let airportSearch = dataObject as! AirportSearchObject
         _title = airportSearch.flightAirportType == FlightAirportType.origin ? originLabel : destinationLabel

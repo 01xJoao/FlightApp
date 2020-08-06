@@ -12,16 +12,19 @@ class MainViewController : BaseTabBarController<MainViewModel> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        _createObservers()
         _createTabBarController()
     }
     
-    private func _createTabBarController() {
+    private func _createObservers() {
         viewModel.isBusy.addObserver(self, completionHandler: {
             self.tabBarController?.tabBar.isUserInteractionEnabled = true
         })
         
         self.tabBarController?.tabBar.isUserInteractionEnabled = false
-        
+    }
+    
+    private func _createTabBarController() {
         self.viewControllers = [
             _createViewTab(AirportsViewModel.self, viewModel.findFlightsTitleLabel,  UIImage(named: "Airport")!),
             _createViewTab(FindFlightsViewModel.self, viewModel.airportsTitleLabel, UIImage(named: "FindFlights")!),

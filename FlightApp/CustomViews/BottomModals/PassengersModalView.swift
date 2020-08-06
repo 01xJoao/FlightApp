@@ -35,6 +35,7 @@ class PassengersModalView : UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         createModalTopBar(self.view, topBar: _topBar, titleLabel: _titleLabel, selector: #selector(_closeButtonAction))
         
+        _adultStepper.minimumValue = FlightValues.minAdultsPassenger
         let adults = _createPassengers(description: _passengersLabels[0], stepper: _adultStepper, label: _adultLabel, value: _passengers.adults, tag: 1)
         let teen = _createPassengers(description: _passengersLabels[1], stepper: _teenStepper, label: _teenLabel, value: _passengers.teen, tag: 2)
         let children = _createPassengers(description: _passengersLabels[2], stepper: _childrenStepper, label: _childrenLabel, value: _passengers.children, tag: 3)
@@ -59,7 +60,6 @@ class PassengersModalView : UIViewController {
         stepper.wraps = false
         stepper.autorepeat = true
         stepper.value = Double(value)
-        stepper.minimumValue = 0
         stepper.maximumValue = FlightValues.maxPerPassengerPerType
         stepper.addTarget(self, action: #selector(_stepperValueChanged(stepper:)), for: .valueChanged)
         

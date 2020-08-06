@@ -244,7 +244,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
                             labels: [viewModel.adultsLabel, viewModel.teensLabel, viewModel.childrenLabel])
         
         _drawerPassengersView = viewModel.navigationService.currentViewController().addDrawerView(withViewController: passengersVC)
-        _drawerPassengersView!.partiallyOpenHeight = 400
+        _drawerPassengersView!.partiallyOpenHeight = 325
         _drawerPassengersView!.snapPositions = [.partiallyOpen, .closed]
     }
     

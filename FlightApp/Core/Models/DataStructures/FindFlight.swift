@@ -60,6 +60,10 @@ public struct FindFlight {
         return "adt=\(_findFlight.passengers.adults)&teen=\(_findFlight.passengers.teen)&chd=\(_findFlight.passengers.children)"
     }
     
+    public func getURL() -> String {
+        return "origin=\(_findFlight.originCode)&destination=\(_findFlight.destinationCode)&dateout=\(_getDepartureForURL()))&\(_getPassengersForURL())&ToUs=AGREED"
+    }
+    
     public mutating func setOrigin(originName: String, originCode : String){
         _findFlight.originName = originName
         _findFlight.originCode = originCode
