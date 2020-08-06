@@ -30,8 +30,8 @@ class MainViewController : BaseTabBarController<MainViewModel> {
     
     private func _createTabBarController() {
         self.viewControllers = [
-            _createViewTab(AirportsViewModel.self, viewModel.findFlightsTitleLabel,  UIImage(named: "Airport")!),
-            _createViewTab(FindFlightsViewModel.self, viewModel.airportsTitleLabel, UIImage(named: "FindFlights")!),
+            _createViewTab(AirportsViewModel.self, viewModel.airportsTitleLabel,  UIImage(named: "Airport")!),
+            _createViewTab(FindFlightsViewModel.self, viewModel.findFlightsTitleLabel, UIImage(named: "FindFlights")!),
         ]
     }
     

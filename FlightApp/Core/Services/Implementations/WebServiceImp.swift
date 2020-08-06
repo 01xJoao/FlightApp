@@ -37,6 +37,7 @@ class WebServiceImp : WebService {
                     completion(obj)
                 } catch let error {
                     _sendError(error, String(describing: T.self))
+                    completion(nil)
                 }
             
             case .failure(let response):

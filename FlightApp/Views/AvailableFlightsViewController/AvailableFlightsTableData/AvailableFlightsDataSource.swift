@@ -12,6 +12,7 @@ class AvailableFlightsDataSource : NSObject, UITableViewDataSource, UITableViewD
     private let _cellIdentifier = "FlightCell"
     private let _tableView : UITableView
     
+    open var labels: [String]?
     open var flights = [FlightDetail]() {
         didSet {
             DispatchQueue.main.async {
@@ -39,13 +40,13 @@ class AvailableFlightsDataSource : NSObject, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: _cellIdentifier, for: indexPath) as! FlightCell
         
         let item = flights[indexPath.row]
-        cell.config(item)
+        cell.config(item, labels!)
         cell.selectionStyle = .none
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 220
     }
 }

@@ -24,6 +24,10 @@
 		9D228BF824D5A11C00FF4A28 /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF724D5A11C00FF4A28 /* Market.swift */; };
 		9D228BFA24D5A12A00FF4A28 /* MarketObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228BF924D5A12A00FF4A28 /* MarketObject.swift */; };
 		9D228C0324D5B03200FF4A28 /* AirportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D228C0224D5B03200FF4A28 /* AirportCell.swift */; };
+		9D45F47C24DCBACA00B47DE5 /* DialogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D45F47B24DCBACA00B47DE5 /* DialogService.swift */; };
+		9D45F47E24DCBB9D00B47DE5 /* DialogServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D45F47D24DCBB9D00B47DE5 /* DialogServiceImp.swift */; };
+		9D45F48124DCBC2F00B47DE5 /* InfoDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D45F48024DCBC2F00B47DE5 /* InfoDialogView.swift */; };
+		9D45F48324DCBCBF00B47DE5 /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D45F48224DCBCBF00B47DE5 /* Animations.swift */; };
 		9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8D24D3521B0063870B /* AppDelegate.swift */; };
 		9D477E9024D3521B0063870B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E8F24D3521B0063870B /* SceneDelegate.swift */; };
 		9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D477E9124D3521B0063870B /* ContainerViewController.swift */; };
@@ -110,6 +114,10 @@
 		9D228BF724D5A11C00FF4A28 /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		9D228BF924D5A12A00FF4A28 /* MarketObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketObject.swift; sourceTree = "<group>"; };
 		9D228C0224D5B03200FF4A28 /* AirportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportCell.swift; sourceTree = "<group>"; };
+		9D45F47B24DCBACA00B47DE5 /* DialogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogService.swift; sourceTree = "<group>"; };
+		9D45F47D24DCBB9D00B47DE5 /* DialogServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogServiceImp.swift; sourceTree = "<group>"; };
+		9D45F48024DCBC2F00B47DE5 /* InfoDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDialogView.swift; sourceTree = "<group>"; };
+		9D45F48224DCBCBF00B47DE5 /* Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animations.swift; sourceTree = "<group>"; };
 		9D477E8A24D3521B0063870B /* FlightApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlightApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D477E8D24D3521B0063870B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D477E8F24D3521B0063870B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -256,6 +264,14 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		9D45F47F24DCBC1C00B47DE5 /* Dialogs */ = {
+			isa = PBXGroup;
+			children = (
+				9D45F48024DCBC2F00B47DE5 /* InfoDialogView.swift */,
+			);
+			path = Dialogs;
+			sourceTree = "<group>";
+		};
 		9D477E8124D3521B0063870B = {
 			isa = PBXGroup;
 			children = (
@@ -310,6 +326,7 @@
 				9D228BDB24D5896A00FF4A28 /* Generics.swift */,
 				9D228BDD24D589B500FF4A28 /* Constants.swift */,
 				9D228BDF24D58B8E00FF4A28 /* Extensions.swift */,
+				9D45F48224DCBCBF00B47DE5 /* Animations.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -352,6 +369,7 @@
 				9D477EBF24D42D1A0063870B /* NavigationService.swift */,
 				9D477EF724D4E3300063870B /* WebService.swift */,
 				9D228BD624D57C6D00FF4A28 /* ReportService.swift */,
+				9D45F47B24DCBACA00B47DE5 /* DialogService.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -372,6 +390,7 @@
 				9D477EC324D42DD40063870B /* NavigationServiceImp.swift */,
 				9D477F0524D4EB440063870B /* WebServiceImp.swift */,
 				9D228BD824D57C7800FF4A28 /* ReportServiceImp.swift */,
+				9D45F47D24DCBB9D00B47DE5 /* DialogServiceImp.swift */,
 			);
 			path = Implementations;
 			sourceTree = "<group>";
@@ -459,6 +478,7 @@
 		9D477EF124D4D6940063870B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				9D45F47F24DCBC1C00B47DE5 /* Dialogs */,
 				9D477EF224D4D6A70063870B /* BottomModals */,
 				9DC0DE2224D5D8DA00BFBA55 /* CustomViews.swift */,
 			);
@@ -776,6 +796,7 @@
 				9D477EC924D430310063870B /* ViewModelBase.swift in Sources */,
 				9D477E9224D3521B0063870B /* ContainerViewController.swift in Sources */,
 				9D477EC024D42D1A0063870B /* NavigationService.swift in Sources */,
+				9D45F47E24DCBB9D00B47DE5 /* DialogServiceImp.swift in Sources */,
 				9D477EF624D4E0F80063870B /* PassengersModalView.swift in Sources */,
 				9D477EB324D41EFE0063870B /* AppConfiguration.swift in Sources */,
 				9D477ECE24D4310F0063870B /* DynamicValue.swift in Sources */,
@@ -786,6 +807,7 @@
 				9D477ED824D4420B0063870B /* AvailableFlightsViewController.swift in Sources */,
 				9D477EFB24D4E4080063870B /* AirportWebService.swift in Sources */,
 				9D477EEB24D48C170063870B /* BaseTabBarController.swift in Sources */,
+				9D45F47C24DCBACA00B47DE5 /* DialogService.swift in Sources */,
 				9D477F0424D4E8A80063870B /* AirportWebServiceImp.swift in Sources */,
 				9D5E2A5F24D9F41600CEC5CF /* FindFlight.swift in Sources */,
 				9D477ED624D439930063870B /* MainViewController.swift in Sources */,
@@ -801,6 +823,7 @@
 				9D228BE324D58BFD00FF4A28 /* Command.swift in Sources */,
 				9D477EB924D424C00063870B /* Core.swift in Sources */,
 				9D477F0124D4E5100063870B /* AirportObject.swift in Sources */,
+				9D45F48124DCBC2F00B47DE5 /* InfoDialogView.swift in Sources */,
 				9D228BDE24D589B500FF4A28 /* Constants.swift in Sources */,
 				9D228BD924D57C7800FF4A28 /* ReportServiceImp.swift in Sources */,
 				9D86447B24DC1E6000D7D307 /* AvailableFlightsCell.swift in Sources */,
@@ -827,6 +850,7 @@
 				9D477EF424D4D6FD0063870B /* DatePickerModalView.swift in Sources */,
 				9D228BE024D58B8E00FF4A28 /* Extensions.swift in Sources */,
 				9D4CF6D124D9EDC500BB0F01 /* AirportSearchObject.swift in Sources */,
+				9D45F48324DCBCBF00B47DE5 /* Animations.swift in Sources */,
 				9DC2B8B624DC338700A2EC8E /* Flights.swift in Sources */,
 				9DC0DE2324D5D8DA00BFBA55 /* CustomViews.swift in Sources */,
 				9D477EEE24D4C9F30063870B /* AirportListViewController.swift in Sources */,

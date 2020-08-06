@@ -15,7 +15,7 @@ public struct Core {
     
     private static func _registerServices() {
         DiContainer.registerSingleton(NavigationService.self) { NavigationServiceImp() }
-        //DiContainer.registerSingleton(DialogService.self) { DialogServiceImp(navigationService: DiContainer.resolve()) }
+        DiContainer.registerSingleton(DialogService.self) { DialogServiceImp() }
         DiContainer.registerSingleton(ReportService.self) { ReportServiceImp() }
         DiContainer.registerSingleton(WebService.self) { WebServiceImp(reportService: DiContainer.resolve()) }
         DiContainer.registerSingleton(AirportWebService.self) { AirportWebServiceImp(webService: DiContainer.resolve()) }
@@ -25,7 +25,7 @@ public struct Core {
     private static func _registerViewModels() {
         DiContainer.register(MainViewModel.self, constructor: { MainViewModel(airportWebService: DiContainer.resolve()) })
         DiContainer.register(AirportsViewModel.self, constructor: { AirportsViewModel() })
-        DiContainer.register(FindFlightsViewModel.self, constructor: { FindFlightsViewModel(findFlightsWebService: DiContainer.resolve()) })
+        DiContainer.register(FindFlightsViewModel.self, constructor: { FindFlightsViewModel(findFlightsWebService: DiContainer.resolve(), dialogService: DiContainer.resolve()) })
         DiContainer.register(AvailableFlightsViewModel.self, constructor: { AvailableFlightsViewModel() })
         DiContainer.register(AirportListViewModel.self, constructor: { AirportListViewModel() })
     }

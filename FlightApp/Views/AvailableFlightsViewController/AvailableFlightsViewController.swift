@@ -38,13 +38,13 @@ class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewMo
         
         _topView.addSubview(airportDetailOrigin)
         airportDetailOrigin.anchor(top: _topView.topAnchor, leading: _topView.leadingAnchor, bottom: nil, trailing: nil,
-                             padding: .init(top: 15, left: 30, bottom: 0, right: 20))
+                             padding: .init(top: 15, left: 23, bottom: 0, right: 20))
         
-        let airportDetailDestination =  _createAirportDetail(name: viewModel.flights.getDestinationName(), code: viewModel.flights.getDestinationCode(), .right)
+        let airportDetailDestination = _createAirportDetail(name: viewModel.flights.getDestinationName(), code: viewModel.flights.getDestinationCode(), .right)
         
         _topView.addSubview(airportDetailDestination)
         airportDetailDestination.anchor(top: _topView.topAnchor, leading: nil, bottom: nil, trailing: _topView.trailingAnchor,
-                             padding: .init(top: 15, left: 20, bottom: 0, right: 30))
+                             padding: .init(top: 15, left: 20, bottom: 0, right: 23))
         
         let calendar = _createCalendar()
         
@@ -55,11 +55,11 @@ class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewMo
         let createDashView = _createDash()
         _topView.addSubview(createDashView)
         createDashView.anchor(top: nil, leading: calendar.leadingAnchor, bottom: _topView.bottomAnchor,
-                              trailing: calendar.trailingAnchor, padding: .init(top: 0, left: -25, bottom: 35, right: -25))
+                              trailing: calendar.trailingAnchor, padding: .init(top: 0, left: -25, bottom: 32, right: -25))
     }
     
     private func _createAirportDetail(name : String, code : String, _ align : NSTextAlignment) -> UIView {
-        let nameLabel = UILabel(text: name, font: .systemFont(ofSize: 9, weight: .semibold), textColor: UIColor.Theme.white, textAlignment: align, numberOfLines: 1)
+        let nameLabel = UILabel(text: name, font: .systemFont(ofSize: 11, weight: .semibold), textColor: UIColor.Theme.white, textAlignment: align, numberOfLines: 1)
         let codeLabel = UILabel(text: code, font: .systemFont(ofSize: 33, weight: .bold), textColor: UIColor.Theme.gold, textAlignment: align, numberOfLines: 1)
         
         let stack = UIView().stack(
@@ -121,6 +121,8 @@ class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewMo
             _tableView.dataSource = _dataSourceProvider
             _tableView.delegate = _dataSourceProvider
             
+            
+            _dataSourceProvider.labels = [viewModel.departLabel, viewModel.arriveLabel, viewModel.flightNrLabel]
             _dataSourceProvider.flights = viewModel.flights.getFlights()
         }
     }

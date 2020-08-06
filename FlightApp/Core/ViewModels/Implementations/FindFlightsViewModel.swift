@@ -10,9 +10,11 @@ import Foundation
 
 public class FindFlightsViewModel : ViewModelBase {
     let _findFlightsWebService: FindFlightsWebService
+    let _dialogService: DialogService
     
-    init (findFlightsWebService : FindFlightsWebService) {
+    init (findFlightsWebService : FindFlightsWebService, dialogService : DialogService) {
         _findFlightsWebService = findFlightsWebService
+        _dialogService = dialogService
     }
     
     public var passengersValue : String {
@@ -168,8 +170,10 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     private func _flightsFound(flights : FlightsObject?) {
-        if(flights != nil) {
+        if(flights != nil && flights!.trips.isEmpty) {
             navigationService.navigate(viewModel: AvailableFlightsViewModel.self, arguments: flights!, animated: true)
+        } else {
+            _dialogService.showInfo(noFlightsLabel, informationType: .bad)
         }
         
         isBusy.value = false
@@ -227,4 +231,5 @@ public class FindFlightsViewModel : ViewModelBase {
     public let teensLabel: String = L10N.localize(key: "findflights_teens")
     public let childLabel: String = L10N.localize(key: "findflights_child")
     public let childrenLabel: String = L10N.localize(key: "findflights_children")
+    private let noFlightsLabel: String = L10N.localize(key: "availableflights_noflights")
 }

@@ -8,16 +8,11 @@
 
 public class ViewModelBase : ViewModel {
     private let _navigationService: NavigationService = DiContainer.resolve()
-    private let _reportService: ReportService = DiContainer.resolve()
     
     public let isBusy : DynamicValue<Bool> = DynamicValue<Bool>(false)
     
     public var navigationService: NavigationService {
         get { return _navigationService }
-    }
-    
-    public var reportService: ReportService {
-        get { return _reportService }
     }
     
     public func prepare(dataObject: Any) {}

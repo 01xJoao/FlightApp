@@ -38,8 +38,11 @@ struct L10N {
     }
     
     static func _setLanguage() {
-        let deviceLanguage = Locale.current.languageCode
-        _currentLanguage = _supportedLanguages.first(where: { $0 == deviceLanguage }) ?? _defaultLanguage
+        let lang = String(Locale.preferredLanguages.first!)
+        let split = lang.split(separator: "-")
+        let language = String(split[0])
+    
+        _currentLanguage = _supportedLanguages.first(where: { $0 == language }) ?? _defaultLanguage
     }
     
     static func _loadJsonString() {

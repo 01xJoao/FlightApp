@@ -18,7 +18,7 @@ func ??= <T>(left: inout T?, right: T) {
 }
 
 public struct Utils {
-    //public let keyWindow: UIWindow = UIApplication.shared.windows.first {$0.isKeyWindow}!
+    public static let keyWindow: UIWindow = UIApplication.shared.windows.first {$0.isKeyWindow}!
     
     public static func serializeJson<T : Codable>(object: T) -> NSDictionary {
         let jsonData = try? JSONEncoder().encode(object)
@@ -36,31 +36,6 @@ public struct Utils {
         return [String(split[0]), String(split[1])]
     }
 }
-    
-//    public static func getDateFromIso(_ isoDate : String) -> Date {
-//        if(isoDate.isEmpty) {
-//            return Date()
-//        }
-//
-////        let dateFormatter = DateFormatter()
-////        let enUSPosixLocale = Locale(identifier: "en_US_POSIX")
-////        dateFormatter.locale = enUSPosixLocale
-////        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-////        dateFormatter.calendar = Calendar(identifier: .gregorian)
-//
-//        //let iso8601String = dateFormatter.string(from: Date())
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-//        //let date = dateFormatter.date(from: isoDate)!
-//
-//        //let date = dateFormatter.date(from: isoDate)
-//
-//        return dateFormatter.date(fromISO8601String: isoDate)
-//    }
-//}
-
 
 extension DateFormatter {
     static let iso8601DateFormatter: DateFormatter = {

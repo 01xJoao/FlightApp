@@ -27,7 +27,7 @@ public struct FlightDetail {
     public func getArriveTime() -> String {
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "hh:mm"
-         let date = DateFormatter.date(fromISO8601String: _flight.time.first ?? "")!
+         let date = DateFormatter.date(fromISO8601String: _flight.time.last ?? "")!
         return dateFormatterPrint.string(from: date)
     }
     
@@ -40,7 +40,7 @@ public struct FlightDetail {
     }
     
     public func getFare() -> String {
-        return "\(Int(_flight.regularFare.fares.first?.amount ?? 0))"
+        return "\(Int(_flight.regularFare.fares.first?.amount ?? 0)).0"
     }
     
     public func getCurrency() -> String {

@@ -11,4 +11,5 @@ import UIKit
 public struct LocalConstants {
     public static var DatePickerModalHeight: CGFloat = 400.0
     public static var PassengersModalHeight: CGFloat = 325.0
+    public static var AlertDialogHeight: CGFloat = 50
 }
