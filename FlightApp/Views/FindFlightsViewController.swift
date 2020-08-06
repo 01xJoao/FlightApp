@@ -37,7 +37,9 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     private func _createClearButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.clearLabel, style: .plain, target: self, action: #selector(_clearButtonAction))
+        let rightBarButton = UIBarButtonItem(title: viewModel.clearLabel, style: .plain, target: nil, action: nil)
+        rightBarButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.Theme.white], for: .normal)
+        navigationItem.rightBarButtonItem = rightBarButton
     }
     
     private func _configureFormView() {

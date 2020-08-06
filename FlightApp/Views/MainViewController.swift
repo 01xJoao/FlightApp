@@ -9,11 +9,15 @@
 import UIKit
 
 class MainViewController : BaseTabBarController<MainViewModel> {
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         _createObservers()
         _createTabBarController()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     private func _createObservers() {
