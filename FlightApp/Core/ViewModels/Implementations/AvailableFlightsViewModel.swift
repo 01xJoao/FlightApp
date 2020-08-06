@@ -8,9 +8,26 @@
 
 public class AvailableFlightsViewModel : ViewModelBase {
     
+    public override func prepare(dataObject: Any) {
+        if let flights = dataObject as? FlightsObject {
+            _setFlights(flights)
+        }
+    }
     
+    private func _setFlights(_ flights : FlightsObject) {
+        print(flights)
+    }
     
     private func _canExecute() -> Bool {
         return !isBusy.value
     }
+    
+    
+    //L10N
+    public let titleLabel = L10N.localize(key: "availableflights_title")
+    public let departLabel = L10N.localize(key: "availableflights_depart")
+    public let arriveLabel = L10N.localize(key: "availableflights_arrive")
+    public let flightNrLabel = L10N.localize(key: "availableflights_flight")
+    public let hrsLabel = L10N.localize(key: "global_hours")
+    public let minsLabel = L10N.localize(key: "global_minutes")
 }

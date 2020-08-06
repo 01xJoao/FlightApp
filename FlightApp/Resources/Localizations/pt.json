@@ -23,6 +23,7 @@
     "findflights_selectOrigin": "Selecionar Origem",
     "findflights_destinationCode": "DES",
     "findflights_selectDestination": "Selecionar Destino",
+    "availableflights_title": "Voos Disponíveis",
     "availableflights_depart": "Saída",
     "availableflights_arrive": "Chegada",
     "availableflights_flight": "Voo nr.",

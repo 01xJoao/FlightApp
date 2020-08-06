@@ -72,6 +72,8 @@
 		9D86447B24DC1E6000D7D307 /* AvailableFlightsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86447A24DC1E6000D7D307 /* AvailableFlightsCell.swift */; };
 		9D86447D24DC1E7100D7D307 /* AvailableFlightsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86447C24DC1E7100D7D307 /* AvailableFlightsDataSource.swift */; };
 		9DC0DE2324D5D8DA00BFBA55 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DE2224D5D8DA00BFBA55 /* CustomViews.swift */; };
+		9DC2B8B624DC338700A2EC8E /* Flights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B8B524DC338700A2EC8E /* Flights.swift */; };
+		9DC2B8B824DC383600A2EC8E /* FlightDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B8B724DC383600A2EC8E /* FlightDetail.swift */; };
 		9DDBF0B424DC0BC400CA6E8E /* FindFlightsWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDBF0B324DC0BC400CA6E8E /* FindFlightsWebService.swift */; };
 		9DDBF0B624DC0EC300CA6E8E /* FlightsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDBF0B524DC0EC300CA6E8E /* FlightsObject.swift */; };
 		9DDBF0B824DC117F00CA6E8E /* FindFlightsWebServiceImp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDBF0B724DC117F00CA6E8E /* FindFlightsWebServiceImp.swift */; };
@@ -160,6 +162,8 @@
 		9D86447A24DC1E6000D7D307 /* AvailableFlightsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableFlightsCell.swift; sourceTree = "<group>"; };
 		9D86447C24DC1E7100D7D307 /* AvailableFlightsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableFlightsDataSource.swift; sourceTree = "<group>"; };
 		9DC0DE2224D5D8DA00BFBA55 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
+		9DC2B8B524DC338700A2EC8E /* Flights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flights.swift; sourceTree = "<group>"; };
+		9DC2B8B724DC383600A2EC8E /* FlightDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetail.swift; sourceTree = "<group>"; };
 		9DDBF0B324DC0BC400CA6E8E /* FindFlightsWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFlightsWebService.swift; sourceTree = "<group>"; };
 		9DDBF0B524DC0EC300CA6E8E /* FlightsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsObject.swift; sourceTree = "<group>"; };
 		9DDBF0B724DC117F00CA6E8E /* FindFlightsWebServiceImp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFlightsWebServiceImp.swift; sourceTree = "<group>"; };
@@ -238,6 +242,8 @@
 				9D228BF524D59EF400FF4A28 /* Airport.swift */,
 				9D228BF724D5A11C00FF4A28 /* Market.swift */,
 				9D5E2A5E24D9F41600CEC5CF /* FindFlight.swift */,
+				9DC2B8B524DC338700A2EC8E /* Flights.swift */,
+				9DC2B8B724DC383600A2EC8E /* FlightDetail.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -804,6 +810,7 @@
 				9D228BDC24D5896A00FF4A28 /* Generics.swift in Sources */,
 				9DDBF0B824DC117F00CA6E8E /* FindFlightsWebServiceImp.swift in Sources */,
 				9D477EE924D488610063870B /* AirportsViewModel.swift in Sources */,
+				9DC2B8B824DC383600A2EC8E /* FlightDetail.swift in Sources */,
 				9D477EBD24D4271B0063870B /* DiContainer.swift in Sources */,
 				9D477F0A24D50BBD0063870B /* Enums.swift in Sources */,
 				9D477EE324D487E00063870B /* AirportsViewController.swift in Sources */,
@@ -820,6 +827,7 @@
 				9D477EF424D4D6FD0063870B /* DatePickerModalView.swift in Sources */,
 				9D228BE024D58B8E00FF4A28 /* Extensions.swift in Sources */,
 				9D4CF6D124D9EDC500BB0F01 /* AirportSearchObject.swift in Sources */,
+				9DC2B8B624DC338700A2EC8E /* Flights.swift in Sources */,
 				9DC0DE2324D5D8DA00BFBA55 /* CustomViews.swift in Sources */,
 				9D477EEE24D4C9F30063870B /* AirportListViewController.swift in Sources */,
 				9D477EE524D488030063870B /* FindFlightsViewController.swift in Sources */,

@@ -38,17 +38,12 @@ public struct FindFlight {
     public func getDeparture() -> String {
         let df = DateFormatter()
         df.dateFormat = "d MMMM"
-        
-        var date = df.string(from: _findFlight.departure)
-        
-        date = "\(date), \(String(describing: _findFlight.departure.dayOfTheWeek()!))."
-        
-        return date
+        let date = df.string(from: _findFlight.departure)
+        return "\(date), \(String(describing: _findFlight.departure.dayOfTheWeek()!))."
     }
     
     private func _getDepartureForURL() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter.string(from: _findFlight.departure)
     }

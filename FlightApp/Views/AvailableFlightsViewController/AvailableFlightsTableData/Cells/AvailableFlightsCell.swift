@@ -6,4 +6,15 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class FlightCell : UITableViewCell {
+    public func config(_ flight : FlightDetail) {
+        self.removeAllSubViews()
+        _createCard(flight)
+    }
+    
+    private func _createCard(_ flight : FlightDetail) {
+    }
+}
+

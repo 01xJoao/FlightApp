@@ -6,4 +6,46 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class AvailableFlightsDataSource : NSObject, UITableViewDataSource, UITableViewDelegate {
+    private let _cellIdentifier = "FlightCell"
+    private let _tableView : UITableView
+    
+    open var flights = [FlightDetail]() {
+        didSet {
+            DispatchQueue.main.async {
+                self._tableView.reloadData()
+            }
+        }
+    }
+    
+    init(tableView : UITableView) {
+        _tableView = tableView
+        tableView.separatorStyle = .none
+        tableView.register(FlightCell.self, forCellReuseIdentifier: _cellIdentifier)
+        super.init()
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return flights.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: _cellIdentifier, for: indexPath) as! FlightCell
+        
+        let item = flights[indexPath.row]
+        cell.config(item)
+        cell.selectionStyle = .none
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
+}
