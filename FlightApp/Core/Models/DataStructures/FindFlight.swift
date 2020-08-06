@@ -31,6 +31,10 @@ public struct FindFlight {
         return _findFlight.destinationCode
     }
     
+    public func getDepartureDate() -> Date {
+        return _findFlight.departure
+    }
+    
     public func getDeparture() -> String {
         let df = DateFormatter()
         df.dateFormat = "d MMMM"
@@ -42,14 +46,18 @@ public struct FindFlight {
         return date
     }
     
-    public func getDepartureForURL() -> String {
+    private func _getDepartureForURL() -> String {
         let df = DateFormatter()
         df.dateFormat = "yyyy-mm-dd"
         return df.string(from: _findFlight.departure)
     }
     
-    public func getPassengers() -> Passangers {
+    public func getPassengers() -> PassengersObject {
         return _findFlight.passengers
+    }
+    
+    private func _getPassengersForURL() -> String {
+        return "adt=\(_findFlight.passengers.adults)&teen=\(_findFlight.passengers.teen)&chd=\(_findFlight.passengers.children)"
     }
     
     public mutating func setOrigin(originName: String, originCode : String){
@@ -66,7 +74,7 @@ public struct FindFlight {
         _findFlight.departure = date
     }
     
-    public mutating func setPassengers(_ passangers: Passangers) {
+    public mutating func setPassengers(_ passangers: PassengersObject) {
         _findFlight.passengers = passangers
     }
     

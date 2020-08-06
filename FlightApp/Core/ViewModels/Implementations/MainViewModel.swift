@@ -35,8 +35,6 @@ public class MainViewModel : ViewModelBase {
     }
     
     private func _airportsCompletion(_ stationList : StationListObject?) {
-        isBusy.value = false
-        
         var airportList: [Airport] = []
         
         stationList?.stations?.forEach{ airport in
@@ -44,5 +42,10 @@ public class MainViewModel : ViewModelBase {
         }
         
         _airports.addAll(object: airportList)
+        
+        isBusy.value = false
     }
+    
+    public let findFlightsTitleLabel: String = L10N.localize(key: "findflights_title")
+    public let airportsTitleLabel: String = L10N.localize(key: "airports_title")
 }

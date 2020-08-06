@@ -74,3 +74,21 @@ func createMainBlueButton(name : String, target : Any, action : Selector) -> UIB
     
     return button
 }
+
+public func createModalTopBar(_ view : UIView, topBar : UIView, titleLabel : String, selector : Selector) {
+    topBar.withHeight(55)
+    view.addSubview(topBar)
+    topBar.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
+    
+    let title = UILabel(text: titleLabel, font: .boldSystemFont(ofSize: 18), textColor: UIColor.Theme.white, textAlignment: .center)
+    
+    topBar.addSubview(title)
+    title.anchor(top: topBar.topAnchor, leading: topBar.leadingAnchor, bottom: topBar.bottomAnchor, trailing: topBar.trailingAnchor)
+    
+    let button = UIButton(image: UIImage(named: "Close")!, tintColor: UIColor.Theme.white, action: selector)
+    button.withHeight(55)
+    
+    topBar.addSubview(button)
+    button.anchor(top: topBar.topAnchor, leading: nil, bottom: nil, trailing: topBar.trailingAnchor,
+                  padding: .init(top: 0, left: 0, bottom: 0, right: 20))
+}

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Passangers {
+public struct PassengersObject {
     var adults : Int
     var teen : Int
     var children : Int

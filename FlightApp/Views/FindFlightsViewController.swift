@@ -7,16 +7,18 @@
 //
 
 import UIKit
+import DrawerView
 
 class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     private var _originCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 18), textColor: UIColor.Theme.darkGrey, textAlignment: .center)
     private var _originNameLabel = UILabel(text:"", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
     private var _destinationCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 18), textColor: UIColor.Theme.darkGrey,textAlignment: .center)
     private var _destinationNameLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
+    private let _departureLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
+    private let _passengersLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
     
-    private let _departureLabel =  UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
-    private let _passengersLabel  = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
-    
+    private var _drawerDepartureView: DrawerView?
+    private var _drawerPassengersView: DrawerView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +42,8 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         _addCountriesStackAndSeparator(flightPlacesView)
 
         formContainerStackView.addArrangedSubview(flightPlacesView)
-        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.departureLabel, label: _departureLabel))
-        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.passengersLabel, label: _passengersLabel))
+        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.departureLabel, label: _departureLabel, action: #selector(_departureAction)))
+        formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.passengersLabel, label: _passengersLabel, action: #selector(_passengersAction)))
         
         _submitButton()
     }
@@ -49,17 +51,19 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     private func _createObservers() {
         viewModel.findFlight.addObserver(self, completionHandler: {
             self._setAirportNamesAndCodes(self._originCodeLabel, self._originNameLabel,
-                                          "ORI", "Select Origin",
+                                          self.viewModel.originPlaceholderCodeLabel,
+                                          self.viewModel.originPlaceholderNameLabel,
                                           self.viewModel.findFlight.value.getOriginCode(),
                                           self.viewModel.findFlight.value.getOriginName())
             
             self._setAirportNamesAndCodes(self._destinationCodeLabel, self._destinationNameLabel,
-                                          "DES", "Select Destination",
+                                          self.viewModel.destinationPlaceholderCodeLabel,
+                                          self.viewModel.destinationPlaceholderNameLabel,
                                           self.viewModel.findFlight.value.getDestinationCode(),
                                           self.viewModel.findFlight.value.getDestinationName())
             
             self._departureLabel.text = self.viewModel.findFlight.value.getDeparture()
-            //self._passengersLabel.text = self.viewModel.findFlight.value.getPassengers()
+            self._passengersLabel.text = self.viewModel.passengersValue
         })
     }
     
@@ -72,7 +76,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         
         labelName.text = name.isEmpty ? placeholderName : name
         labelName.font = name.isEmpty ? .italicSystemFont(ofSize: 14) : .boldSystemFont(ofSize: 16)
-        labelName.textColor = name.isEmpty ? UIColor.Theme.strongGrey : UIColor.Theme.black
+        labelName.textColor = name.isEmpty ? UIColor.Theme.darkGrey : UIColor.Theme.black
     }
     
     private func _createClearButton() {
@@ -80,9 +84,15 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     private func _setDefaultData() {
-        _departureLabel.text = self.viewModel.findFlight.value.getDeparture()
-        _setAirportNamesAndCodes(_originCodeLabel, _originNameLabel, "ORI", "Select Origin" )
-        _setAirportNamesAndCodes(_destinationCodeLabel, _destinationNameLabel, "DES", "Select Destination")
+        _departureLabel.text = viewModel.findFlight.value.getDeparture()
+        
+        _setAirportNamesAndCodes(_originCodeLabel, _originNameLabel,
+                                 viewModel.originPlaceholderCodeLabel, viewModel.originPlaceholderNameLabel)
+        
+        _setAirportNamesAndCodes(_destinationCodeLabel, _destinationNameLabel,
+                                 viewModel.destinationPlaceholderCodeLabel, viewModel.destinationPlaceholderNameLabel)
+        
+        _passengersLabel.text = viewModel.passengersValue
     }
     
     private func _addSwapCountriesStack(_ flightPlacesView : UIView) {
@@ -164,7 +174,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         return cardDescription
     }
     
-    private func _formCard(descriptionLabel : String, label : UILabel) -> UIView {
+    private func _formCard(descriptionLabel : String, label : UILabel, action : Selector) -> UIView {
         let cardView = backgroundRoundBorderView()
         cardView.constrainHeight(90)
         
@@ -179,7 +189,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
             alignment: .center
         ).padLeft(22).padRight(22)
         
-        let button = UIButton(title: "", titleColor: .clear, font: .systemFont(ofSize: 0), backgroundColor: .clear, target: self, action: #selector(_originCountryButtonAction))
+        let button = UIButton(title: "", titleColor: .clear, font: .systemFont(ofSize: 0), backgroundColor: .clear, target: self, action: action)
         cardView.addSubview(button)
         button.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: cardView.bottomAnchor, trailing: cardView.trailingAnchor, padding: .allSides(5))
         
@@ -210,7 +220,43 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         viewModel.openAirportListViewCommand.executeIf(.destination)
     }
     
+    @objc fileprivate func _departureAction() {
+        let datePickerVC = DatePickerModalView()
+        datePickerVC.config(date: viewModel.findFlight.value.getDepartureDate(), titleLabel: viewModel.departureLabel, confirmLabel: viewModel.confirmLabel, handler: _datePickerSelection)
+        
+        _drawerDepartureView = viewModel.navigationService.currentViewController().addDrawerView(withViewController: datePickerVC)
+        _drawerDepartureView!.partiallyOpenHeight = 400
+        _drawerDepartureView!.snapPositions = [.partiallyOpen, .closed]
+    }
+    
+    func _datePickerSelection(_ obj : Any) {
+        if let date = obj as? Date {
+            viewModel.setDepartureCommand.executeIf(date)
+        }
+        
+        _drawerDepartureView?.removeFromSuperview(animated: true)
+    }
+    
+    @objc fileprivate func _passengersAction() {
+        let passengersVC = PassengersModalView()
+        passengersVC.config(passengers: viewModel.findFlight.value.getPassengers(), titleLabel: viewModel.passengersLabel,
+                            applyLabel: viewModel.applyLabel, handler: _passengersSelection,
+                            labels: [viewModel.adultsLabel, viewModel.teensLabel, viewModel.childrenLabel])
+        
+        _drawerPassengersView = viewModel.navigationService.currentViewController().addDrawerView(withViewController: passengersVC)
+        _drawerPassengersView!.partiallyOpenHeight = 400
+        _drawerPassengersView!.snapPositions = [.partiallyOpen, .closed]
+    }
+    
+    func _passengersSelection(_ obj : Any) {
+        if let passengers = obj as? PassengersObject {
+            viewModel.setPassengersCommand.executeIf(passengers)
+        }
+        
+        _drawerPassengersView?.removeFromSuperview(animated: true)
+    }
+    
     @objc fileprivate func _submitButtonAction() {
-        print("clicked")
+         //viewModel.submitFlightCommand.executeIf()
     }
 }

@@ -19,19 +19,19 @@ public struct CustomUIExtensions {
 }
 
 extension UIColor {
-  struct Theme {
-    static var mainBlue = UIColor().fromRGBA(red: 31, green: 91, blue: 172, alpha: 1.0)
-    static var babyBlue = UIColor().fromRGBA(red: 229, green: 238, blue: 255, alpha: 1.0)
-    static var darkBlue = UIColor().fromRGBA(red: 36, green: 94, blue: 229, alpha: 1.0)
-    static var white = UIColor().fromRGBA(red: 255, green: 255, blue: 255, alpha: 1.0)
-    static var darkerWhite = UIColor().fromRGBA(red: 249, green: 249, blue: 252, alpha: 1.0)
-    static var black = UIColor().fromRGBA(red: 0, green: 0, blue: 0, alpha: 1.0)
-    static var grey = UIColor().fromRGBA(red: 233, green: 233, blue: 233, alpha: 1.0)
-    static var strongGrey = UIColor().fromRGBA(red: 105, green: 105, blue: 105, alpha: 1.0)
-    static var babyGrey = UIColor().fromRGBA(red: 241, green: 241, blue: 241, alpha: 1.0)
-    static var darkGrey = UIColor().fromRGBA(red: 154, green: 156, blue: 174, alpha: 1.0)
-    static var gold = UIColor().fromRGBA(red: 232, green: 178, blue: 0, alpha: 1.0)
-  }
+    struct Theme {
+        static var mainBlue = UIColor().fromRGBA(red: 31, green: 91, blue: 172, alpha: 1.0)
+        static var babyBlue = UIColor().fromRGBA(red: 229, green: 238, blue: 255, alpha: 1.0)
+        static var darkBlue = UIColor().fromRGBA(red: 36, green: 94, blue: 229, alpha: 1.0)
+        static var white = UIColor().fromRGBA(red: 255, green: 255, blue: 255, alpha: 1.0)
+        static var darkerWhite = UIColor().fromRGBA(red: 249, green: 249, blue: 252, alpha: 1.0)
+        static var black = UIColor().fromRGBA(red: 0, green: 0, blue: 0, alpha: 1.0)
+        static var grey = UIColor().fromRGBA(red: 233, green: 233, blue: 233, alpha: 1.0)
+        static var strongGrey = UIColor().fromRGBA(red: 105, green: 105, blue: 105, alpha: 1.0)
+        static var babyGrey = UIColor().fromRGBA(red: 241, green: 241, blue: 241, alpha: 1.0)
+        static var darkGrey = UIColor().fromRGBA(red: 154, green: 156, blue: 174, alpha: 1.0)
+        static var gold = UIColor().fromRGBA(red: 232, green: 178, blue: 0, alpha: 1.0)
+    }
 }
 
 extension UIColor {
@@ -117,5 +117,12 @@ extension UIViewController {
 extension UIView {
      public func removeAllSubViews() {
           self.subviews.forEach({ $0.removeFromSuperview() })
+    }
+    
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
     }
 }

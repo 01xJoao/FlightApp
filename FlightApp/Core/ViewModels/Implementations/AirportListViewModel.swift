@@ -32,7 +32,7 @@ public class AirportListViewModel : ViewModelBase {
        }
     }
     
-    private var _searchCommand: WPCommand<String>?
+    private var _searchCommand : WPCommand<String>?
     public var searchCommand: WPCommand<String> {
         get {
             _searchCommand ??= WPCommand<String>(_search)
@@ -40,13 +40,14 @@ public class AirportListViewModel : ViewModelBase {
         }
     }
     
-    private var _closeViewCommand: WPCommand<String>?
+    private var _closeViewCommand : WPCommand<String>?
     public var closeViewCommand: WPCommand<String> {
         get {
             _closeViewCommand ??= WPCommand<String>(_closeView)
             return _closeViewCommand!
         }
     }
+    
     
     public override func prepare(dataObject: Any) {
         let airportSearch = dataObject as! AirportSearchObject

@@ -32,7 +32,10 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
         searchController.searchBar.delegate = self
         searchController.obscuresBackgroundDuringPresentation = false
         self.navigationItem.searchController = searchController
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonItem.SystemItem.close, target: self, action: #selector(_closeButton))
+        
+        let button = UIBarButtonItem.init(image: UIImage(named: "Close"), style: .done, target: self, action: #selector(_closeButton))
+        button.tintColor = UIColor.white
+        self.navigationItem.rightBarButtonItem = button
     }
     
     private func _configureTableView() {

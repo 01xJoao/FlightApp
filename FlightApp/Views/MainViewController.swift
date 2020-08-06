@@ -16,9 +16,15 @@ class MainViewController : BaseTabBarController<MainViewModel> {
     }
     
     private func _createTabBarController() {
+        viewModel.isBusy.addObserver(self, completionHandler: {
+            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+        })
+        
+        self.tabBarController?.tabBar.isUserInteractionEnabled = false
+        
         self.viewControllers = [
-            _createViewTab(AirportsViewModel.self, L10N.localize(key: "airports_title"),  UIImage(named: "Airport")!),
-            _createViewTab(FindFlightsViewModel.self, L10N.localize(key: "findflights_title"), UIImage(named: "FindFlights")!),
+            _createViewTab(AirportsViewModel.self, viewModel.findFlightsTitleLabel,  UIImage(named: "Airport")!),
+            _createViewTab(FindFlightsViewModel.self, viewModel.airportsTitleLabel, UIImage(named: "FindFlights")!),
         ]
     }
     

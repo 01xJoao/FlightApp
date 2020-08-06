@@ -42,7 +42,7 @@ public class BaseViewController<TViewModel : ViewModel> : UIViewController {
         }
         
         _viewModel = vm
-        _viewModel.initialize()
+        _viewModel?.initialize()
     }
     
     private func _createViewCloseNotification() {
@@ -55,7 +55,7 @@ public class BaseViewController<TViewModel : ViewModel> : UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         _setAsVisibleViewController()
-        _viewModel.appearing()
+        _viewModel?.appearing()
     }
     
     private func _setAsVisibleViewController() {
@@ -65,7 +65,7 @@ public class BaseViewController<TViewModel : ViewModel> : UIViewController {
     
     public override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        _viewModel.disappearing()
+        _viewModel?.disappearing()
     }
     
     @objc func _handleViewDismiss(_ notification: NSNotification) {

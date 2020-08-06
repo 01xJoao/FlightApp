@@ -14,9 +14,9 @@ public struct FindFlightObject {
     var destinationName: String
     var destinationCode: String
     var departure: Date
-    var passengers: Passangers
+    var passengers: PassengersObject
 
-    init(originName: String = "", originCode: String = "", destinationName: String = "", destinationCode: String = "", departure: Date = Date(), passengers: Passangers = Passangers()) {
+    init(originName: String = "", originCode: String = "", destinationName: String = "", destinationCode: String = "", departure: Date = Date(), passengers: PassengersObject = PassengersObject()) {
         self.originName = originName
         self.originCode = originCode
         self.destinationName = destinationName

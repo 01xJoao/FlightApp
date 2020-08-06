@@ -9,6 +9,8 @@
 import UIKit
 import ImageLoader
 
+typealias EventHandler = (Any) -> (Any)
+
 infix operator ??=
 func ??= <T>(left: inout T?, right: T) {
     left = left ?? right
