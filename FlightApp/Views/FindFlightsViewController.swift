@@ -10,6 +10,8 @@ import UIKit
 import DrawerView
 
 class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
+    private var _activityIndicatorView: UIActivityIndicatorView!
+    
     private var _originCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 18), textColor: UIColor.Theme.darkGrey, textAlignment: .center)
     private var _originNameLabel = UILabel(text:"", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
     private var _destinationCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 18), textColor: UIColor.Theme.darkGrey,textAlignment: .center)
@@ -27,28 +29,60 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
 
     private func _setupView() {
-        _createObservers()
         _createClearButton()
+        _configureFormView()
         _setDefaultData()
-
+        _configureActivityView()
+        _createObservers()
+    }
+    
+    private func _createClearButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.clearLabel, style: .plain, target: self, action: #selector(_clearButtonAction))
+    }
+    
+    private func _configureFormView() {
         formViewAlignment = .top
         formContainerStackView.spacing = 12
         formContainerStackView.layoutMargins = .init(top: 12, left: 12, bottom: 100, right: 12)
-        
+       
         let flightPlacesView = backgroundRoundBorderView()
         flightPlacesView.constrainHeight(150)
-        
+       
         _addSwapCountriesStack(flightPlacesView)
         _addCountriesStackAndSeparator(flightPlacesView)
 
         formContainerStackView.addArrangedSubview(flightPlacesView)
         formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.departureLabel, label: _departureLabel, action: #selector(_departureAction)))
         formContainerStackView.addArrangedSubview(_formCard(descriptionLabel: viewModel.passengersLabel, label: _passengersLabel, action: #selector(_passengersAction)))
+       
+       _submitButton()
+    }
+    
+    private func _setDefaultData() {
+        _departureLabel.text = viewModel.findFlight.value.getDeparture()
         
-        _submitButton()
+        _setAirportNamesAndCodes(_originCodeLabel, _originNameLabel,
+                                 viewModel.originPlaceholderCodeLabel, viewModel.originPlaceholderNameLabel)
+        
+        _setAirportNamesAndCodes(_destinationCodeLabel, _destinationNameLabel,
+                                 viewModel.destinationPlaceholderCodeLabel, viewModel.destinationPlaceholderNameLabel)
+        
+        _passengersLabel.text = viewModel.passengersValue
+    }
+    
+    private func _configureActivityView() {
+        _activityIndicatorView = createActivityIndicatory(view: self.view)
     }
     
     private func _createObservers() {
+        viewModel.isBusy.addObserver(self, completionHandler: {
+            if(self.viewModel.isBusy.value) {
+                self._activityIndicatorView.startAnimating()
+            } else {
+                self._activityIndicatorView.stopAnimating()
+            }
+        })
+        
         viewModel.findFlight.addObserver(self, completionHandler: {
             self._setAirportNamesAndCodes(self._originCodeLabel, self._originNameLabel,
                                           self.viewModel.originPlaceholderCodeLabel,
@@ -77,22 +111,6 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         labelName.text = name.isEmpty ? placeholderName : name
         labelName.font = name.isEmpty ? .italicSystemFont(ofSize: 14) : .boldSystemFont(ofSize: 16)
         labelName.textColor = name.isEmpty ? UIColor.Theme.darkGrey : UIColor.Theme.black
-    }
-    
-    private func _createClearButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: viewModel.clearLabel, style: .plain, target: self, action: #selector(_clearButtonAction))
-    }
-    
-    private func _setDefaultData() {
-        _departureLabel.text = viewModel.findFlight.value.getDeparture()
-        
-        _setAirportNamesAndCodes(_originCodeLabel, _originNameLabel,
-                                 viewModel.originPlaceholderCodeLabel, viewModel.originPlaceholderNameLabel)
-        
-        _setAirportNamesAndCodes(_destinationCodeLabel, _destinationNameLabel,
-                                 viewModel.destinationPlaceholderCodeLabel, viewModel.destinationPlaceholderNameLabel)
-        
-        _passengersLabel.text = viewModel.passengersValue
     }
     
     private func _addSwapCountriesStack(_ flightPlacesView : UIView) {
@@ -257,6 +275,6 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     @objc fileprivate func _submitButtonAction() {
-         //viewModel.submitFlightCommand.executeIf()
+        viewModel.submitButtonCommand.executeIf()
     }
 }

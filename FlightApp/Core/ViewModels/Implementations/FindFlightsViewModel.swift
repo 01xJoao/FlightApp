@@ -151,7 +151,11 @@ public class FindFlightsViewModel : ViewModelBase {
     
     private func _submitFindFlight() {
         if(_canFindFlight()) {
+            isBusy.value = true
             
+            DispatchQueue.main.async {
+                _ = self._findFlightsWebService.findAvailableFlights(findFlight: self._findFlight.value, completion: self._flightsFound)
+            }
         }
     }
     
@@ -161,6 +165,14 @@ public class FindFlightsViewModel : ViewModelBase {
         }
         
         return true
+    }
+    
+    private func _flightsFound(flights : FlightsObject?) {
+        if(flights != nil) {
+            navigationService.navigate(viewModel: AvailableFlightsViewModel.self, arguments: flights!, animated: true)
+        }
+        
+        isBusy.value = false
     }
     
     public override func dataNotify(dataObject: Any?) {

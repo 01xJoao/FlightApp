@@ -7,6 +7,9 @@
 //
 
 public class AvailableFlightsViewModel : ViewModelBase {
+    
+    
+    
     private func _canExecute() -> Bool {
         return !isBusy.value
     }

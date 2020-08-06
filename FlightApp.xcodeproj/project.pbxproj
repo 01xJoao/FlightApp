@@ -69,6 +69,8 @@
 		9D5E2A6524DA255800CEC5CF /* AirportListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E2A6424DA255800CEC5CF /* AirportListCell.swift */; };
 		9D5E2A6724DA273E00CEC5CF /* AirportListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D5E2A6624DA273E00CEC5CF /* AirportListDataSource.swift */; };
 		9D6B0C9B24D6E24500127669 /* AirportDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B0C9A24D6E24500127669 /* AirportDataSource.swift */; };
+		9D86447B24DC1E6000D7D307 /* AvailableFlightsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86447A24DC1E6000D7D307 /* AvailableFlightsCell.swift */; };
+		9D86447D24DC1E7100D7D307 /* AvailableFlightsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86447C24DC1E7100D7D307 /* AvailableFlightsDataSource.swift */; };
 		9DC0DE2324D5D8DA00BFBA55 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DE2224D5D8DA00BFBA55 /* CustomViews.swift */; };
 		9DDBF0B424DC0BC400CA6E8E /* FindFlightsWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDBF0B324DC0BC400CA6E8E /* FindFlightsWebService.swift */; };
 		9DDBF0B624DC0EC300CA6E8E /* FlightsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDBF0B524DC0EC300CA6E8E /* FlightsObject.swift */; };
@@ -155,6 +157,8 @@
 		9D5E2A6424DA255800CEC5CF /* AirportListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportListCell.swift; sourceTree = "<group>"; };
 		9D5E2A6624DA273E00CEC5CF /* AirportListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportListDataSource.swift; sourceTree = "<group>"; };
 		9D6B0C9A24D6E24500127669 /* AirportDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDataSource.swift; sourceTree = "<group>"; };
+		9D86447A24DC1E6000D7D307 /* AvailableFlightsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableFlightsCell.swift; sourceTree = "<group>"; };
+		9D86447C24DC1E7100D7D307 /* AvailableFlightsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableFlightsDataSource.swift; sourceTree = "<group>"; };
 		9DC0DE2224D5D8DA00BFBA55 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		9DDBF0B324DC0BC400CA6E8E /* FindFlightsWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFlightsWebService.swift; sourceTree = "<group>"; };
 		9DDBF0B524DC0EC300CA6E8E /* FlightsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightsObject.swift; sourceTree = "<group>"; };
@@ -526,6 +530,7 @@
 		9D4CF6CF24D8EBBE00BB0F01 /* AvailableFlightsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				9D86447824DC1E3300D7D307 /* AvailableFlightsTableData */,
 				9D477ED724D4420B0063870B /* AvailableFlightsViewController.swift */,
 			);
 			path = AvailableFlightsViewController;
@@ -563,6 +568,23 @@
 				9D6B0C9A24D6E24500127669 /* AirportDataSource.swift */,
 			);
 			path = AirportTableData;
+			sourceTree = "<group>";
+		};
+		9D86447824DC1E3300D7D307 /* AvailableFlightsTableData */ = {
+			isa = PBXGroup;
+			children = (
+				9D86447924DC1E4400D7D307 /* Cells */,
+				9D86447C24DC1E7100D7D307 /* AvailableFlightsDataSource.swift */,
+			);
+			path = AvailableFlightsTableData;
+			sourceTree = "<group>";
+		};
+		9D86447924DC1E4400D7D307 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				9D86447A24DC1E6000D7D307 /* AvailableFlightsCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		BFBA4E1F804BCB8162A72607 /* Frameworks */ = {
@@ -761,6 +783,7 @@
 				9D477F0424D4E8A80063870B /* AirportWebServiceImp.swift in Sources */,
 				9D5E2A5F24D9F41600CEC5CF /* FindFlight.swift in Sources */,
 				9D477ED624D439930063870B /* MainViewController.swift in Sources */,
+				9D86447D24DC1E7100D7D307 /* AvailableFlightsDataSource.swift in Sources */,
 				9D477EC424D42DD40063870B /* NavigationServiceImp.swift in Sources */,
 				9D228BD724D57C6D00FF4A28 /* ReportService.swift in Sources */,
 				9D228C0324D5B03200FF4A28 /* AirportCell.swift in Sources */,
@@ -774,6 +797,7 @@
 				9D477F0124D4E5100063870B /* AirportObject.swift in Sources */,
 				9D228BDE24D589B500FF4A28 /* Constants.swift in Sources */,
 				9D228BD924D57C7800FF4A28 /* ReportServiceImp.swift in Sources */,
+				9D86447B24DC1E6000D7D307 /* AvailableFlightsCell.swift in Sources */,
 				9D228BF124D59C5600FF4A28 /* L10N.swift in Sources */,
 				9D477EE724D488500063870B /* FindFlightsViewModel.swift in Sources */,
 				9D477F0624D4EB440063870B /* WebServiceImp.swift in Sources */,

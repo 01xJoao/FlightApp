@@ -8,14 +8,18 @@
 
 import Foundation
 
-public struct FlightsObject: Codable {
-    let currency, serverTimeUTC: String
+struct FlightsObject: Codable {
+    let termsOfUse: String
+    let currency: String
     let currPrecision: Int
+    let routeGroup, tripType, upgradeType: String
     let trips: [TripObject]
+    let serverTimeUTC: String
 }
 
 struct TripObject: Codable {
-    let origin, destination: String
+    let origin, originName, destination, destinationName: String
+    let routeGroup, tripType, upgradeType: String
     let dates: [DateElementObject]
 }
 
@@ -25,25 +29,34 @@ struct DateElementObject: Codable {
 }
 
 struct FlightObject: Codable {
-    let time: [String]
-    let regularFare: FareObject
     let faresLeft: Int
-    let timeUTC: [String]
-    let duration, flightNumber: String
-    let infantsLeft: Int
     let flightKey: String
-    let businessFare: FareObject
+    let infantsLeft: Int
+    let regularFare: RegularFareObject
+    let operatedBy: String
+    let segments: [SegmentObject]
+    let flightNumber: String
+    let time, timeUTC: [String]
+    let duration: String
+}
+
+struct RegularFareObject: Codable {
+    let fareKey, fareClass: String
+    let fares: [FareObject]
 }
 
 struct FareObject: Codable {
-    let fareKey, fareClass: String
-    let fares: [FareElementObject]
+    let type: String
+    let amount, count: Int
+    let hasDiscount: Bool
+    let publishedFare, discountInPercent: Int
+    let hasPromoDiscount: Bool
+    let discountAmount: Int
 }
 
-struct FareElementObject: Codable {
-    let amount: Double
-    let count: Int
-    let type: String
-    let hasDiscount: Bool
-    let publishedFare: Double
+struct SegmentObject: Codable {
+    let segmentNr: Int
+    let origin, destination, flightNumber: String
+    let time, timeUTC: [String]
+    let duration: String
 }
