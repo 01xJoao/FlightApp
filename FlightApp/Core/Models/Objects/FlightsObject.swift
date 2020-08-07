@@ -10,11 +10,13 @@ import Foundation
 
 struct FlightsObject: Codable {
     let termsOfUse: String
+    let currPrecision: Double
+    let routeGroup: String
+    let tripType: String
     let currency: String
-    let currPrecision: Int
-    let routeGroup, tripType, upgradeType: String
-    let trips: [TripObject]
     let serverTimeUTC: String
+    let upgradeType: String
+    let trips: [TripObject]
 }
 
 struct TripObject: Codable {
@@ -29,9 +31,9 @@ struct DateElementObject: Codable {
 }
 
 struct FlightObject: Codable {
-    let faresLeft: Int
+    let faresLeft: Double
     let flightKey: String
-    let infantsLeft: Int
+    let infantsLeft: Double
     let regularFare: RegularFareObject
     let operatedBy: String
     let segments: [SegmentObject]
@@ -47,15 +49,15 @@ struct RegularFareObject: Codable {
 
 struct FareObject: Codable {
     let type: String
-    let amount, count: Int
+    let amount, count: Double
     let hasDiscount: Bool
-    let publishedFare, discountInPercent: Int
+    let publishedFare, discountInPercent: Double
     let hasPromoDiscount: Bool
-    let discountAmount: Int
+    let discountAmount: Double
 }
 
 struct SegmentObject: Codable {
-    let segmentNr: Int
+    let segmentNr: Double
     let origin, destination, flightNumber: String
     let time, timeUTC: [String]
     let duration: String

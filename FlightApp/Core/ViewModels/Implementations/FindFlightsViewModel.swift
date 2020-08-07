@@ -171,7 +171,7 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     private func _flightsFound(flights : FlightsObject?) {
-        if(flights != nil && flights!.trips.isEmpty) {
+        if(flights != nil && !flights!.trips.isEmpty) {
             navigationService.navigate(viewModel: AvailableFlightsViewModel.self, arguments: flights!, animated: true)
         } else {
             _dialogService.showInfo(noFlightsLabel, informationType: .bad)
