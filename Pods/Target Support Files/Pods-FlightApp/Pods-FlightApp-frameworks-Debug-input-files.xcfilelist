@@ -2,9 +2,5 @@ ${PODS_ROOT}/Target Support Files/Pods-FlightApp/Pods-FlightApp-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/DrawerView/DrawerView.framework
 ${BUILT_PRODUCTS_DIR}/ImageLoader/ImageLoader.framework
 ${BUILT_PRODUCTS_DIR}/LBTATools/LBTATools.framework
-${BUILT_PRODUCTS_DIR}/MDFInternationalization/MDFInternationalization.framework
-${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework
-${BUILT_PRODUCTS_DIR}/MotionAnimator/MotionAnimator.framework
-${BUILT_PRODUCTS_DIR}/MotionInterchange/MotionInterchange.framework
 ${BUILT_PRODUCTS_DIR}/Networking/Networking.framework
 ${BUILT_PRODUCTS_DIR}/Sentry/Sentry.framework

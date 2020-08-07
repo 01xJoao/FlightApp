@@ -117,7 +117,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     
     private func _addSwapCountriesStack(_ flightPlacesView : UIView) {
         let swapImageView = changeImageColor("Swap")
-        
+
         let swapStack = UIView().stack(
             _originCodeLabel,
             swapImageView,
@@ -136,8 +136,8 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     private func _addCountriesStackAndSeparator(_ flightPlacesView : UIView) {
-        let topCountryStack = _countriesFormView(imageName: "Airplane1", subtitleLabel: viewModel.originLabel, countryLabel: _originNameLabel)
-        let bottomCountryStack = _countriesFormView(imageName: "Airplane2", subtitleLabel: viewModel.destinationLabel, countryLabel: _destinationNameLabel)
+        let topCountryStack = _airportSelection(imageName: "Airplane1", subtitleLabel: viewModel.originLabel, countryLabel: _originNameLabel)
+        let bottomCountryStack = _airportSelection(imageName: "Airplane2", subtitleLabel: viewModel.destinationLabel, countryLabel: _destinationNameLabel)
         
         let countriesStack = UIView().stack(
             topCountryStack,
@@ -170,8 +170,9 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         
     }
     
-    private func _countriesFormView(imageName : String, subtitleLabel : String, countryLabel : UILabel) -> UIView {
+    private func _airportSelection(imageName : String, subtitleLabel : String, countryLabel : UILabel) -> UIView {
         let imageView = changeImageColor(imageName)
+        
         let countriesDetails = _cardDetails(descriptionLabel: subtitleLabel, label: countryLabel)
         
         let countriesStack = UIView().hstack(
