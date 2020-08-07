@@ -14,9 +14,7 @@ target 'FlightApp' do
 
   pod 'LBTATools', '~> 1.0.12'
   pod 'Sentry', '~> 5.2'
-  pod 'Sentry', '~> 5.2'
   pod 'Networking', '~> 5.0.3'
-  pod 'MaterialComponents/ActivityIndicator'
   pod "DrawerView"
   pod 'ImageLoader'
 
