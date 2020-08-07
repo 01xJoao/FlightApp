@@ -100,7 +100,8 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     private func _canOpenAirportList(_ flightAirportType : FlightAirportType) -> Bool{
-        if(flightAirportType == FlightAirportType.destination && _findFlight.value.getOriginCode().isEmpty){
+        if(flightAirportType == FlightAirportType.destination && _findFlight.value.getOriginCode().isEmpty) {
+            _dialogService.showInfo(selectOriginFirstLabel, informationType: .info)
             return false;
         }
         
@@ -232,4 +233,5 @@ public class FindFlightsViewModel : ViewModelBase {
     public let childLabel: String = L10N.localize(key: "findflights_child")
     public let childrenLabel: String = L10N.localize(key: "findflights_children")
     private let noFlightsLabel: String = L10N.localize(key: "availableflights_noflights")
+    private let selectOriginFirstLabel: String = L10N.localize(key: "findflights_selectOriginFirst")
 }

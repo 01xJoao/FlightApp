@@ -39,7 +39,7 @@ public struct FindFlight {
         let df = DateFormatter()
         df.dateFormat = "d MMMM"
         let date = df.string(from: _findFlight.departure)
-        return "\(date), \(String(describing: _findFlight.departure.dayOfTheWeek()!))."
+        return "\(date), \(String(describing: _findFlight.departure.dayOfTheWeek()!))"
     }
     
     private func _getDepartureForURL() -> String {

@@ -37,7 +37,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     private func _createClearButton() {
-        let rightBarButton = UIBarButtonItem(title: viewModel.clearLabel, style: .plain, target: nil, action: nil)
+        let rightBarButton = UIBarButtonItem(title: viewModel.clearLabel, style: .plain, target: self, action: #selector(_clearButtonAction))
         rightBarButton.setTitleTextAttributes([NSAttributedString.Key.foregroundColor : UIColor.Theme.white], for: .normal)
         navigationItem.rightBarButtonItem = rightBarButton
     }
@@ -172,7 +172,6 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     
     private func _airportSelection(imageName : String, subtitleLabel : String, countryLabel : UILabel) -> UIView {
         let imageView = changeImageColor(imageName)
-        
         let countriesDetails = _cardDetails(descriptionLabel: subtitleLabel, label: countryLabel)
         
         let countriesStack = UIView().hstack(

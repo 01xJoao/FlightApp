@@ -23,6 +23,7 @@
     "findflights_selectOrigin": "Select Origin",
     "findflights_destinationCode": "DES",
     "findflights_selectDestination": "Select Destination",
+    "findflights_selectOriginFirst": "Select origin first",
     "availableflights_title": "Available Flights",
     "availableflights_depart": "Depart",
     "availableflights_arrive": "Arrive",

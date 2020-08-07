@@ -11,7 +11,7 @@ import Foundation
 extension Date {
     func dayOfTheWeek() -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E"
+        dateFormatter.dateFormat = "EEEE"
         return dateFormatter.string(from: self as Date)
     }
 }

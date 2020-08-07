@@ -39,18 +39,18 @@ extension InfoDialogType: RawRepresentable {
 
     public init?(rawValue: RawValue) {
         switch rawValue {
-        case UIColor.Theme.green: self = .good
-        case UIColor.Theme.red: self = .bad
-        case UIColor.Theme.darkBlue: self = .info
+            case UIColor.Theme.green: self = .good
+            case UIColor.Theme.red: self = .bad
+            case UIColor.Theme.yellow: self = .info
         default: return nil
         }
     }
 
 public var rawValue: RawValue {
         switch self {
-        case .good: return UIColor.Theme.green
-        case .bad: return UIColor.Theme.red
-        case .info: return UIColor.Theme.darkBlue
+            case .good: return UIColor.Theme.green
+            case .bad: return UIColor.Theme.red
+            case .info: return UIColor.Theme.yellow
         }
     }
 }

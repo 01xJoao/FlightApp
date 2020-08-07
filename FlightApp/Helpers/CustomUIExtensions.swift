@@ -33,6 +33,7 @@ extension UIColor {
         static var gold = UIColor().fromRGBA(red: 232, green: 178, blue: 0, alpha: 1.0)
         static var green = UIColor().fromRGBA(red: 65, green: 169, blue: 75, alpha: 1.0)
         static var red = UIColor().fromRGBA(red: 229, green: 38, blue: 23, alpha: 1.0)
+        static var yellow = UIColor().fromRGBA(red: 237, green: 202, blue: 45, alpha: 1.0)
     }
 }
 
