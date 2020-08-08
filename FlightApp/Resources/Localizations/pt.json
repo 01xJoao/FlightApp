@@ -28,5 +28,6 @@
     "availableflights_depart": "Saída",
     "availableflights_arrive": "Chegada",
     "availableflights_flight": "Voo nr.",
-    "availableflights_noflights": "Sem vôos encontrados"
+    "availableflights_noflights": "Sem vôos encontrados",
+    "availableflights_soldout": "Esgotado"
 }

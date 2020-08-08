@@ -40,7 +40,11 @@ public struct FlightDetail {
     }
     
     public func getFare() -> String {
-        return "\(Int(_flight.regularFare.fares.first?.amount ?? 0)).0"
+        if(_flight.regularFare?.fares.first?.amount ?? 0 > 0) {
+            return "\(Int(_flight.regularFare?.fares.first?.amount ?? 0)).0"
+        }
+        
+        return ""
     }
     
     public func getCurrency() -> String {

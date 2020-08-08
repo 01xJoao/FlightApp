@@ -42,7 +42,7 @@ public struct Flights {
         var flights: [FlightDetail] = []
         
         _flights.trips.first?.dates.first?.flights.forEach { flight in
-            flights.append(FlightDetail(flight, currency: _flights.currency ?? ""))
+            flights.append(FlightDetail(flight, currency: _flights.currency))
         }
         
         return flights

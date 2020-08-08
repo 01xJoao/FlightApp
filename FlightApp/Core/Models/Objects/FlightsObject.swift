@@ -34,7 +34,7 @@ struct FlightObject: Codable {
     let faresLeft: Double
     let flightKey: String
     let infantsLeft: Double
-    let regularFare: RegularFareObject
+    let regularFare: RegularFareObject?
     let operatedBy: String
     let segments: [SegmentObject]
     let flightNumber: String
@@ -57,7 +57,7 @@ struct FareObject: Codable {
 }
 
 struct SegmentObject: Codable {
-    let segmentNr: Double
+    let segmentNr: Int
     let origin, destination, flightNumber: String
     let time, timeUTC: [String]
     let duration: String

@@ -171,13 +171,13 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     private func _flightsFound(flights : FlightsObject?) {
-        if(flights != nil && !flights!.trips.isEmpty) {
-            navigationService.navigate(viewModel: AvailableFlightsViewModel.self, arguments: flights!, animated: true)
-        } else {
-            _dialogService.showInfo(noFlightsLabel, informationType: .bad)
-        }
-        
         isBusy.value = false
+        
+        if(flights == nil || flights!.trips.isEmpty) {
+            _dialogService.showInfo(noFlightsLabel, informationType: .bad)
+        } else {
+            navigationService.navigate(viewModel: AvailableFlightsViewModel.self, arguments: flights!, animated: true)
+        }
     }
     
     public override func dataNotify(dataObject: Any?) {

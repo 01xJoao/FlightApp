@@ -107,7 +107,7 @@ class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewMo
     
     private func _configureTableView() {
         if(viewModel.flights.getFlights().isEmpty) {
-            let noFlightsLabel = UILabel(text: viewModel.noAvailableFlights, font: .boldSystemFont(ofSize: 13), textColor: UIColor.Theme.darkGrey, textAlignment: .center)
+            let noFlightsLabel = UILabel(text: viewModel.noAvailableFlightsLabel, font: .boldSystemFont(ofSize: 13), textColor: UIColor.Theme.darkGrey, textAlignment: .center)
             self.view.addSubview(noFlightsLabel)
             noFlightsLabel.centerXTo(self.view.centerXAnchor)
             noFlightsLabel.centerYTo(self.view.centerYAnchor)
@@ -122,7 +122,7 @@ class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewMo
             _tableView.delegate = _dataSourceProvider
             
             
-            _dataSourceProvider.labels = [viewModel.departLabel, viewModel.arriveLabel, viewModel.flightNrLabel]
+            _dataSourceProvider.labels = [viewModel.departLabel, viewModel.arriveLabel, viewModel.flightNrLabel, viewModel.soldOutLabel]
             _dataSourceProvider.flights = viewModel.flights.getFlights()
         }
     }

@@ -45,7 +45,7 @@ class FlightCell : UITableViewCell {
         cardView.addSubview(flightNrView)
         flightNrView.anchor(top: nil, leading: cardView.leadingAnchor, bottom: cardView.bottomAnchor, trailing: nil, padding: .init(top: 0, left: 18, bottom: 15, right: 0))
         
-        let priceView = _createStringHorizontalStack(value: flight.getFare(), currency: flight.getCurrency())
+        let priceView = _createStringHorizontalStack(value: flight.getFare(), currency: flight.getCurrency(), souldOut: labels[3])
         
         cardView.addSubview(priceView)
         priceView.anchor(top: nil, leading: nil, bottom: cardView.bottomAnchor, trailing: cardView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 15, right: 18))
@@ -90,7 +90,11 @@ class FlightCell : UITableViewCell {
         return stack
     }
     
-    private func _createStringHorizontalStack(value : String, currency : String) -> UIView {
+    private func _createStringHorizontalStack(value : String, currency : String, souldOut : String) -> UIView {
+        if(value.isEmpty) {
+            return UILabel(text: souldOut, font: .boldSystemFont(ofSize: 15), textColor: UIColor.Theme.red, textAlignment: .right)
+        }
+        
         let valueLabel = UILabel(text: value, font: .systemFont(ofSize: 28, weight: .semibold), textColor: UIColor.Theme.gold)
         let currencyLabel = UILabel(text: currency, font: .systemFont(ofSize: 14, weight: .bold), textColor: UIColor.Theme.mainBlue)
         

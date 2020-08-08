@@ -29,4 +29,5 @@
     "availableflights_arrive": "Arrive",
     "availableflights_flight": "Flight nr.",
     "availableflights_noflights": "No flights available"
+    "availableflights_soldout": "Sold Out"
 }
