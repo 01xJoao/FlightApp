@@ -123,7 +123,14 @@ class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewMo
             _tableView.delegate = _dataSourceProvider
             
             
-            _dataSourceProvider.labels = [viewModel.departLabel, viewModel.arriveLabel, viewModel.flightNrLabel, viewModel.soldOutLabel]
+            _dataSourceProvider.labels = [
+                viewModel.departLabel,
+                viewModel.arriveLabel,
+                viewModel.flightNrLabel,
+                viewModel.soldOutLabel,
+                viewModel.hrsLabel
+            ]
+            
             _dataSourceProvider.flights = viewModel.flights.getFlights()
         }
     }

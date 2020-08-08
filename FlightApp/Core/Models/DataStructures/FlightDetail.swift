@@ -32,7 +32,7 @@ public struct FlightDetail {
     }
     
     public func getDurationTime() -> String {
-        return "\(_flight.duration) hrs"
+        return "\(_flight.duration)"
     }
     
     public func getFlightNumber() -> String {
@@ -41,7 +41,7 @@ public struct FlightDetail {
     
     public func getFare() -> String {
         if(_flight.regularFare?.fares.first?.amount ?? 0 > 0) {
-            return "\(Int(_flight.regularFare?.fares.first?.amount ?? 0)).0"
+            return "\(_flight.regularFare?.fares.first?.amount ?? 0)"
         }
         
         return ""

@@ -50,10 +50,10 @@ class FlightCell : UITableViewCell {
         cardView.addSubview(priceView)
         priceView.anchor(top: nil, leading: nil, bottom: cardView.bottomAnchor, trailing: cardView.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 15, right: 18))
         
-        _addDuration(flight.getDurationTime())
+        _addDuration(time: "\(flight.getDurationTime()) \(labels[4])")
     }
     
-    private func _addDuration(_ time : String) {
+    private func _addDuration(time : String) {
         let lineView = UIView(backgroundColor: UIColor.Theme.grey)
         lineView.withHeight(1.5).withWidth(300)
         

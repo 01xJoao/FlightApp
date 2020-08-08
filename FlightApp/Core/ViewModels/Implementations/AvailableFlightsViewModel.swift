@@ -36,5 +36,4 @@ public class AvailableFlightsViewModel : ViewModelBase {
     public let noAvailableFlightsLabel = L10N.localize(key: "availableflights_noflights")
     public let soldOutLabel = L10N.localize(key: "availableflights_soldout")
     public let hrsLabel = L10N.localize(key: "global_hours")
-    public let minsLabel = L10N.localize(key: "global_minutes")
 }
