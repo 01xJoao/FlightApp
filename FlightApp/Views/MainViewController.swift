@@ -17,7 +17,7 @@ class MainViewController : BaseTabBarController<MainViewModel> {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     private func _createObservers() {

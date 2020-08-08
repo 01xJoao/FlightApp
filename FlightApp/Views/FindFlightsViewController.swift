@@ -224,6 +224,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
                       trailing: self.view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 12, bottom: 15, right: 12))
     }
     
+    
     @objc fileprivate func _clearButtonAction() {
         viewModel.clearCommand.executeIf()
     }

@@ -83,6 +83,10 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
         super.viewDidAppear(animated)
         self.navigationItem.searchController!.searchBar.setSearch(viewModel.searchLabel)
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        _tableView.reloadData()
+    }
 }
 
 

@@ -30,26 +30,27 @@ class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewMo
     
     private func _configureTopbar() {
         _configureNavigationBar()
-        _topView.withHeight(85)
+        let topPadding = Utils.keyWindow.safeAreaInsets.top + 44
+        _topView.withHeight(topPadding + 85)
         self.view.addSubview(_topView)
-        _topView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, leading: self.view.leadingAnchor, bottom: nil, trailing: self.view.trailingAnchor)
+        _topView.anchor(top: self.view.topAnchor, leading: self.view.leadingAnchor, bottom: nil, trailing: self.view.trailingAnchor)
         
         let airportDetailOrigin = _createAirportDetail(name: viewModel.flights.getOriginName(), code: viewModel.flights.getOriginCode(), .left)
         
         _topView.addSubview(airportDetailOrigin)
-        airportDetailOrigin.anchor(top: _topView.topAnchor, leading: _topView.leadingAnchor, bottom: nil, trailing: nil,
-                             padding: .init(top: 15, left: 23, bottom: 0, right: 20))
+        airportDetailOrigin.anchor(top: _topView.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, trailing: nil,
+            padding: .init(top: topPadding + 15, left: 23, bottom: 0, right: 20))
         
         let airportDetailDestination = _createAirportDetail(name: viewModel.flights.getDestinationName(), code: viewModel.flights.getDestinationCode(), .right)
         
         _topView.addSubview(airportDetailDestination)
-        airportDetailDestination.anchor(top: _topView.topAnchor, leading: nil, bottom: nil, trailing: _topView.trailingAnchor,
-                             padding: .init(top: 15, left: 20, bottom: 0, right: 23))
+        airportDetailDestination.anchor(top: _topView.topAnchor, leading: nil, bottom: nil, trailing: self.view.safeAreaLayoutGuide.trailingAnchor,
+                             padding: .init(top: topPadding + 15, left: 20, bottom: 0, right: 23))
         
         let calendar = _createCalendar()
         
         _topView.addSubview(calendar)
-        calendar.anchor(top: _topView.topAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 20, left: 0, bottom: 0, right: 0))
+        calendar.anchor(top: _topView.topAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: topPadding + 20, left: 0, bottom: 0, right: 0))
         calendar.centerXTo(_topView.centerXAnchor)
         
         let createDashView = _createDash()
@@ -127,8 +128,18 @@ class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewMo
         }
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        _tableView.reloadData()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        if (self.isMovingToParent)
+        {
+            if (navigationController?.visibleViewController is ContainerViewController) {
+                self.navigationController?.setNavigationBarHidden(true, animated: true)
+            }
+        }
     }
 }
