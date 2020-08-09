@@ -24,6 +24,7 @@
     "findflights_destinationCode": "DES",
     "findflights_selectDestination": "Select Destination",
     "findflights_selectOriginFirst": "Select origin first",
+    "findflights_fillfields": "Please fill in all fields",
     "availableflights_title": "Available Flights",
     "availableflights_depart": "Depart",
     "availableflights_arrive": "Arrive",

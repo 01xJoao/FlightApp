@@ -159,6 +159,8 @@ public class FindFlightsViewModel : ViewModelBase {
             DispatchQueue.main.async {
                 _ = self._findFlightsWebService.findAvailableFlights(findFlight: self._findFlight.value, completion: self._flightsFound)
             }
+        } else {
+            _dialogService.showInfo(fillAllFieldsLabel, informationType: .info)
         }
     }
     
@@ -234,4 +236,5 @@ public class FindFlightsViewModel : ViewModelBase {
     public let childrenLabel: String = L10N.localize(key: "findflights_children")
     private let noFlightsLabel: String = L10N.localize(key: "availableflights_noflights")
     private let selectOriginFirstLabel: String = L10N.localize(key: "findflights_selectOriginFirst")
+    private let fillAllFieldsLabel: String = L10N.localize(key: "findflights_fillfields")
 }
