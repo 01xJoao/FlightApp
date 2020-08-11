@@ -12,8 +12,19 @@ struct L10N {
     static private var _currentLanguage: String?
     static private let _supportedLanguages: [String] = ["en", "pt"]
     static private let _defaultLanguage: String = "en"
-    static private var _resourceManager: [LiteralObject] = []
     static private let _reportService: ReportService = DiContainer.resolve()
+    
+    static private var _resourceManager: [LiteralObject] = []
+    static private var resourcesManager : [LiteralObject] {
+        get {
+            if(_resourceManager.isEmpty) {
+                _setLanguage()
+                _loadJsonString()
+            }
+            
+            return _resourceManager
+        }
+    }
     
     static func getCurrentLanguage() -> String {
         if(_currentLanguage == nil) {
@@ -24,17 +35,8 @@ struct L10N {
     }
     
     static func localize(key: String) -> String {
-        let value = _getResourceManager().first(where: { $0.key == key })
+        let value = resourcesManager.first(where: { $0.key == key })
         return value?.translated ?? ""
-    }
-    
-    static func _getResourceManager() -> [LiteralObject] {
-        if(_resourceManager.isEmpty) {
-            _setLanguage()
-            _loadJsonString()
-        }
-        
-        return _resourceManager
     }
     
     static func _setLanguage() {
