@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-enum baseURL : String {
+public enum baseURL : String {
     case stations
     case flights
     

@@ -8,6 +8,13 @@
 
 import Foundation
 
+typealias EventHandler = (Any) -> (Any)
+
+infix operator ??=
+func ??= <T>(left: inout T?, right: T) {
+    left = left ?? right
+}
+
 public class DynamicValueList<T> : NSObject {
     var data: DynamicValue<[T]> = DynamicValue([])
     
