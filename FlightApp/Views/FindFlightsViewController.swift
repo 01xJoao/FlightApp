@@ -11,14 +11,12 @@ import DrawerView
 
 class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     private var _activityIndicatorView: UIActivityIndicatorView!
-    
     private var _originCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 18), textColor: UIColor.Theme.darkGrey, textAlignment: .center)
     private var _originNameLabel = UILabel(text:"", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
     private var _destinationCodeLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 18), textColor: UIColor.Theme.darkGrey,textAlignment: .center)
     private var _destinationNameLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
     private let _departureLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
     private let _passengersLabel = UILabel(text: "", font: .boldSystemFont(ofSize: 16), textColor: UIColor.Theme.black, textAlignment: .left)
-    
     private var _drawerDepartureView: DrawerView?
     private var _drawerPassengersView: DrawerView?
     
@@ -225,23 +223,23 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     
-    @objc fileprivate func _clearButtonAction() {
+    @objc private func _clearButtonAction() {
         viewModel.clearCommand.executeIf()
     }
     
-    @objc fileprivate func _swapButtonAction() {
+    @objc private func _swapButtonAction() {
         viewModel.swapAirportsCommand.executeIf()
     }
     
-    @objc fileprivate func _originCountryButtonAction() {
+    @objc private func _originCountryButtonAction() {
         viewModel.openAirportListViewCommand.executeIf(.origin)
     }
     
-    @objc fileprivate func _destinationCountryButtonAction() {
+    @objc private func _destinationCountryButtonAction() {
         viewModel.openAirportListViewCommand.executeIf(.destination)
     }
     
-    @objc fileprivate func _departureAction() {
+    @objc private func _departureAction() {
         let datePickerVC = DatePickerModalView()
         datePickerVC.config(date: viewModel.findFlight.value.getDepartureDate(), titleLabel: viewModel.departureLabel, confirmLabel: viewModel.confirmLabel, handler: _datePickerSelection)
         
@@ -250,7 +248,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         _drawerDepartureView!.snapPositions = [.partiallyOpen, .closed]
     }
     
-    func _datePickerSelection(_ obj : Any) {
+    private func _datePickerSelection(_ obj : Any) {
         if let date = obj as? Date {
             viewModel.setDepartureCommand.executeIf(date)
         }
@@ -258,7 +256,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         _drawerDepartureView?.removeFromSuperview(animated: true)
     }
     
-    @objc fileprivate func _passengersAction() {
+    @objc private func _passengersAction() {
         let passengersVC = PassengersModalView()
         
         passengersVC.config(passengers: viewModel.findFlight.value.getPassengers(), titleLabel: viewModel.passengersLabel,
@@ -270,7 +268,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         _drawerPassengersView!.snapPositions = [.partiallyOpen, .closed]
     }
     
-    func _passengersSelection(_ obj : Any) {
+    private func _passengersSelection(_ obj : Any) {
         if let passengers = obj as? PassengersObject {
             viewModel.setPassengersCommand.executeIf(passengers)
         }
@@ -278,7 +276,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         _drawerPassengersView?.removeFromSuperview(animated: true)
     }
     
-    @objc fileprivate func _submitButtonAction() {
+    @objc private func _submitButtonAction() {
         viewModel.submitButtonCommand.executeIf()
     }
 }

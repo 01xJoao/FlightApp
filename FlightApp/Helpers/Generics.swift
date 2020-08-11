@@ -15,7 +15,7 @@ func ??= <T>(left: inout T?, right: T) {
     left = left ?? right
 }
 
-public class DynamicValueList<T> : NSObject {
+class DynamicValueList<T> : NSObject {
     var data: DynamicValue<[T]> = DynamicValue([])
     
     func add(object: T) {

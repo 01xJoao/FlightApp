@@ -6,27 +6,26 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-public class ViewModelBase : ViewModel {
+class ViewModelBase : ViewModel {
     private let _navigationService: NavigationService = DiContainer.resolve()
-    
-    public let isBusy : DynamicValue<Bool> = DynamicValue<Bool>(false)
-    
-    public var navigationService: NavigationService {
+    var navigationService: NavigationService {
         get { return _navigationService }
     }
     
-    public func prepare(dataObject: Any) {}
-    public func initialize() {}
-    public func appearing() {}
-    public func disappearing() {}
-    public func backAction() {}
-    public func dataNotify(dataObject: Any?) {}
+    let isBusy : DynamicValue<Bool> = DynamicValue<Bool>(false)
+    
+    func prepare(dataObject: Any) {}
+    func initialize() {}
+    func appearing() {}
+    func disappearing() {}
+    func backAction() {}
+    func dataNotify(dataObject: Any?) {}
 }
 
-//public class ViewModelBaseWithArguments<TObject> : ViewModelBase {
-//    public override func prepare(dataObject: Any) {
+//class ViewModelBaseWithArguments<TObject> : ViewModelBase {
+//    override func prepare(dataObject: Any) {
 //        prepare(data: dataObject as! TObject)
 //    }
 //
-//    public func prepare(data: TObject) {}
+//    func prepare(data: TObject) {}
 //}

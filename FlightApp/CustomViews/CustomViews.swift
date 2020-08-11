@@ -75,7 +75,7 @@ func createMainBlueButton(name : String, target : Any, action : Selector) -> UIB
     return button
 }
 
-public func createModalTopBar(_ view : UIView, topBar : UIView, titleLabel : String, selector : Selector) {
+func createModalTopBar(_ view : UIView, topBar : UIView, titleLabel : String, selector : Selector) {
     topBar.withHeight(55)
     view.addSubview(topBar)
     topBar.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor)
@@ -126,27 +126,25 @@ class ShadowView: UIView {
 }
 
 
-public func createDashedLine() -> UIView {
+func createDashedLine() -> UIView {
     let dashedLine = UIView()
     
-    let layer = CALayer()
-
     let shapeLayer = CAShapeLayer()
     shapeLayer.strokeColor = UIColor.Theme.white.cgColor
     shapeLayer.lineWidth = 1.5
     shapeLayer.lineDashPattern = [4, 4]
     
+    let layer = CALayer()
     let path = CGMutablePath()
     path.addLines(between: [CGPoint(x:0, y: 0), CGPoint(x: 140, y: 0)])
     shapeLayer.path = path
     layer.addSublayer(shapeLayer)
-    
     dashedLine.layer.addSublayer(layer)
     
     return dashedLine
 }
 
-public func createCircle() -> UIView {
+func createCircle() -> UIView {
     let circle = UIView(backgroundColor: UIColor.Theme.white)
     
     circle.withWidth(8).withHeight(8)

@@ -8,8 +8,8 @@
 
 import UIKit
 
-public struct Animations {
-    public static func slideVerticaly(_ view: UIView, showAnimation: Bool, duration: Double = 0.35, delay: CGFloat = 0, completion: ((Bool) -> ())?){
+struct Animations {
+    static func slideVerticaly(_ view: UIView, showAnimation: Bool, duration: Double = 0.35, delay: CGFloat = 0, completion: ((Bool) -> ())?) {
         let minTransform = CGAffineTransform.init(translationX: 0, y: -view.bounds.height);
         let maxTransform = CGAffineTransform.identity;
         

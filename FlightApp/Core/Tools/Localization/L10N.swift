@@ -39,7 +39,7 @@ struct L10N {
         return value?.translated ?? ""
     }
     
-    static func _setLanguage() {
+    static private func _setLanguage() {
         let lang = String(Locale.preferredLanguages.first!)
         let split = lang.split(separator: "-")
         let language = String(split[0])
@@ -47,7 +47,7 @@ struct L10N {
         _currentLanguage = _supportedLanguages.first(where: { $0 == language }) ?? _defaultLanguage
     }
     
-    static func _loadJsonString() {
+    static private func _loadJsonString() {
         if let path = Bundle.main.path(forResource: _currentLanguage, ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)

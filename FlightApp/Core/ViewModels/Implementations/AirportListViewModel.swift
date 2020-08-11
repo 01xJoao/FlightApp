@@ -8,32 +8,32 @@
 
 import Foundation
 
-public class AirportListViewModel : ViewModelBase {
+class AirportListViewModel : ViewModelBase {
     private var _flightAirportType : FlightAirportType!
     
     private var _title: String?
-    public var title : String {
+    var title : String {
         get {
             return _title!
         }
     }
     
     private var _airports : DynamicValueList<Airport>!
-    public var airports : DynamicValueList<Airport> {
+    var airports : DynamicValueList<Airport> {
         get {
             return _airports
         }
     }
     
     private var _airportSearchList : DynamicValueList<Airport> = DynamicValueList<Airport>()
-    public var searchAirports : DynamicValueList<Airport> {
+    var searchAirports : DynamicValueList<Airport> {
         get {
            return _airportSearchList
        }
     }
     
     private var _searchCommand : WPCommand<String>?
-    public var searchCommand: WPCommand<String> {
+    var searchCommand: WPCommand<String> {
         get {
             _searchCommand ??= WPCommand<String>(_search)
             return _searchCommand!
@@ -41,14 +41,14 @@ public class AirportListViewModel : ViewModelBase {
     }
     
     private var _closeViewCommand : WPCommand<String>?
-    public var closeViewCommand: WPCommand<String> {
+    var closeViewCommand: WPCommand<String> {
         get {
             _closeViewCommand ??= WPCommand<String>(_closeView)
             return _closeViewCommand!
         }
     }
     
-    public override func prepare(dataObject: Any) {
+    override func prepare(dataObject: Any) {
         let airportSearch = dataObject as! AirportSearchObject
         _title = airportSearch.flightAirportType == FlightAirportType.origin ? originLabel : destinationLabel
         _flightAirportType = airportSearch.flightAirportType
@@ -81,6 +81,6 @@ public class AirportListViewModel : ViewModelBase {
     //L10N Strings
     private let originLabel: String = L10N.localize(key: "findflights_origin")
     private let destinationLabel: String = L10N.localize(key: "findflights_destination")
-    public let searchLabel: String = L10N.localize(key: "global_search")
+    let searchLabel: String = L10N.localize(key: "global_search")
     
 }

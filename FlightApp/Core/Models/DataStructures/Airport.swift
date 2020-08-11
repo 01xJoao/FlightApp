@@ -8,38 +8,38 @@
 
 import Foundation
 
-public struct Airport {
+struct Airport {
     private var _airport: AirportObject
     
     init(_ airport: AirportObject) {
         _airport = airport
     }
     
-    public func getCode() -> String {
+    func getCode() -> String {
         return _airport.code
     }
     
-    public func getName() -> String {
+    func getName() -> String {
         return _airport.name
     }
     
-    public func getAlias() -> [String] {
+    func getAlias() -> [String] {
         return _airport.alias
     }
     
-    public func getCountryName() -> String {
+    func getCountryName() -> String {
         return _airport.countryName
     }
     
-    public func getLatitude() -> String {
+    func getLatitude() -> String {
         return _airport.latitude
     }
     
-    public func getLongitude() -> String {
+    func getLongitude() -> String {
         return _airport.longitude
     }
     
-    public func getImageUrl() -> URL? {
+    func getImageUrl() -> URL? {
         if(_airport.tripCardImageUrl != nil) {
             return URL(string: _airport.tripCardImageUrl!)
         }
@@ -47,7 +47,7 @@ public struct Airport {
         return nil
     }
     
-    public func getMarkets() -> [Market] {
+    func getMarkets() -> [Market] {
         var marketList: [Market]!
         
         _airport.markets.forEach { market in
@@ -57,7 +57,7 @@ public struct Airport {
         return marketList
     }
     
-    public func containsMarket(_ market : String) -> Bool {
+    func containsMarket(_ market : String) -> Bool {
         if _airport.markets.contains(where: { $0.code == market }) {
             return true
         }
@@ -66,7 +66,7 @@ public struct Airport {
     }
     
     
-    public func containSearch(_ searchString: String) -> Bool {
+    func containSearch(_ searchString: String) -> Bool {
         if(searchString.isEmpty) {
             return true
         }

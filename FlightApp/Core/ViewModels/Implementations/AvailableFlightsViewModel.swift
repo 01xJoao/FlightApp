@@ -6,15 +6,15 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-public class AvailableFlightsViewModel : ViewModelBase {
+class AvailableFlightsViewModel : ViewModelBase {
     private var _flights : Flights!
-    public var flights : Flights {
+    var flights : Flights {
         get {
             return _flights
         }
     }
     
-    public override func prepare(dataObject: Any) {
+    override func prepare(dataObject: Any) {
         if let flights = dataObject as? FlightsObject {
             _setFlights(flights)
         }
@@ -29,11 +29,11 @@ public class AvailableFlightsViewModel : ViewModelBase {
     }
     
     //L10N
-    public let titleLabel = L10N.localize(key: "availableflights_title")
-    public let departLabel = L10N.localize(key: "availableflights_depart")
-    public let arriveLabel = L10N.localize(key: "availableflights_arrive")
-    public let flightNrLabel = L10N.localize(key: "availableflights_flight")
-    public let noAvailableFlightsLabel = L10N.localize(key: "availableflights_noflights")
-    public let soldOutLabel = L10N.localize(key: "availableflights_soldout")
-    public let hrsLabel = L10N.localize(key: "global_hours")
+    let titleLabel = L10N.localize(key: "availableflights_title")
+    let departLabel = L10N.localize(key: "availableflights_depart")
+    let arriveLabel = L10N.localize(key: "availableflights_arrive")
+    let flightNrLabel = L10N.localize(key: "availableflights_flight")
+    let noAvailableFlightsLabel = L10N.localize(key: "availableflights_noflights")
+    let soldOutLabel = L10N.localize(key: "availableflights_soldout")
+    let hrsLabel = L10N.localize(key: "global_hours")
 }

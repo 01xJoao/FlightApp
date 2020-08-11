@@ -9,15 +9,15 @@
 import UIKit
 import Foundation
 
-public class BaseTabBarController<TViewModel : ViewModel> : UITabBarController {
+class BaseTabBarController<TViewModel : ViewModel> : UITabBarController {
     private var _viewModel: TViewModel!
-    public var viewModel: TViewModel {
+    var viewModel: TViewModel {
         get {
             return _viewModel
         }
     }
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         _instantiateViewModel()
     }

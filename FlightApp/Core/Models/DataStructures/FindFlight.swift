@@ -8,34 +8,34 @@
 
 import Foundation
 
-public struct FindFlight {
+struct FindFlight {
     private var _findFlight : FindFlightObject
     
     init(_ findFlight: FindFlightObject) {
         _findFlight = findFlight
     }
     
-    public func getOriginName() -> String {
+    func getOriginName() -> String {
         return _findFlight.originName
     }
     
-    public func getOriginCode() -> String {
+    func getOriginCode() -> String {
         return _findFlight.originCode
     }
     
-    public func getDestinationName() -> String {
+    func getDestinationName() -> String {
         return _findFlight.destinationName
     }
     
-    public func getDestinationCode() -> String {
+    func getDestinationCode() -> String {
         return _findFlight.destinationCode
     }
     
-    public func getDepartureDate() -> Date {
+    func getDepartureDate() -> Date {
         return _findFlight.departure
     }
     
-    public func getDeparture() -> String {
+    func getDeparture() -> String {
         let df = DateFormatter()
         df.dateFormat = "d MMMM"
         let date = df.string(from: _findFlight.departure)
@@ -48,37 +48,37 @@ public struct FindFlight {
         return dateFormatter.string(from: _findFlight.departure)
     }
     
-    public func getPassengers() -> PassengersObject {
+    func getPassengers() -> PassengersObject {
         return _findFlight.passengers
+    }
+    
+    func getURL() -> String {
+        return "origin=\(_findFlight.originCode)&destination=\(_findFlight.destinationCode)&dateout=\(_getDepartureForURL())&\(_getPassengersForURL())&ToUs=AGREED"
     }
     
     private func _getPassengersForURL() -> String {
         return "adt=\(_findFlight.passengers.adults)&teen=\(_findFlight.passengers.teen)&chd=\(_findFlight.passengers.children)"
     }
     
-    public func getURL() -> String {
-        return "origin=\(_findFlight.originCode)&destination=\(_findFlight.destinationCode)&dateout=\(_getDepartureForURL())&\(_getPassengersForURL())&ToUs=AGREED"
-    }
-    
-    public mutating func setOrigin(originName: String, originCode : String){
+    mutating func setOrigin(originName: String, originCode : String){
         _findFlight.originName = originName
         _findFlight.originCode = originCode
     }
     
-    public mutating func setDestination(destinationName: String, destinationCode : String){
+    mutating func setDestination(destinationName: String, destinationCode : String){
         _findFlight.destinationName = destinationName
         _findFlight.destinationCode = destinationCode
     }
     
-    public mutating func setDeparture(_ date: Date) {
+    mutating func setDeparture(_ date: Date) {
         _findFlight.departure = date
     }
     
-    public mutating func setPassengers(_ passangers: PassengersObject) {
+    mutating func setPassengers(_ passangers: PassengersObject) {
         _findFlight.passengers = passangers
     }
     
-    public mutating func swapAirports () {
+    mutating func swapAirports () {
         let originName = _findFlight.originName
         let originCode = _findFlight.originCode
         
@@ -89,11 +89,11 @@ public struct FindFlight {
         _findFlight.destinationCode = originCode
     }
     
-    public mutating func clear() {
+    mutating func clear() {
         _findFlight = FindFlightObject()
     }
     
-    public mutating func clearDestination() {
+    mutating func clearDestination() {
         _findFlight.destinationName = ""
         _findFlight.destinationCode = ""
     }

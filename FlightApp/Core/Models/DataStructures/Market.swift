@@ -6,14 +6,14 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-public struct Market {
+struct Market {
     private var _market: MarketObject
     
     init(_ market: MarketObject) {
         _market = market
     }
     
-    public func getCode() -> String {
+    func getCode() -> String {
         return _market.code
     }
 }

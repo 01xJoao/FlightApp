@@ -9,7 +9,7 @@
 import UIKit
 
 class FlightCell : UITableViewCell {
-    public func config(_ flight : FlightDetail, _ labels : [String]) {
+    func config(_ flight : FlightDetail, _ labels : [String]) {
         self.removeAllSubViews()
         _createCard(flight, labels)
     }

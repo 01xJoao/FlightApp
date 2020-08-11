@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class AirportListCell: UITableViewCell {
-    public func config(_ airport : Airport) {
+    func config(_ airport : Airport) {
         self.removeAllSubViews()
         
         let airportLabel = UILabel.init(text: airport.getName(), font: .systemFont(ofSize: 16, weight: .semibold), textColor: UIColor.Theme.black , textAlignment: .left, numberOfLines: 0)

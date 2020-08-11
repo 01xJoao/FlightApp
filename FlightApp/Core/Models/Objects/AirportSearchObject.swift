@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct AirportSearchObject {
+struct AirportSearchObject {
     let airports : DynamicValueList<Airport>?
     let market : String?
     let flightAirportType : FlightAirportType

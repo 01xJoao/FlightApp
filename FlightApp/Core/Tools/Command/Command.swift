@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Command {
+struct Command {
     private let action: () -> ()
     private let canExecuteAction: () -> (Bool)
 
@@ -17,17 +17,17 @@ public struct Command {
         self.canExecuteAction = canExecute
     }
 
-    public func execute() {
+    func execute() {
         action()
     }
     
-    public func executeIf() {
+    func executeIf() {
         if(canExecuteAction()) {
             action()
         }
     }
     
-    public func canExecute() -> Bool {
+    func canExecute() -> Bool {
         return canExecuteAction()
     }
 }

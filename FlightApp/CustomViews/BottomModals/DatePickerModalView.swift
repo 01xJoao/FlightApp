@@ -49,11 +49,11 @@ class DatePickerModalView : UIViewController {
         _topBar.roundCorners(corners: [.topLeft, .topRight], radius: 7)
     }
     
-    @objc fileprivate func _submitButtonAction() {
+    @objc private func _submitButtonAction() {
         _ = _submitEventHandler!(_datePicker.date)
     }
     
-    @objc fileprivate func _closeButtonAction() {
+    @objc private func _closeButtonAction() {
         _ = _submitEventHandler!({})
     }
 }

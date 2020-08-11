@@ -12,8 +12,8 @@ class AvailableFlightsDataSource : NSObject, UITableViewDataSource, UITableViewD
     private let _cellIdentifier = "FlightCell"
     private let _tableView : UITableView
     
-    open var labels: [String]?
-    open var flights = [FlightDetail]() {
+    var labels: [String]?
+    var flights = [FlightDetail]() {
         didSet {
             DispatchQueue.main.async {
                 self._tableView.reloadData()

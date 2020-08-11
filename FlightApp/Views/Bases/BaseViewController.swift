@@ -8,17 +8,17 @@
 
 import UIKit
 
-public class BaseViewController<TViewModel : ViewModel> : UIViewController {
-    public var parameterData: Any?
+class BaseViewController<TViewModel : ViewModel> : UIViewController {
+    var parameterData: Any?
     
     private var _viewModel: TViewModel!
-    public var viewModel: TViewModel {
+    var viewModel: TViewModel {
         get {
             return _viewModel
         }
     }
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         _setViewConfigurations()
         _instantiateViewModel()
@@ -52,7 +52,7 @@ public class BaseViewController<TViewModel : ViewModel> : UIViewController {
            object: nil)
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         _setAsVisibleViewController()
         _viewModel?.appearing()
@@ -63,7 +63,7 @@ public class BaseViewController<TViewModel : ViewModel> : UIViewController {
         navigationService.setVisibleViewController(String(describing: type(of: self)))
     }
     
-    public override func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         _viewModel?.disappearing()
     }

@@ -95,7 +95,7 @@ class PassengersModalView : UIViewController {
         _topBar.roundCorners(corners: [.topLeft, .topRight], radius: 7)
     }
     
-    @objc func _stepperValueChanged(stepper : UIStepper) {
+    @objc private func _stepperValueChanged(stepper : UIStepper) {
         let value = Int(stepper.value)
         
         switch stepper.tag {
@@ -106,11 +106,11 @@ class PassengersModalView : UIViewController {
         }
     }
     
-    @objc fileprivate func _applyButtonAction() {
+    @objc private func _applyButtonAction() {
         _ = _submitEventHandler!(_passengers!)
     }
     
-    @objc fileprivate func _closeButtonAction() {
+    @objc private func _closeButtonAction() {
         _ = _submitEventHandler!({})
     }
 }

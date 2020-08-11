@@ -6,7 +6,7 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-public protocol ViewModel {
+protocol ViewModel {
     func prepare(dataObject: Any);
     func initialize()
     func appearing()

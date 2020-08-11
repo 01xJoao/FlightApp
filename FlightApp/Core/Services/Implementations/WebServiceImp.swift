@@ -29,7 +29,7 @@ class WebServiceImp : WebService {
         _networking.cancel(id)
     }
     
-    func _handleResult<T : Codable>(_ result: JSONResult, _ completion: (_ result: T?) -> Void ) {
+    private func _handleResult<T : Codable>(_ result: JSONResult, _ completion: (_ result: T?) -> Void ) {
         switch result {
             case .success(let response):
                 do {
@@ -46,7 +46,7 @@ class WebServiceImp : WebService {
         }
     }
     
-    func _sendError(_ error : Error, _ obj : String) {
+    private func _sendError(_ error : Error, _ obj : String) {
         _reportService.sendError(error: error, message: "Json serialization error on object: \(obj)")
     }
 }

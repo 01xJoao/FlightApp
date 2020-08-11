@@ -6,8 +6,8 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-public struct Core {
-    public static func initialize() {
+struct Core {
+    static func initialize() {
         _registerServices()
         _registerViewModels()
         _registerViewControllers()
@@ -38,7 +38,7 @@ public struct Core {
         DiContainer.registerViewController(AirportListViewModel.self, constructor: { AirportListViewController() })
     }
     
-    public static func startApp() {
+    static func startApp() {
         let navigationService : NavigationService = DiContainer.resolve()
         navigationService.navigateAndSetAsContainer(viewModel: MainViewModel.self)
     }

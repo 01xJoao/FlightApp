@@ -8,8 +8,8 @@
 
 import UIKit
 
-public struct AppConfiguration {
-    static public func initializeApp() {
+struct AppConfiguration {
+    static func initializeApp() {
         Core.initialize()
         _setViewAppearance()
         Core.startApp()
@@ -33,7 +33,7 @@ public struct AppConfiguration {
         }
     }
     
-    public static func customNavbarAppearence() -> UINavigationBarAppearance {
+    static func customNavbarAppearence() -> UINavigationBarAppearance {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.Theme.white]
         navBarAppearance.backgroundColor = UIColor.Theme.mainBlue

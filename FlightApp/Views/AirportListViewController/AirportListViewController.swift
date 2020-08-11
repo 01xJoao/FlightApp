@@ -77,7 +77,7 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
         self.navigationItem.searchController!.searchBar.setSearch(viewModel.searchLabel)
     }
     
-    @objc fileprivate func _closeButton() {
+    @objc private func _closeButton() {
         viewModel.closeViewCommand.execute("")
     }
 }

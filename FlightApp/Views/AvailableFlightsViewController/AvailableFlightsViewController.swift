@@ -12,8 +12,8 @@ import Foundation
 class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewModel> {
     private let _searchController = CustomSearchController()
     private let _tableView = UITableView()
-    private lazy var _dataSourceProvider = AvailableFlightsDataSource(tableView: _tableView)
     private let _topView = UIView(backgroundColor: UIColor.Theme.mainBlue)
+    private lazy var _dataSourceProvider = AvailableFlightsDataSource(tableView: _tableView)
     
     override func viewDidLoad() {
         super.viewDidLoad()

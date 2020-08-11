@@ -9,25 +9,25 @@
 import UIKit
 import Foundation
 
-public class NavigationServiceImp : NavigationService {
+class NavigationServiceImp : NavigationService {
     private var _containerViewController : ContainerViewController?
     private var _viewControllerStack: [String] = []
     
-    public func currentViewController() -> UIViewController {
+    func currentViewController() -> UIViewController {
         return _containerViewController!
     }
     
-    public func navigate<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?, animated: Bool){
+    func navigate<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?, animated: Bool){
         let viewController: UIViewController = _getViewController(type: viewModel, args: arguments)
         _containerViewController?.navigationController?.pushViewController(viewController, animated: animated)
     }
     
-    public func navigateModal<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?) {
+    func navigateModal<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?) {
         let viewController: UIViewController = _getViewController(type: viewModel, args: arguments)
         _containerViewController?.navigationController?.present(UINavigationController(rootViewController: viewController), animated: true, completion: nil)
     }
     
-    public func navigateAndSetAsContainer<TViewModel : ViewModel>(viewModel: TViewModel.Type) {
+    func navigateAndSetAsContainer<TViewModel : ViewModel>(viewModel: TViewModel.Type) {
         let viewController: UIViewController = _getViewController(type: viewModel, args: nil)
         _setNewContainerViewController(UINavigationController(rootViewController: viewController))
     }
@@ -54,28 +54,27 @@ public class NavigationServiceImp : NavigationService {
         _containerViewController?.changeViewController(viewController)
     }
     
-    public func close(arguments: Any?, animated: Bool) {
+    func close(arguments: Any?, animated: Bool) {
         _viewControllerStack.removeLast()
         
         _containerViewController?.navigationController?.popViewController(animated: animated)
         _notifyView(arguments)
     }
     
-    public func closeModal(arguments: Any?) {
+    func closeModal(arguments: Any?) {
         _viewControllerStack.removeLast()
         
         _containerViewController?.navigationController?.dismiss(animated: true, completion: nil)
         _notifyView(arguments)
     }
     
-    public func setVisibleViewController(_ visibleViewController : String) {
+    func setVisibleViewController(_ visibleViewController : String) {
         _viewControllerStack.append(visibleViewController)
     }
     
 //    private func _visibleViewController() -> String! {
 //        return _containerViewController?.children.last?.children.last?.className
 //    }
-    
     
     private func _notifyView(_ arguments: Any?) {
         if(arguments != nil) {

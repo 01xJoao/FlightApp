@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct FlightDetail {
+struct FlightDetail {
     private var _flight: FlightObject
     private var _currency : String
     
@@ -17,29 +17,29 @@ public struct FlightDetail {
         _currency = currency
     }
     
-    public func getDepartTime() -> String {
+    func getDepartTime() -> String {
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "hh:mm"
         let date = DateFormatter.date(fromISO8601String: _flight.time.first ?? "")!
         return dateFormatterPrint.string(from: date)
     }
     
-    public func getArriveTime() -> String {
+    func getArriveTime() -> String {
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "hh:mm"
          let date = DateFormatter.date(fromISO8601String: _flight.time.last ?? "")!
         return dateFormatterPrint.string(from: date)
     }
     
-    public func getDurationTime() -> String {
+    func getDurationTime() -> String {
         return "\(_flight.duration)"
     }
     
-    public func getFlightNumber() -> String {
+    func getFlightNumber() -> String {
         return _flight.flightNumber
     }
     
-    public func getFare() -> String {
+    func getFare() -> String {
         if(_flight.regularFare?.fares.first?.amount ?? 0 > 0) {
             return "\(_flight.regularFare?.fares.first?.amount ?? 0)"
         }
@@ -47,7 +47,7 @@ public struct FlightDetail {
         return ""
     }
     
-    public func getCurrency() -> String {
+    func getCurrency() -> String {
         return _currency
     }
 }

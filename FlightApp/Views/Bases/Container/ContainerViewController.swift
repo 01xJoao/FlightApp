@@ -16,7 +16,7 @@ class ContainerViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    public func changeViewController(_ viewController: UIViewController) {
+    func changeViewController(_ viewController: UIViewController) {
         if(_checkIfCurrentViewControllerIsEqualsToNew(viewController)) {
             return
         }

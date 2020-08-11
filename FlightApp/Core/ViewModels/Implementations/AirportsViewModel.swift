@@ -8,30 +8,30 @@
 
 import Foundation
 
-public class AirportsViewModel : ViewModelBase {
+class AirportsViewModel : ViewModelBase {
     private var _airports : DynamicValueList<Airport>!
-    public var airports : DynamicValueList<Airport> {
+    var airports : DynamicValueList<Airport> {
         get {
             return _airports
         }
     }
     
     private var _airportSearchList : DynamicValueList<Airport> = DynamicValueList<Airport>()
-    public var searchAirports : DynamicValueList<Airport> {
+    var searchAirports : DynamicValueList<Airport> {
         get {
            return _airportSearchList
        }
     }
     
     private var _searchCommand: WPCommand<String>?
-    public var searchCommand: WPCommand<String> {
+    var searchCommand: WPCommand<String> {
         get {
             _searchCommand ??= WPCommand<String>(_search, canExecute: _canExecute)
             return _searchCommand!
         }
     }
 
-    public override func prepare(dataObject: Any) {
+    override func prepare(dataObject: Any) {
         _airports = (dataObject as! DynamicValueList<Airport>)
     }
     
@@ -47,6 +47,6 @@ public class AirportsViewModel : ViewModelBase {
     }
     
     //L10N Strings
-    public let airportsTitleLabel: String = L10N.localize(key: "airports_title")
-    public let searchLabel: String = L10N.localize(key: "global_search")
+    let airportsTitleLabel: String = L10N.localize(key: "airports_title")
+    let searchLabel: String = L10N.localize(key: "global_search")
 }

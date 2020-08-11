@@ -12,7 +12,7 @@ class AirportDataSource : NSObject, UITableViewDataSource, UITableViewDelegate {
     private let _cellIdentifier = "AirportCell"
     private let _tableView : UITableView
     
-    open var airports = [Airport]() {
+    var airports = [Airport]() {
         didSet {
             DispatchQueue.main.async {
                 self._tableView.reloadData()

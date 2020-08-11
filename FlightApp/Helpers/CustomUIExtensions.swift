@@ -8,8 +8,8 @@
 
 import UIKit
 
-public struct CustomUIExtensions {
-    public static func textShadow() -> NSShadow {
+struct CustomUIExtensions {
+    static func textShadow() -> NSShadow {
         let textShadow = NSShadow()
         textShadow.shadowColor = UIColor.Theme.black
         textShadow.shadowBlurRadius = 1.2
@@ -67,7 +67,7 @@ extension UIViewController {
 }
 
 extension UIView {
-     public func removeAllSubViews() {
+    func removeAllSubViews() {
           self.subviews.forEach({ $0.removeFromSuperview() })
     }
     
@@ -92,7 +92,7 @@ class NavigationController: UINavigationController {
     }
 }
 
-public class CustomSearchController : UISearchController {
+class CustomSearchController : UISearchController {
     private lazy var customSearchBar = CustomSearchBar()
-    public override var searchBar: UISearchBar { customSearchBar }
+    override var searchBar: UISearchBar { customSearchBar }
 }

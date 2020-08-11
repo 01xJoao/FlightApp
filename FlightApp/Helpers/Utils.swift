@@ -10,17 +10,17 @@ import UIKit
 import ImageLoader
 import Foundation
 
-public struct Utils {
-    public static let keyWindow: UIWindow = UIApplication.shared.windows.first {$0.isKeyWindow}!
+struct Utils {
+    static let keyWindow: UIWindow = UIApplication.shared.windows.first {$0.isKeyWindow}!
     
-    public static func serializeJson<T : Codable>(object: T) -> NSDictionary {
+    static func serializeJson<T : Codable>(object: T) -> NSDictionary {
         let jsonData = try? JSONEncoder().encode(object)
         let jsonResult = try? JSONSerialization.jsonObject(with: jsonData!) as? NSDictionary
         return jsonResult ?? ["" : ""]
     }
     
     
-    public static func splitHoursString(_ hour : String) -> [String] {
+    static func splitHoursString(_ hour : String) -> [String] {
         if(hour.isEmpty) {
             return ["", ""]
         }

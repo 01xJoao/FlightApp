@@ -8,37 +8,37 @@
 
 import Foundation
 
-public struct Flights {
+struct Flights {
     private var _flights: FlightsObject
     
     init(_ flights: FlightsObject) {
         _flights = flights
     }
     
-    public func getOriginName() -> String {
+    func getOriginName() -> String {
         return _flights.trips.first?.originName ?? ""
     }
     
-    public func getOriginCode() -> String {
+    func getOriginCode() -> String {
         return _flights.trips.first?.origin ?? ""
     }
     
-    public func getDestinationName() -> String {
+    func getDestinationName() -> String {
         return _flights.trips.first?.destinationName ?? ""
     }
     
-    public func getDestinationCode() -> String {
+    func getDestinationCode() -> String {
         return _flights.trips.first?.destination ?? ""
     }
     
-    public func getDeparture() -> String {
+    func getDeparture() -> String {
         let date = DateFormatter.date(fromISO8601String: _flights.trips.first?.dates.first?.dateOut ?? "")!
         let dateFormatterPrint = DateFormatter()
         dateFormatterPrint.dateFormat = "d MMM yyyy"
         return dateFormatterPrint.string(from: date)
     }
     
-    public func getFlights() -> [FlightDetail] {
+    func getFlights() -> [FlightDetail] {
         var flights: [FlightDetail] = []
         
         _flights.trips.first?.dates.first?.flights.forEach { flight in

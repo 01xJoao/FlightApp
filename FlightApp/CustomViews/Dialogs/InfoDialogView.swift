@@ -10,15 +10,14 @@ import UIKit
 import Foundation
 import LBTATools
 
-public class InfoDialogView: UIView {
-    
-    public override init(frame: CGRect) {
+class InfoDialogView: UIView {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         self.clipsToBounds = true
         self.tag = 0
     }
     
-    public func showInfo(text: String, infoType: InfoDialogType) {
+    func showInfo(text: String, infoType: InfoDialogType) {
         _configureView(text, infoType)
         _show()
     }

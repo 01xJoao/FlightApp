@@ -8,6 +8,6 @@
 
 import Foundation
 
-public struct MarketObject: Codable {
+struct MarketObject: Codable {
     let code: String
 }

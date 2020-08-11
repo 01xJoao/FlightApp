@@ -6,7 +6,7 @@
 //  Copyright © 2020 João Palma. All rights reserved.
 //
 
-public protocol ReportService {
+protocol ReportService {
     func sendError(error: Error, message: String?)
     func sendEvent(message: String)
 }

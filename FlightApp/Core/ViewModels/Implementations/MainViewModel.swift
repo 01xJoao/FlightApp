@@ -8,11 +8,11 @@
 
 import Foundation
 
-public class MainViewModel : ViewModelBase {
+class MainViewModel : ViewModelBase {
     private let _airportWebService : AirportWebService
     
     private let _airports: DynamicValueList<Airport> = DynamicValueList<Airport>()
-    public var airports : DynamicValueList<Airport> {
+    var airports : DynamicValueList<Airport> {
         get {
             return _airports
         }
@@ -22,7 +22,7 @@ public class MainViewModel : ViewModelBase {
         self._airportWebService = airportWebService
     }
     
-    public override func initialize() {
+    override func initialize() {
         _fetchStations()
     }
     
@@ -46,6 +46,6 @@ public class MainViewModel : ViewModelBase {
         isBusy.value = false
     }
     
-    public let findFlightsTitleLabel: String = L10N.localize(key: "findflights_title")
-    public let airportsTitleLabel: String = L10N.localize(key: "airports_title")
+    let findFlightsTitleLabel: String = L10N.localize(key: "findflights_title")
+    let airportsTitleLabel: String = L10N.localize(key: "airports_title")
 }

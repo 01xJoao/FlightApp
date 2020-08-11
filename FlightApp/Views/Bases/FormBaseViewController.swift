@@ -9,10 +9,10 @@
 import UIKit
 import Foundation
 
-public class FormBaseViewController<TViewModel : ViewModel> : BaseViewController<TViewModel>, UIScrollViewDelegate {
+class FormBaseViewController<TViewModel : ViewModel> : BaseViewController<TViewModel>, UIScrollViewDelegate {
     var bottomButtonHeight: CGFloat = 0
     
-    public lazy var scrollView: UIScrollView = {
+    lazy var scrollView: UIScrollView = {
         let sv = UIScrollView()
         sv.contentInsetAdjustmentBehavior = .never
         sv.contentSize = view.frame.size
@@ -21,16 +21,16 @@ public class FormBaseViewController<TViewModel : ViewModel> : BaseViewController
         return sv
     }()
     
-    public let formContainerStackView: UIStackView = {
+    let formContainerStackView: UIStackView = {
         let sv = UIStackView()
         sv.isLayoutMarginsRelativeArrangement = true
         sv.axis = .vertical
         return sv
     }()
     
-    public var formViewAlignment: FormAlignment = .center
+    var formViewAlignment: FormAlignment = .center
     
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addSubview(scrollView)
@@ -40,7 +40,7 @@ public class FormBaseViewController<TViewModel : ViewModel> : BaseViewController
         //setupKeyboardNotifications()
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if formViewAlignment == .top {
@@ -54,11 +54,11 @@ public class FormBaseViewController<TViewModel : ViewModel> : BaseViewController
         scrollView.verticalScrollIndicatorInsets.bottom = bottomButtonHeight
     }
     
-    public override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         _updateScrollViewSize()
     }
     
-    public override func viewDidLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
         _updateScrollViewSize()
     }
     
@@ -70,13 +70,12 @@ public class FormBaseViewController<TViewModel : ViewModel> : BaseViewController
         }
     }
     
-    
-//    fileprivate func setupKeyboardNotifications() {
+//    private func setupKeyboardNotifications() {
 //        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 //    }
 //
-//    @objc public func handleKeyboardShow(notification: Notification) {
+//    @objc private func handleKeyboardShow(notification: Notification) {
 //        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 //        let keyboardScreenEndFrame = keyboardFrame.cgRectValue
 //        let keyboardViewEndFrame = self.view.convert(keyboardScreenEndFrame, from: self.view.window)
@@ -93,21 +92,21 @@ public class FormBaseViewController<TViewModel : ViewModel> : BaseViewController
 //        }
 //    }
     
-//    @objc public func handleKeyboardHide() {
+//    @objc private func handleKeyboardHide() {
 //        scrollView.contentInset = UIEdgeInsets.zero
 //        scrollView.contentInset.bottom = 0
 //        scrollView.verticalScrollIndicatorInsets.bottom = bottomButtonHeight
 //    }
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         scrollView.contentOffset.x = 0.0
     }
     
-    public enum FormAlignment {
+    enum FormAlignment {
         case top, center
     }
     
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("error \(aDecoder)")
     }
     

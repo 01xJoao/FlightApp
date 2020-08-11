@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct WPCommand<T> {
+struct WPCommand<T> {
     private let actionWithParam: (T) -> ()
     private let canExecuteAction: () -> (Bool)
 
@@ -17,17 +17,17 @@ public struct WPCommand<T> {
         self.canExecuteAction = canExecute
     }
 
-    public func execute(_ value: T) {
+    func execute(_ value: T) {
         actionWithParam(value)
     }
 
-    public func executeIf(_ value: T) {
+    func executeIf(_ value: T) {
         if(canExecuteAction()) {
            actionWithParam(value)
         }
     }
 
-    public func canExecute() -> Bool {
+    func canExecute() -> Bool {
         return canExecuteAction()
     }
 }

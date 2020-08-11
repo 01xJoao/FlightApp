@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct FindFlightObject {
+struct FindFlightObject {
     var originName: String
     var originCode: String
     var destinationName: String

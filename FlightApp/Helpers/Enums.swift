@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-public enum baseURL : String {
+enum baseURL : String {
     case stations
     case flights
     
@@ -23,21 +23,21 @@ public enum baseURL : String {
     }
 }
 
-public enum FlightAirportType {
+enum FlightAirportType {
     case origin
     case destination
 }
 
-public enum InfoDialogType {
+enum InfoDialogType {
     case good
     case bad
     case info
 }
 
 extension InfoDialogType: RawRepresentable {
-    public typealias RawValue = UIColor
+    typealias RawValue = UIColor
 
-    public init?(rawValue: RawValue) {
+    init?(rawValue: RawValue) {
         switch rawValue {
             case UIColor.Theme.green: self = .good
             case UIColor.Theme.red: self = .bad
@@ -46,7 +46,7 @@ extension InfoDialogType: RawRepresentable {
         }
     }
 
-public var rawValue: RawValue {
+    var rawValue: RawValue {
         switch self {
             case .good: return UIColor.Theme.green
             case .bad: return UIColor.Theme.red

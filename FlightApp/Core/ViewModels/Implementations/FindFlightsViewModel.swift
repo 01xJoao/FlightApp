@@ -8,37 +8,37 @@
 
 import Foundation
 
-public class FindFlightsViewModel : ViewModelBase {
-    let _findFlightsWebService: FindFlightsWebService
-    let _dialogService: DialogService
+class FindFlightsViewModel : ViewModelBase {
+    private let _findFlightsWebService: FindFlightsWebService
+    private let _dialogService: DialogService
     
     init (findFlightsWebService : FindFlightsWebService, dialogService : DialogService) {
         _findFlightsWebService = findFlightsWebService
         _dialogService = dialogService
     }
     
-    public var passengersValue : String {
+    var passengersValue : String {
         get {
             return _getPassengers()
         }
     }
     
     private let _findFlight : DynamicValue<FindFlight> = DynamicValue<FindFlight>(FindFlight(FindFlightObject()))
-    public var findFlight : DynamicValue<FindFlight> {
+    var findFlight : DynamicValue<FindFlight> {
         get {
             return _findFlight
         }
     }
     
     private var _airports : DynamicValueList<Airport>!
-    public var airports : DynamicValueList<Airport> {
+    var airports : DynamicValueList<Airport> {
         get {
             return _airports
         }
     }
     
     private var _openAirportListViewCommand: WPCommand<FlightAirportType>?
-    public var openAirportListViewCommand: WPCommand<FlightAirportType> {
+    var openAirportListViewCommand: WPCommand<FlightAirportType> {
        get {
            _openAirportListViewCommand ??= WPCommand<FlightAirportType>(_openAirportListView, canExecute: _canExecute)
            return _openAirportListViewCommand!
@@ -46,7 +46,7 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     private var _clearCommand: Command?
-    public var clearCommand: Command {
+    var clearCommand: Command {
        get {
            _clearCommand ??= Command(_clearFlightData, canExecute: _canExecute)
            return _clearCommand!
@@ -54,7 +54,7 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     private var _swapAirportsCommand: Command?
-    public var swapAirportsCommand: Command {
+    var swapAirportsCommand: Command {
        get {
            _swapAirportsCommand ??= Command(_swapAirports, canExecute: _canExecute)
            return _swapAirportsCommand!
@@ -62,7 +62,7 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     private var _setDepartureCommand : WPCommand<Date>?
-    public var setDepartureCommand: WPCommand<Date> {
+    var setDepartureCommand: WPCommand<Date> {
         get {
             _setDepartureCommand ??= WPCommand<Date>(_setDeparture)
             return _setDepartureCommand!
@@ -70,7 +70,7 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     private var _setPassengersCommand : WPCommand<PassengersObject>?
-    public var setPassengersCommand: WPCommand<PassengersObject> {
+    var setPassengersCommand: WPCommand<PassengersObject> {
         get {
             _setPassengersCommand ??= WPCommand<PassengersObject>(_setPassengers)
             return _setPassengersCommand!
@@ -78,14 +78,14 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     private var _submitButtonCommand : Command?
-    public var submitButtonCommand : Command {
+    var submitButtonCommand : Command {
         get {
             _submitButtonCommand ??= Command(_submitFindFlight, canExecute: _canExecute)
             return _submitButtonCommand!
         }
     }
     
-    public override func prepare(dataObject: Any) {
+    override func prepare(dataObject: Any) {
         _airports = (dataObject as! DynamicValueList<Airport>)
     }
     
@@ -182,7 +182,7 @@ public class FindFlightsViewModel : ViewModelBase {
         }
     }
     
-    public override func dataNotify(dataObject: Any?) {
+    override func dataNotify(dataObject: Any?) {
         let airportSearch = dataObject as! AirportSearchObject
         _manageAirportSelected(airportSearch)
     }
@@ -214,26 +214,26 @@ public class FindFlightsViewModel : ViewModelBase {
     }
     
     //L10N Strings
-    public let findFlightsTitleLabel: String = L10N.localize(key: "findflights_title")
-    public let departureLabel: String = L10N.localize(key: "findflights_departure")
-    public let passengersLabel: String = L10N.localize(key: "findflights_passengers")
-    public let originLabel: String = L10N.localize(key: "findflights_origin")
-    public let destinationLabel: String = L10N.localize(key: "findflights_destination")
-    public let letsGoLabel: String = L10N.localize(key: "findflights_find")
-    public let clearLabel: String = L10N.localize(key: "global_clear")
-    public let originPlaceholderCodeLabel: String = L10N.localize(key: "findflights_originCode")
-    public let originPlaceholderNameLabel: String = L10N.localize(key: "findflights_selectOrigin")
-    public let destinationPlaceholderCodeLabel: String = L10N.localize(key: "findflights_destinationCode")
-    public let destinationPlaceholderNameLabel: String = L10N.localize(key: "findflights_selectDestination")
-    public let titleDepartureLabel: String = L10N.localize(key: "findflights_originCode")
-    public let confirmLabel: String = L10N.localize(key: "global_confirm")
-    public let applyLabel: String = L10N.localize(key: "global_apply")
-    public let adultLabel: String = L10N.localize(key: "findflights_adult")
-    public let adultsLabel: String = L10N.localize(key: "findflights_adults")
-    public let teenLabel: String = L10N.localize(key: "findflights_teen")
-    public let teensLabel: String = L10N.localize(key: "findflights_teens")
-    public let childLabel: String = L10N.localize(key: "findflights_child")
-    public let childrenLabel: String = L10N.localize(key: "findflights_children")
+    let findFlightsTitleLabel: String = L10N.localize(key: "findflights_title")
+    let departureLabel: String = L10N.localize(key: "findflights_departure")
+    let passengersLabel: String = L10N.localize(key: "findflights_passengers")
+    let originLabel: String = L10N.localize(key: "findflights_origin")
+    let destinationLabel: String = L10N.localize(key: "findflights_destination")
+    let letsGoLabel: String = L10N.localize(key: "findflights_find")
+    let clearLabel: String = L10N.localize(key: "global_clear")
+    let originPlaceholderCodeLabel: String = L10N.localize(key: "findflights_originCode")
+    let originPlaceholderNameLabel: String = L10N.localize(key: "findflights_selectOrigin")
+    let destinationPlaceholderCodeLabel: String = L10N.localize(key: "findflights_destinationCode")
+    let destinationPlaceholderNameLabel: String = L10N.localize(key: "findflights_selectDestination")
+    let titleDepartureLabel: String = L10N.localize(key: "findflights_originCode")
+    let confirmLabel: String = L10N.localize(key: "global_confirm")
+    let applyLabel: String = L10N.localize(key: "global_apply")
+    let adultLabel: String = L10N.localize(key: "findflights_adult")
+    let adultsLabel: String = L10N.localize(key: "findflights_adults")
+    let teenLabel: String = L10N.localize(key: "findflights_teen")
+    let teensLabel: String = L10N.localize(key: "findflights_teens")
+    let childLabel: String = L10N.localize(key: "findflights_child")
+    let childrenLabel: String = L10N.localize(key: "findflights_children")
     private let noFlightsLabel: String = L10N.localize(key: "availableflights_noflights")
     private let selectOriginFirstLabel: String = L10N.localize(key: "findflights_selectOriginFirst")
     private let fillAllFieldsLabel: String = L10N.localize(key: "findflights_fillfields")

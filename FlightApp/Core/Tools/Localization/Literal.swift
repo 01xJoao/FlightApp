@@ -7,5 +7,5 @@
 //
 
 struct LiteralObject {
-    public var key, translated : String
+    var key, translated : String
 }

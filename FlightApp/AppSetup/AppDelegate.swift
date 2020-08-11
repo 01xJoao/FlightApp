@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func _instantiateSentryService() {
+    private func _instantiateSentryService() {
         SentrySDK.start { options in
             options.dsn = _sentryDNS
             options.debug = true

@@ -10,9 +10,9 @@ import Foundation
 
 typealias CompletionHandler = (() -> Void)
 
-public class DynamicValue<T> {
+class DynamicValue<T> {
     private var _observers = [String: CompletionHandler]()
-    public var value : T { didSet { notify() } }
+    var value : T { didSet { notify() } }
     
     init(_ value: T) {
         self.value = value

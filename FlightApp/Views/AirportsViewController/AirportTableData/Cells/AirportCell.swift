@@ -10,7 +10,7 @@ import UIKit
 import ImageLoader
 
 class AirportCell: UITableViewCell {
-    public func config(_ airport : Airport) {
+    func config(_ airport : Airport) {
         self.removeAllSubViews()
         _createCard(airport)
     }
