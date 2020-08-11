@@ -46,6 +46,9 @@ public class NavigationServiceImp : NavigationService {
     }
     
     private func _setNewContainerViewController(_ viewController : UIViewController) {
+        _viewControllerStack.removeAll()
+        _viewControllerStack.append(String(describing: viewController.children.first!.className))
+        
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
         _containerViewController = sceneDelegate.containerViewController
         _containerViewController?.changeViewController(viewController)
