@@ -48,16 +48,19 @@ struct L10N {
     }
     
     static private func _loadJsonString() {
-        if let path = Bundle.main.path(forResource: _currentLanguage, ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as! NSDictionary
-                for (key, value) in jsonResult {
-                    _resourceManager.append(LiteralObject(key: key as! String, translated: value as! String))
-                }
-          } catch let error {
-                _reportService.sendError(error: error, message: "Error loading json")
+        guard let path = Bundle.main.path(forResource: _currentLanguage, ofType: "json") else {
+            _reportService.sendError(error: NSError(), message: "Can't find json file for language: \(_currentLanguage!)")
+            return
+        }
+        
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+            let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves) as! NSDictionary
+            for (key, value) in jsonResult {
+                _resourceManager.append(LiteralObject(key: key as! String, translated: value as! String))
             }
+        } catch let error {
+            _reportService.sendError(error: error, message: "Error loading \(_currentLanguage!).json file")
         }
     }
 }

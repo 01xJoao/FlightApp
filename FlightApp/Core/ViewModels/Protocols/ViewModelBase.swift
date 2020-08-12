@@ -9,7 +9,9 @@
 class ViewModelBase : ViewModel {
     private let _navigationService: NavigationService = DiContainer.resolve()
     var navigationService: NavigationService {
-        get { return _navigationService }
+        get {
+            return _navigationService
+        }
     }
     
     let isBusy : DynamicValue<Bool> = DynamicValue<Bool>(false)
