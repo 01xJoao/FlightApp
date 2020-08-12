@@ -11,8 +11,8 @@ import UIKit
 
 
 struct DiContainer {
-    fileprivate static var registrations = [AnyHashable : () -> Any]()
-    fileprivate static var viewControllerRegistrations = [AnyHashable : () -> Any]()
+    private static var registrations = [AnyHashable : () -> Any]()
+    private static var viewControllerRegistrations = [AnyHashable : () -> Any]()
     
     static func register<T>(_: T.Type, constructor: @escaping () -> Any) {
         let dependencyName = String(describing: T.self)
