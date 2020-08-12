@@ -31,7 +31,7 @@ class MainViewController : BaseTabBarController<MainViewModel> {
     private func _createTabBarController() {
         self.viewControllers = [
             _createViewTab(AirportsViewModel.self, viewModel.airportsTitleLabel,  UIImage(named: "Airport")!),
-            _createViewTab(FindFlightsViewModel.self, viewModel.findFlightsTitleLabel, UIImage(named: "FindFlights")!),
+            _createViewTab(FindFlightsViewModel.self, viewModel.findFlightsTitleLabel, UIImage(named: "FindFlights")!)
         ]
     }
     
@@ -40,8 +40,8 @@ class MainViewController : BaseTabBarController<MainViewModel> {
         viewController.parameterData = viewModel.airports
         viewController.tabBarItem = UITabBarItem(title: title, image: image.withTintColor(UIColor.Theme.darkGrey), selectedImage: image.withTintColor(UIColor.Theme.mainBlue))
         
-        let navigationController = UINavigationController();
-        navigationController.pushViewController(viewController, animated: false);
-        return navigationController;
+        let navigationController = UINavigationController()
+        navigationController.pushViewController(viewController, animated: false)
+        return navigationController
     }
 }

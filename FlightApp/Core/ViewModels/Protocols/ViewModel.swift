@@ -7,10 +7,10 @@
 //
 
 protocol ViewModel {
-    func prepare(dataObject: Any);
+    func prepare(dataObject: Any)
     func initialize()
     func appearing()
     func disappearing()
-    func backAction();
-    func dataNotify(dataObject: Any?);
+    func backAction()
+    func dataNotify(dataObject: Any?)
 }

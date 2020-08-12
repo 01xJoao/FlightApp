@@ -51,7 +51,7 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
     
     private func _configureActivityView() {
         _activityIndicatorView = createActivityIndicatory(view: self.view)
-        _activityIndicatorView.startAnimating();
+        _activityIndicatorView.startAnimating()
     }
     
     private func _createObservers() {

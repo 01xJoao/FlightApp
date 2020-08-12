@@ -31,7 +31,7 @@ class BaseViewController<TViewModel : ViewModel> : UIViewController {
     }
     
     @objc fileprivate func _backButtonPressed(sender:UIButton) {
-        _viewModel.backAction();
+        _viewModel.backAction()
     }
     
     private func _instantiateViewModel() {

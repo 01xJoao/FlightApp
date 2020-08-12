@@ -102,7 +102,7 @@ class FindFlightsViewModel : ViewModelBase {
     private func _canOpenAirportList(_ flightAirportType : FlightAirportType) -> Bool{
         if(flightAirportType == FlightAirportType.destination && _findFlight.value.getOriginCode().isEmpty) {
             _dialogService.showInfo(selectOriginFirstLabel, informationType: .info)
-            return false;
+            return false
         }
         
         return true

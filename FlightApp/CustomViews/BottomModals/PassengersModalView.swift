@@ -102,7 +102,7 @@ class PassengersModalView : UIViewController {
             case 1: _passengers.adults = value; _adultLabel.text = "\(value)"
             case 2: _passengers.teen = value; _teenLabel.text = "\(value)"
             case 3: _passengers.children = value; _childrenLabel.text = "\(value)"
-            default: break;
+            default: break
         }
     }
     

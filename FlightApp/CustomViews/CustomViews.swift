@@ -51,7 +51,7 @@ func backgroundRoundBorderView(color : UIColor = UIColor.Theme.darkerWhite, radi
     let backgrounView = UIView()
     backgrounView.backgroundColor = color
     backgrounView.layer.cornerRadius = radius
-    backgrounView.layer.masksToBounds = true;
+    backgrounView.layer.masksToBounds = true
     
     return backgrounView
 }
@@ -69,7 +69,7 @@ func createMainBlueButton(name : String, target : Any, action : Selector) -> UIB
                           backgroundColor: UIColor.Theme.babyBlue, target: target, action: action)
     
     button.layer.cornerRadius = 6
-    button.layer.masksToBounds = true;
+    button.layer.masksToBounds = true
     button.constrainHeight(52)
     
     return button
