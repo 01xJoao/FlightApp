@@ -35,7 +35,9 @@ class NavigationServiceImp : NavigationService {
     
     func navigateModal<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?) {
         let viewController: UIViewController = _getViewController(type: viewModel, args: arguments)
-        _containerViewController?.navigationController?.present(UINavigationController(rootViewController: viewController), animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: viewController);
+        //navController.presentationController?.delegate = viewController as? UIAdaptivePresentationControllerDelegate
+        _containerViewController?.navigationController?.present(navController, animated: true, completion: nil)
     }
     
     func navigateAndSetAsContainer<TViewModel : ViewModel>(viewModel: TViewModel.Type) {

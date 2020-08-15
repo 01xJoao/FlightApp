@@ -17,6 +17,7 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = viewModel.title
+        self.isModalInPresentation = true
         _setupView()
     }
     
