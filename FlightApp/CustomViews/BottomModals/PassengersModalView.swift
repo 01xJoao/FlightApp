@@ -86,8 +86,8 @@ class PassengersModalView : UIViewController {
     
     private func _configureApplyButton() {
         self.view.addSubview(_applyButton)
-        _applyButton.anchor(top: nil, leading: self.view.leadingAnchor, bottom: self.view.bottomAnchor,
-                            trailing: self.view.trailingAnchor, padding: .init(top: 0, left: 12, bottom: 15, right: 12))
+        _applyButton.anchor(top: nil, leading: self.view.leadingAnchor, bottom: self.view.safeAreaLayoutGuide.bottomAnchor,
+                            trailing: self.view.trailingAnchor, padding: .init(top: 0, left: 12, bottom: 0, right: 12))
     }
     
     override func viewWillLayoutSubviews() {
