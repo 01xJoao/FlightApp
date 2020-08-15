@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 
 class FormBaseViewController<TViewModel : ViewModel> : BaseViewController<TViewModel>, UIScrollViewDelegate {
+    var formViewAlignment: FormAlignment = .center
     var bottomButtonHeight: CGFloat = 0
     
     lazy var scrollView: UIScrollView = {
@@ -27,8 +28,6 @@ class FormBaseViewController<TViewModel : ViewModel> : BaseViewController<TViewM
         sv.axis = .vertical
         return sv
     }()
-    
-    var formViewAlignment: FormAlignment = .center
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,10 +54,12 @@ class FormBaseViewController<TViewModel : ViewModel> : BaseViewController<TViewM
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         _updateScrollViewSize()
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         _updateScrollViewSize()
     }
     
@@ -70,12 +71,12 @@ class FormBaseViewController<TViewModel : ViewModel> : BaseViewController<TViewM
         }
     }
     
-//    private func setupKeyboardNotifications() {
-//        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    private func _setupKeyboardNotifications() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(_handleKeyboardShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(_handleKeyboardHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 //    }
 //
-//    @objc private func handleKeyboardShow(notification: Notification) {
+//    @objc private func _handleKeyboardShow(notification: Notification) {
 //        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 //        let keyboardScreenEndFrame = keyboardFrame.cgRectValue
 //        let keyboardViewEndFrame = self.view.convert(keyboardScreenEndFrame, from: self.view.window)
@@ -92,30 +93,14 @@ class FormBaseViewController<TViewModel : ViewModel> : BaseViewController<TViewM
 //        }
 //    }
     
-//    @objc private func handleKeyboardHide() {
+//    @objc private func _handleKeyboardHide() {
 //        scrollView.contentInset = UIEdgeInsets.zero
 //        scrollView.contentInset.bottom = 0
 //        scrollView.verticalScrollIndicatorInsets.bottom = bottomButtonHeight
 //    }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        scrollView.contentOffset.x = 0.0
-    }
-    
     enum FormAlignment {
         case top, center
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("error \(aDecoder)")
-    }
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
     }
 }
 

@@ -60,13 +60,8 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     
     private func _setDefaultData() {
         _departureLabel.text = viewModel.findFlight.value.getDeparture()
-        
-        _setAirportNamesAndCodes(_originCodeLabel, _originNameLabel,
-                                 viewModel.originPlaceholderCodeLabel, viewModel.originPlaceholderNameLabel)
-        
-        _setAirportNamesAndCodes(_destinationCodeLabel, _destinationNameLabel,
-                                 viewModel.destinationPlaceholderCodeLabel, viewModel.destinationPlaceholderNameLabel)
-        
+        _setAirportNamesAndCodes(_originCodeLabel, _originNameLabel, viewModel.originPlaceholderCodeLabel, viewModel.originPlaceholderNameLabel)
+        _setAirportNamesAndCodes(_destinationCodeLabel, _destinationNameLabel, viewModel.destinationPlaceholderCodeLabel, viewModel.destinationPlaceholderNameLabel)
         _passengersLabel.text = viewModel.passengersValue
     }
     

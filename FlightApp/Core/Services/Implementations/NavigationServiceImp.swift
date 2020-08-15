@@ -17,7 +17,7 @@ class NavigationServiceImp : NavigationService {
         return _containerViewController!
     }
     
-    func navigate<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?, animated: Bool){
+    func navigate<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?, animated: Bool) {
         let viewController: UIViewController = _getViewController(type: viewModel, args: arguments)
         _containerViewController?.navigationController?.pushViewController(viewController, animated: animated)
     }
@@ -37,7 +37,7 @@ class NavigationServiceImp : NavigationService {
         let viewController: UIViewController = DiContainer.resolveViewController(name: viewModelName)
         
         if(args != nil) {
-            if let vc = viewController as? BaseViewController<TViewModel> {
+            if  let vc = viewController as? BaseViewController<TViewModel> {
                 vc.parameterData = args
             }
         }
@@ -69,12 +69,15 @@ class NavigationServiceImp : NavigationService {
     }
     
     func setVisibleViewController(_ visibleViewController : String) {
-        _viewControllerStack.append(visibleViewController)
+        if(_viewControllerStack.last != visibleViewController) {
+            if let index = _viewControllerStack.firstIndex(where: { $0 == visibleViewController }) {
+                _viewControllerStack.removeSubrange(index+1..._viewControllerStack.count-1)
+            } else {
+                _viewControllerStack.append(visibleViewController)
+            }
+        }
+        print(_viewControllerStack)
     }
-    
-//    private func _visibleViewController() -> String! {
-//        return _containerViewController?.children.last?.children.last?.className
-//    }
     
     private func _notifyView(_ arguments: Any?) {
         if(arguments != nil) {

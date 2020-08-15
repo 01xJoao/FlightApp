@@ -82,8 +82,7 @@ extension UIView {
 class NavigationController: UINavigationController {
     override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let backButton = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        self.topViewController?.navigationItem.backBarButtonItem = backButton
+        self.topViewController?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.topViewController?.navigationItem.backBarButtonItem?.tintColor = UIColor.Theme.white
     }
     
