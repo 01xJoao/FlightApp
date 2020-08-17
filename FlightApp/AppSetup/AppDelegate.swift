@@ -9,8 +9,6 @@
 import UIKit
 import Sentry
 
-fileprivate let _sentryDNS: String = "https://d3cace843c564cf993f7dd3e0803db9c@o155613.ingest.sentry.io/5374075"
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -20,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func _instantiateSentryService() {
         SentrySDK.start { options in
-            options.dsn = _sentryDNS
+            options.dsn = APIs.sentryDNS
             options.debug = true
         }
     }

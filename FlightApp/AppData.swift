@@ -17,3 +17,7 @@ struct FlightValues {
     static let minAdultsPassenger : Double = 1
     static let maxPerPassengerPerType : Double = 6
 }
+
+struct APIs {
+    static let sentryDNS: String = "https://d3cace843c564cf993f7dd3e0803db9c@o155613.ingest.sentry.io/5374075"
+}
