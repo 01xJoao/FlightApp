@@ -11,6 +11,5 @@ protocol ViewModel {
     func initialize()
     func appearing()
     func disappearing()
-    func backAction()
     func dataNotify(dataObject: Any?)
 }

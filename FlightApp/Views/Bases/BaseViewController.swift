@@ -30,10 +30,6 @@ class BaseViewController<TViewModel : ViewModel> : UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    @objc private func _backButtonPressed(sender:UIButton) {
-        _viewModel.backAction()
-    }
-    
     private func _instantiateViewModel() {
         let vm : TViewModel = DiContainer.resolve()
         
