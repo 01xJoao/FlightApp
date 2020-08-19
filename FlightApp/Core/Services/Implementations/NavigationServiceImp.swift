@@ -17,17 +17,6 @@ class NavigationServiceImp : NavigationService {
         return _containerViewController!
     }
     
-    func setVisibleViewController(_ visibleViewController : String) {
-        if(_viewControllerStack.last != visibleViewController) {
-            if let index = _viewControllerStack.firstIndex(where: { $0 == visibleViewController }) {
-                _viewControllerStack.removeSubrange(index+1..._viewControllerStack.count-1)
-            } else {
-                _viewControllerStack.append(visibleViewController)
-            }
-        }
-        print(_viewControllerStack)
-    }
-    
     func navigate<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?, animated: Bool) {
         let viewController: UIViewController = _getViewController(type: viewModel, args: arguments)
         _containerViewController?.navigationController?.pushViewController(viewController, animated: animated)
@@ -87,6 +76,16 @@ class NavigationServiceImp : NavigationService {
                 name: NSNotification.Name(rawValue: _viewControllerStack.last!),
                 object: nil,
                 userInfo: ["arguments": arguments!])
+        }
+    }
+    
+    func addNewVisibleViewController(_ visibleViewController : String) {
+        if(_viewControllerStack.last != visibleViewController) {
+            if let index = _viewControllerStack.firstIndex(where: { $0 == visibleViewController }) {
+                _viewControllerStack.removeSubrange(index+1..._viewControllerStack.count-1)
+            } else {
+                _viewControllerStack.append(visibleViewController)
+            }
         }
     }
 }
