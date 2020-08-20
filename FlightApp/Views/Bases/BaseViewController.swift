@@ -22,7 +22,7 @@ class BaseViewController<TViewModel : ViewModel> : UIViewController {
         super.viewDidLoad()
         _setViewConfigurations()
         _instantiateViewModel()
-        _createViewCloseNotification()
+        _createAppearingViewNotification()
     }
     
     private func _setViewConfigurations() {
@@ -41,11 +41,17 @@ class BaseViewController<TViewModel : ViewModel> : UIViewController {
         _viewModel?.initialize()
     }
     
-    private func _createViewCloseNotification() {
+    private func _createAppearingViewNotification() {
         NotificationCenter.default.addObserver(self,
-           selector: #selector(self._notifyOnAppearing(_:)),
+           selector: #selector(self._notifyViewOnAppearing(_:)),
            name: NSNotification.Name(rawValue: String(describing: type(of: self))),
            object: nil)
+    }
+    
+    @objc func _notifyViewOnAppearing(_ notification: NSNotification) {
+        if let params = notification.userInfo as NSDictionary? {
+            _viewModel.dataNotify(dataObject: params["arguments"])
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,12 +62,6 @@ class BaseViewController<TViewModel : ViewModel> : UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         _viewModel?.disappearing()
-    }
-    
-    @objc func _notifyOnAppearing(_ notification: NSNotification) {
-        if let params = notification.userInfo as NSDictionary? {
-            _viewModel.dataNotify(dataObject: params["arguments"])
-        }
     }
     
     deinit {
