@@ -43,20 +43,14 @@ class BaseViewController<TViewModel : ViewModel> : UIViewController {
     
     private func _createViewCloseNotification() {
         NotificationCenter.default.addObserver(self,
-           selector: #selector(self._handleViewDismiss(_:)),
+           selector: #selector(self._notifyOnAppearing(_:)),
            name: NSNotification.Name(rawValue: String(describing: type(of: self))),
            object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        _setAsVisibleViewController()
         _viewModel?.appearing()
-    }
-    
-    private func _setAsVisibleViewController() {
-        let navigationService : NavigationService = DiContainer.resolve()
-        navigationService.setVisibleViewController(String(describing: type(of: self)))
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,7 +58,7 @@ class BaseViewController<TViewModel : ViewModel> : UIViewController {
         _viewModel?.disappearing()
     }
     
-    @objc func _handleViewDismiss(_ notification: NSNotification) {
+    @objc func _notifyOnAppearing(_ notification: NSNotification) {
         if let params = notification.userInfo as NSDictionary? {
             _viewModel.dataNotify(dataObject: params["arguments"])
         }

@@ -9,7 +9,7 @@
 import UIKit
 
 class ContainerViewController: UIViewController {
-    private var currentViewController : UIViewController?
+    private(set) var currentViewController : UIViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,7 @@ class ContainerViewController: UIViewController {
     
     func _removeCurrentViewController() {
         if(currentViewController != nil) {
+            self.willMove(toParent: nil)
             currentViewController?.removeFromParent()
             currentViewController?.view.removeFromSuperview()
             currentViewController = nil

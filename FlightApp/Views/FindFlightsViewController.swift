@@ -238,7 +238,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         let datePickerVC = DatePickerModalView()
         datePickerVC.config(date: viewModel.findFlight.value.getDepartureDate(), titleLabel: viewModel.departureLabel, confirmLabel: viewModel.confirmLabel, handler: _datePickerSelection)
         
-        _drawerDepartureView = viewModel.navigationService.currentViewController().addDrawerView(withViewController: datePickerVC)
+        _drawerDepartureView = viewModel.navigationService.containerViewController().addDrawerView(withViewController: datePickerVC)
         _drawerDepartureView!.partiallyOpenHeight = LocalConstants.DatePickerModalHeight
         _drawerDepartureView!.snapPositions = [.partiallyOpen, .closed]
     }
@@ -258,7 +258,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
                             applyLabel: viewModel.applyLabel, handler: _passengersSelection,
                             labels: [viewModel.adultsLabel, viewModel.teensLabel, viewModel.childrenLabel])
         
-        _drawerPassengersView = viewModel.navigationService.currentViewController().addDrawerView(withViewController: passengersVC)
+        _drawerPassengersView = viewModel.navigationService.containerViewController().addDrawerView(withViewController: passengersVC)
         _drawerPassengersView!.partiallyOpenHeight = LocalConstants.PassengersModalHeight
         _drawerPassengersView!.snapPositions = [.partiallyOpen, .closed]
     }

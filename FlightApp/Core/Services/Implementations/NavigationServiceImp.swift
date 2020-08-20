@@ -11,9 +11,8 @@ import Foundation
 
 class NavigationServiceImp : NavigationService {
     private var _containerViewController : ContainerViewController?
-    private var _viewControllerStack: [String] = []
-    
-    func currentViewController() -> UIViewController {
+
+    func containerViewController() -> ContainerViewController {
         return _containerViewController!
     }
     
@@ -25,7 +24,6 @@ class NavigationServiceImp : NavigationService {
     func navigateModal<TViewModel : ViewModel>(viewModel: TViewModel.Type, arguments: Any?) {
         let viewController: UIViewController = _getViewController(type: viewModel, args: arguments)
         let navController = UINavigationController(rootViewController: viewController);
-        //navController.presentationController?.delegate = viewController as? UIAdaptivePresentationControllerDelegate
         _containerViewController?.navigationController?.present(navController, animated: true, completion: nil)
     }
     
@@ -39,7 +37,7 @@ class NavigationServiceImp : NavigationService {
         let viewController: UIViewController = DiContainer.resolveViewController(name: viewModelName)
         
         if(args != nil) {
-            if  let vc = viewController as? BaseViewController<TViewModel> {
+            if let vc = viewController as? BaseViewController<TViewModel> {
                 vc.parameterData = args
             }
         }
@@ -48,44 +46,41 @@ class NavigationServiceImp : NavigationService {
     }
     
     private func _setNewContainerViewController(_ viewController : UIViewController) {
-        _viewControllerStack.removeAll()
-        _viewControllerStack.append(String(describing: viewController.children.first!.className))
-        
         let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as! SceneDelegate
         _containerViewController = sceneDelegate.containerViewController
         _containerViewController?.changeViewController(viewController)
     }
     
     func close(arguments: Any?, animated: Bool) {
-        _viewControllerStack.removeLast()
-        
-        _containerViewController?.navigationController?.popViewController(animated: animated)
-        _notifyView(arguments)
+        _containerViewController?.navigationController?.popViewController(animated: true)
+        _findVisibleViewController(self._containerViewController!.currentViewController!, arguments)
     }
     
     func closeModal(arguments: Any?) {
-        _viewControllerStack.removeLast()
-        
-        _containerViewController?.navigationController?.dismiss(animated: true, completion: nil)
-        _notifyView(arguments)
+        _containerViewController?.navigationController?.dismiss(animated: true)
+        _findVisibleViewController(self._containerViewController!.currentViewController!, arguments)
     }
     
-    private func _notifyView(_ arguments: Any?) {
-        if(arguments != nil) {
-            NotificationCenter.default.post(
-                name: NSNotification.Name(rawValue: _viewControllerStack.last!),
-                object: nil,
-                userInfo: ["arguments": arguments!])
+    func _findVisibleViewController(_ viewController : UIViewController, _ args: Any?) {
+        if(viewController.children.isEmpty) {
+            _notifyView(viewController.className, args)
+        } else {
+            viewController.children.forEach({ vc in
+                if(vc.view.superview != nil) {
+                    _findVisibleViewController(vc, args)
+                }
+            })
         }
     }
     
-    func addNewVisibleViewController(_ visibleViewController : String) {
-        if(_viewControllerStack.last != visibleViewController) {
-            if let index = _viewControllerStack.firstIndex(where: { $0 == visibleViewController }) {
-                _viewControllerStack.removeSubrange(index+1..._viewControllerStack.count-1)
-            } else {
-                _viewControllerStack.append(visibleViewController)
-            }
+    private func _notifyView(_ viewController : String,  _ arguments: Any?) {
+        if(arguments != nil) {
+            NotificationCenter.default.post(
+                name: NSNotification.Name(rawValue: viewController),
+                object: nil,
+                userInfo: ["arguments": arguments!]
+            )
         }
     }
 }
+
