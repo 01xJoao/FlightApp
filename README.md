@@ -6,7 +6,7 @@
 #### Dependency Injection
 #### Command Pattern
 #### Observer Pattern
-#### Service Layer
+#### Service Layer Pattern
 #### Dialog Service
 #### Web Service
 #### Navigation Service (ViewModel-First navigation)
