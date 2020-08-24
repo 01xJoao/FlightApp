@@ -9,9 +9,9 @@
 import Foundation
 
 struct Airport {
-    private var _airport: AirportObject
+    private var _airport: AirportStruct
     
-    init(_ airport: AirportObject) {
+    init(_ airport: AirportStruct) {
         _airport = airport
     }
     

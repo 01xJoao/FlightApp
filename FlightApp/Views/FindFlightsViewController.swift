@@ -264,7 +264,7 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     private func _passengersSelection(_ obj : Any) {
-        if let passengers = obj as? PassengersObject {
+        if let passengers = obj as? PassengersStruct {
             viewModel.setPassengersCommand.executeIf(passengers)
         }
         

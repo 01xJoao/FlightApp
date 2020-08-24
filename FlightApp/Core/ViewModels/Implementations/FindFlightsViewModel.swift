@@ -23,7 +23,7 @@ class FindFlightsViewModel : ViewModelBase {
         }
     }
     
-    private let _findFlight : DynamicValue<FindFlight> = DynamicValue<FindFlight>(FindFlight(FindFlightObject()))
+    private let _findFlight : DynamicValue<FindFlight> = DynamicValue<FindFlight>(FindFlight(FindFlightStruct()))
     var findFlight : DynamicValue<FindFlight> {
         get {
             return _findFlight
@@ -69,10 +69,10 @@ class FindFlightsViewModel : ViewModelBase {
         }
     }
     
-    private var _setPassengersCommand : WPCommand<PassengersObject>?
-    var setPassengersCommand: WPCommand<PassengersObject> {
+    private var _setPassengersCommand : WPCommand<PassengersStruct>?
+    var setPassengersCommand: WPCommand<PassengersStruct> {
         get {
-            _setPassengersCommand ??= WPCommand<PassengersObject>(_setPassengers)
+            _setPassengersCommand ??= WPCommand<PassengersStruct>(_setPassengers)
             return _setPassengersCommand!
         }
     }
@@ -94,7 +94,7 @@ class FindFlightsViewModel : ViewModelBase {
             let airportList = DynamicValueList<Airport>()
             airportList.addAll(object: _airports.data.value)
             
-            let airportObject = AirportSearchObject(airports: airportList, market: _findFlight.value.getOriginCode(), flightAirportType: flightAirportType)
+            let airportObject = AirportSearchStruct(airports: airportList, market: _findFlight.value.getOriginCode(), flightAirportType: flightAirportType)
             navigationService.navigateModal(viewModel: AirportListViewModel.self, arguments: airportObject)
         }
     }
@@ -126,7 +126,7 @@ class FindFlightsViewModel : ViewModelBase {
         _findFlight.value.setDeparture(date)
     }
     
-    private func _setPassengers(passengers : PassengersObject) {
+    private func _setPassengers(passengers : PassengersStruct) {
         _findFlight.value.setPassengers(passengers)
     }
     
@@ -172,7 +172,7 @@ class FindFlightsViewModel : ViewModelBase {
         return true
     }
     
-    private func _flightsFound(flights : FlightsObject?) {
+    private func _flightsFound(flights : FlightsStruct?) {
         isBusy.value = false
         
         if(flights == nil || flights!.trips.isEmpty) {
@@ -183,11 +183,11 @@ class FindFlightsViewModel : ViewModelBase {
     }
     
     override func dataNotify(dataObject: Any?) {
-        let airportSearch = dataObject as! AirportSearchObject
+        let airportSearch = dataObject as! AirportSearchStruct
         _manageAirportSelected(airportSearch)
     }
     
-    private func _manageAirportSelected(_ airportSearch : AirportSearchObject) {
+    private func _manageAirportSelected(_ airportSearch : AirportSearchStruct) {
         if(airportSearch.market!.isEmpty) {
             return
         }

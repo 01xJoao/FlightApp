@@ -1,5 +1,5 @@
 //
-//  AirportObject.swift
+//  AirportStruct.swift
 //  FlightApp
 //
 //  Created by João Palma on 01/08/2020.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct StationListObject: Codable {
-    let stations: [AirportObject]?
+struct StationListStruct: Codable {
+    let stations: [AirportStruct]?
 }
 
-struct AirportObject : Codable {
+struct AirportStruct : Codable {
     let code : String
     let name : String
     let alias: [String]
@@ -20,10 +20,10 @@ struct AirportObject : Codable {
     let latitude : String
     let longitude : String
     let tripCardImageUrl: String?
-    let markets: [MarketObject]
+    let markets: [MarketStruct]
     
     init(code: String = "", name: String = "", alias: [String] = [], countryName: String = "",
-         latitude: String = "", longitude: String = "", tripCardImageUrl : String? = "", markets : [MarketObject] = []) {
+         latitude: String = "", longitude: String = "", tripCardImageUrl : String? = "", markets : [MarketStruct] = []) {
         self.code = code
         self.name = name
         self.alias = alias

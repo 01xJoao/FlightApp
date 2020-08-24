@@ -7,9 +7,9 @@
 //
 
 struct Market {
-    private var _market: MarketObject
+    private var _market: MarketStruct
     
-    init(_ market: MarketObject) {
+    init(_ market: MarketStruct) {
         _market = market
     }
     

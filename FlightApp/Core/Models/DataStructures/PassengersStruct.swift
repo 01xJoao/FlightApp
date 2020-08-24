@@ -1,5 +1,5 @@
 //
-//  PassengersObject.swift
+//  PassengersStruct.swift
 //  FlightApp
 //
 //  Created by João Palma on 04/08/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct PassengersObject {
+struct PassengersStruct {
     var adults : Int
     var teen : Int
     var children : Int

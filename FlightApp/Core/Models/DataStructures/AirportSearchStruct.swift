@@ -1,5 +1,5 @@
 //
-//  CountrySearchObject.swift
+//  CountrySearchStruct.swift
 //  FlightApp
 //
 //  Created by João Palma on 04/08/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct AirportSearchObject {
+struct AirportSearchStruct {
     let airports : DynamicValueList<Airport>?
     let market : String?
     let flightAirportType : FlightAirportType

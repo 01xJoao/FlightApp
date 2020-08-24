@@ -1,5 +1,5 @@
 //
-//  Market.swift
+//  MarketStruct.swift
 //  FlightApp
 //
 //  Created by João Palma on 01/08/2020.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct MarketObject: Codable {
+struct MarketStruct: Codable {
     let code: String
 }

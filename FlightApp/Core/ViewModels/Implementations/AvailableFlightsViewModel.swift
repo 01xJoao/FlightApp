@@ -15,12 +15,12 @@ class AvailableFlightsViewModel : ViewModelBase {
     }
     
     override func prepare(dataObject: Any) {
-        if let flights = dataObject as? FlightsObject {
+        if let flights = dataObject as? FlightsStruct {
             _setFlights(flights)
         }
     }
     
-    private func _setFlights(_ flights : FlightsObject) {
+    private func _setFlights(_ flights : FlightsStruct) {
         _flights = Flights(flights)
     }
     

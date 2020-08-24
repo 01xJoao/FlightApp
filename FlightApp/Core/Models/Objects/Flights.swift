@@ -9,9 +9,9 @@
 import Foundation
 
 struct Flights {
-    private var _flights: FlightsObject
+    private var _flights: FlightsStruct
     
-    init(_ flights: FlightsObject) {
+    init(_ flights: FlightsStruct) {
         _flights = flights
     }
     

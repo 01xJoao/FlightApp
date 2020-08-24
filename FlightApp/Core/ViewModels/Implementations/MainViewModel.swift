@@ -34,7 +34,7 @@ class MainViewModel : ViewModelBase {
         }
     }
     
-    private func _airportsCompletion(_ stationList : StationListObject?) {
+    private func _airportsCompletion(_ stationList : StationListStruct?) {
         var airportList: [Airport] = []
         
         stationList?.stations?.forEach{ airport in

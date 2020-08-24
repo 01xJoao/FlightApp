@@ -1,5 +1,5 @@
 //
-//  FindFlightsObject.swift
+//  FindFlightsStruct.swift
 //  FlightApp
 //
 //  Created by João Palma on 04/08/2020.
@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct FindFlightObject {
+struct FindFlightStruct {
     var originName: String
     var originCode: String
     var destinationName: String
     var destinationCode: String
     var departure: Date
-    var passengers: PassengersObject
+    var passengers: PassengersStruct
 
-    init(originName: String = "", originCode: String = "", destinationName: String = "", destinationCode: String = "", departure: Date = Date(), passengers: PassengersObject = PassengersObject()) {
+    init(originName: String = "", originCode: String = "", destinationName: String = "", destinationCode: String = "", departure: Date = Date(), passengers: PassengersStruct = PassengersStruct()) {
         self.originName = originName
         self.originCode = originCode
         self.destinationName = destinationName

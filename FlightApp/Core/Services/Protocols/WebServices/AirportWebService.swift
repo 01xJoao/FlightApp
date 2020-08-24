@@ -7,6 +7,6 @@
 //
 
 protocol AirportWebService {
-    func getAvailableStations(completion: @escaping (_ airports: StationListObject?) -> Void) -> String
+    func getAvailableStations(completion: @escaping (_ airports: StationListStruct?) -> Void) -> String
     func cancelRequest(id: String)
 }

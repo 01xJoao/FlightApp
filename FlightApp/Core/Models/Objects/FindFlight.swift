@@ -9,9 +9,9 @@
 import Foundation
 
 struct FindFlight {
-    private var _findFlight : FindFlightObject
+    private var _findFlight : FindFlightStruct
     
-    init(_ findFlight: FindFlightObject) {
+    init(_ findFlight: FindFlightStruct) {
         _findFlight = findFlight
     }
     
@@ -48,7 +48,7 @@ struct FindFlight {
         return dateFormatter.string(from: _findFlight.departure)
     }
     
-    func getPassengers() -> PassengersObject {
+    func getPassengers() -> PassengersStruct {
         return _findFlight.passengers
     }
     
@@ -74,7 +74,7 @@ struct FindFlight {
         _findFlight.departure = date
     }
     
-    mutating func setPassengers(_ passangers: PassengersObject) {
+    mutating func setPassengers(_ passangers: PassengersStruct) {
         _findFlight.passengers = passangers
     }
     
@@ -90,7 +90,7 @@ struct FindFlight {
     }
     
     mutating func clear() {
-        _findFlight = FindFlightObject()
+        _findFlight = FindFlightStruct()
     }
     
     mutating func clearDestination() {

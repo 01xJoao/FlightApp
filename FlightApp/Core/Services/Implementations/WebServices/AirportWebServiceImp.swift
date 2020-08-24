@@ -15,7 +15,7 @@ class AirportWebServiceImp : AirportWebService {
         self._webService = webService
     }
     
-    func getAvailableStations(completion: @escaping (_ airports: StationListObject?) -> Void) -> String {
+    func getAvailableStations(completion: @escaping (_ airports: StationListStruct?) -> Void) -> String {
         let cancelationToken = _webService.getRequest(baseUrl: .stations, requestUri: "static/stations.json", completion: { airports in completion(airports) })
         return cancelationToken
     }

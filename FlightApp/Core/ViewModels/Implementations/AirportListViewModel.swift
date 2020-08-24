@@ -49,7 +49,7 @@ class AirportListViewModel : ViewModelBase {
     }
     
     override func prepare(dataObject: Any) {
-        let airportSearch = dataObject as! AirportSearchObject
+        let airportSearch = dataObject as! AirportSearchStruct
         _title = airportSearch.flightAirportType == FlightAirportType.origin ? originLabel : destinationLabel
         _flightAirportType = airportSearch.flightAirportType
         _airports = airportSearch.airports!
@@ -74,7 +74,7 @@ class AirportListViewModel : ViewModelBase {
     }
     
     private func _closeView(airportCode : String) {
-        let obj = AirportSearchObject(airports: nil, market: airportCode, flightAirportType: _flightAirportType)
+        let obj = AirportSearchStruct(airports: nil, market: airportCode, flightAirportType: _flightAirportType)
         navigationService.closeModal(arguments: obj)
     }
     

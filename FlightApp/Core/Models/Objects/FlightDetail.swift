@@ -9,10 +9,10 @@
 import Foundation
 
 struct FlightDetail {
-    private var _flight: FlightObject
+    private var _flight: FlightStruct
     private var _currency : String
     
-    init(_ flights: FlightObject, currency : String) {
+    init(_ flights: FlightStruct, currency : String) {
         _flight = flights
         _currency = currency
     }

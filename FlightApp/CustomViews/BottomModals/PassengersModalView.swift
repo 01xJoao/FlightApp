@@ -10,7 +10,7 @@ import UIKit
 
 class PassengersModalView : UIViewController {
     private var _titleLabel : String!
-    private var _passengers : PassengersObject!
+    private var _passengers : PassengersStruct!
     private let _topBar = UIView(backgroundColor: UIColor.Theme.mainBlue)
     private let _applyButton = createMainBlueButton(name: "", target: self, action: #selector(_applyButtonAction))
     private var _submitEventHandler : EventHandler?
@@ -24,7 +24,7 @@ class PassengersModalView : UIViewController {
     private let _teenStepper = UIStepper()
     private let _childrenStepper = UIStepper()
     
-    func config(passengers : PassengersObject, titleLabel : String, applyLabel : String, handler : @escaping EventHandler, labels: [String]) {
+    func config(passengers : PassengersStruct, titleLabel : String, applyLabel : String, handler : @escaping EventHandler, labels: [String]) {
         _passengersLabels.append(contentsOf: labels)
         _passengers = passengers
         _applyButton.setTitle(applyLabel, for: .normal)

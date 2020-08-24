@@ -9,6 +9,6 @@
 import Foundation
 
 protocol FindFlightsWebService {
-    func findAvailableFlights(findFlight : FindFlight, completion: @escaping (_ flights: FlightsObject?) -> Void) -> String
+    func findAvailableFlights(findFlight : FindFlight, completion: @escaping (_ flights: FlightsStruct?) -> Void) -> String
     func cancelRequest(id: String)
 }

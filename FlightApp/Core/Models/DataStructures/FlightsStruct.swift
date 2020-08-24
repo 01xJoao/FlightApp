@@ -1,5 +1,5 @@
 //
-//  Flights.swift
+//  FlightsStruct.swift
 //  FlightApp
 //
 //  Created by João Palma on 06/08/2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FlightsObject: Codable {
+struct FlightsStruct: Codable {
     let termsOfUse: String
     let currPrecision: Double
     let routeGroup: String
@@ -16,38 +16,38 @@ struct FlightsObject: Codable {
     let currency: String
     let serverTimeUTC: String
     let upgradeType: String
-    let trips: [TripObject]
+    let trips: [TripStruct]
 }
 
-struct TripObject: Codable {
+struct TripStruct: Codable {
     let origin, originName, destination, destinationName: String
     let routeGroup, tripType, upgradeType: String
-    let dates: [DateElementObject]
+    let dates: [DateElementStruct]
 }
 
-struct DateElementObject: Codable {
+struct DateElementStruct: Codable {
     let dateOut: String
-    let flights: [FlightObject]
+    let flights: [FlightStruct]
 }
 
-struct FlightObject: Codable {
+struct FlightStruct: Codable {
     let faresLeft: Double
     let flightKey: String
     let infantsLeft: Double
-    let regularFare: RegularFareObject?
+    let regularFare: RegularFareStruct?
     let operatedBy: String
-    let segments: [SegmentObject]
+    let segments: [SegmentStruct]
     let flightNumber: String
     let time, timeUTC: [String]
     let duration: String
 }
 
-struct RegularFareObject: Codable {
+struct RegularFareStruct: Codable {
     let fareKey, fareClass: String
-    let fares: [FareObject]
+    let fares: [FareStruct]
 }
 
-struct FareObject: Codable {
+struct FareStruct: Codable {
     let type: String
     let amount, count: Double
     let hasDiscount: Bool
@@ -56,7 +56,7 @@ struct FareObject: Codable {
     let discountAmount: Double
 }
 
-struct SegmentObject: Codable {
+struct SegmentStruct: Codable {
     let segmentNr: Int
     let origin, destination, flightNumber: String
     let time, timeUTC: [String]

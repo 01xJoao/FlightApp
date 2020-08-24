@@ -15,7 +15,7 @@ class FindFlightsWebServiceImp : FindFlightsWebService {
         self._webService = webService
     }
     
-    func findAvailableFlights(findFlight: FindFlight, completion: @escaping (FlightsObject?) -> Void) -> String {
+    func findAvailableFlights(findFlight: FindFlight, completion: @escaping (FlightsStruct?) -> Void) -> String {
         let cancelationToken = _webService.getRequest(baseUrl: .flights, requestUri: findFlight.getURL(), completion: { flights in completion(flights) })
         return cancelationToken
     }
