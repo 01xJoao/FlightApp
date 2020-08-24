@@ -7,7 +7,7 @@
 #### Command Pattern
 #### Observer Pattern
 #### Service Layer Pattern
-#### Dialog Service
-#### Web Service
-#### Navigation Service (ViewModel-First navigation)
+#### - Dialog Service
+#### - Web Service
+#### - Navigation Service (ViewModel-First navigation)
 #### L10N
