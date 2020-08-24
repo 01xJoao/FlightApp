@@ -6,7 +6,8 @@
 #### Dependency Injection
 #### Command Pattern
 #### Observer Pattern
-#### Dialog Service
-#### Web Service
-#### Navigation Service (ViewModel-First navigation)
+#### Service Layer Pattern
+#### &nbsp;&nbsp; - Dialog Service
+#### &nbsp;&nbsp; - Web Service
+#### &nbsp;&nbsp; - Navigation Service (ViewModel-First navigation)
 #### L10N
