@@ -75,6 +75,7 @@
 		9D6B0C9B24D6E24500127669 /* AirportDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6B0C9A24D6E24500127669 /* AirportDataSource.swift */; };
 		9D86447B24DC1E6000D7D307 /* AvailableFlightsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86447A24DC1E6000D7D307 /* AvailableFlightsCell.swift */; };
 		9D86447D24DC1E7100D7D307 /* AvailableFlightsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D86447C24DC1E7100D7D307 /* AvailableFlightsDataSource.swift */; };
+		9DAFD12E24F4359F00D1F2CD /* DynamicValueList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DAFD12D24F4359F00D1F2CD /* DynamicValueList.swift */; };
 		9DC0DE2324D5D8DA00BFBA55 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC0DE2224D5D8DA00BFBA55 /* CustomViews.swift */; };
 		9DC2B8B624DC338700A2EC8E /* Flights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B8B524DC338700A2EC8E /* Flights.swift */; };
 		9DC2B8B824DC383600A2EC8E /* FlightDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DC2B8B724DC383600A2EC8E /* FlightDetail.swift */; };
@@ -169,6 +170,7 @@
 		9D6B0C9A24D6E24500127669 /* AirportDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportDataSource.swift; sourceTree = "<group>"; };
 		9D86447A24DC1E6000D7D307 /* AvailableFlightsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableFlightsCell.swift; sourceTree = "<group>"; };
 		9D86447C24DC1E7100D7D307 /* AvailableFlightsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableFlightsDataSource.swift; sourceTree = "<group>"; };
+		9DAFD12D24F4359F00D1F2CD /* DynamicValueList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicValueList.swift; sourceTree = "<group>"; };
 		9DC0DE2224D5D8DA00BFBA55 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
 		9DC2B8B524DC338700A2EC8E /* Flights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flights.swift; sourceTree = "<group>"; };
 		9DC2B8B724DC383600A2EC8E /* FlightDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetail.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				9D477ECD24D4310F0063870B /* DynamicValue.swift */,
+				9DAFD12D24F4359F00D1F2CD /* DynamicValueList.swift */,
 			);
 			path = Observer;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				9D477F0A24D50BBD0063870B /* Enums.swift in Sources */,
 				9D477EE324D487E00063870B /* AirportsViewController.swift in Sources */,
 				9D477E8E24D3521B0063870B /* AppDelegate.swift in Sources */,
+				9DAFD12E24F4359F00D1F2CD /* DynamicValueList.swift in Sources */,
 				9D228BF324D59C9400FF4A28 /* Literal.swift in Sources */,
 				9D228BF824D5A11C00FF4A28 /* Market.swift in Sources */,
 				9D6B0C9B24D6E24500127669 /* AirportDataSource.swift in Sources */,
