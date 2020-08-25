@@ -59,8 +59,8 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
             self._dataSourceProvider.airportList = self.viewModel.airports.data.value
         })
         
-        viewModel.searchAirports.data.addObserver(self, completionHandler: {
-            self._dataSourceProvider.airportList = self.viewModel.searchAirports.data.value
+        viewModel.airportSearchList.data.addObserver(self, completionHandler: {
+            self._dataSourceProvider.airportList = self.viewModel.airportSearchList.data.value
         })
     }
     

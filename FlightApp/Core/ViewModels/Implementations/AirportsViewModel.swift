@@ -9,20 +9,9 @@
 import Foundation
 
 class AirportsViewModel : ViewModelBase {
-    private var _airports : DynamicValueList<Airport>!
-    var airports : DynamicValueList<Airport> {
-        get {
-            return _airports
-        }
-    }
-    
-    private var _airportSearchList : DynamicValueList<Airport> = DynamicValueList<Airport>()
-    var searchAirports : DynamicValueList<Airport> {
-        get {
-           return _airportSearchList
-       }
-    }
-    
+    private(set) var airports : DynamicValueList<Airport>!
+    private(set) var airportSearchList : DynamicValueList<Airport> = DynamicValueList<Airport>()
+
     private var _searchCommand: WPCommand<String>?
     var searchCommand: WPCommand<String> {
         get {
@@ -32,14 +21,14 @@ class AirportsViewModel : ViewModelBase {
     }
 
     override func prepare(dataObject: Any) {
-        _airports = (dataObject as! DynamicValueList<Airport>)
+        airports = (dataObject as! DynamicValueList<Airport>)
     }
     
     private func _search(search : String) {
-        let airportSeachList = _airports!.data.value.filter { airport in airport.containSearch(search) }
+        let airportSeachList = airports!.data.value.filter { airport in airport.containSearch(search) }
         
-        _airportSearchList.data.value.removeAll()
-        _airportSearchList.addAll(object: airportSeachList)
+        airportSearchList.data.value.removeAll()
+        airportSearchList.addAll(object: airportSeachList)
     }
     
     private func _canExecute() -> Bool {

@@ -11,26 +11,9 @@ import Foundation
 class AirportListViewModel : ViewModelBase {
     private var _flightAirportType : FlightAirportType!
     
-    private var _title: String?
-    var title : String {
-        get {
-            return _title!
-        }
-    }
-    
-    private var _airports : DynamicValueList<Airport>!
-    var airports : DynamicValueList<Airport> {
-        get {
-            return _airports
-        }
-    }
-    
-    private var _airportSearchList : DynamicValueList<Airport> = DynamicValueList<Airport>()
-    var searchAirports : DynamicValueList<Airport> {
-        get {
-           return _airportSearchList
-       }
-    }
+    private(set) var title: String!
+    private(set) var airports : DynamicValueList<Airport>!
+    private(set) var airportSearchList : DynamicValueList<Airport> = DynamicValueList<Airport>()
     
     private var _searchCommand : WPCommand<String>?
     var searchCommand: WPCommand<String> {
@@ -50,9 +33,9 @@ class AirportListViewModel : ViewModelBase {
     
     override func prepare(dataObject: Any) {
         let airportSearch = dataObject as! AirportSearchStruct
-        _title = airportSearch.flightAirportType == FlightAirportType.origin ? originLabel : destinationLabel
+        title = airportSearch.flightAirportType == FlightAirportType.origin ? originLabel : destinationLabel
         _flightAirportType = airportSearch.flightAirportType
-        _airports = airportSearch.airports!
+        airports = airportSearch.airports!
         _createAirportList(market: airportSearch.market!)
     }
     
@@ -62,15 +45,15 @@ class AirportListViewModel : ViewModelBase {
         }
         
         if(_flightAirportType == FlightAirportType.destination) {
-            _airports?.data.value.removeAll(where: { !$0.containsMarket(market) })
+            airports?.data.value.removeAll(where: { !$0.containsMarket(market) })
         }
     }
     
     private func _search(search : String) {
-        let airportSeachList = _airports!.data.value.filter { airport in airport.containSearch(search) }
+        let airportSeachList = airports!.data.value.filter { airport in airport.containSearch(search) }
         
-        _airportSearchList.data.value.removeAll()
-        _airportSearchList.addAll(object: airportSeachList)
+        airportSearchList.data.value.removeAll()
+        airportSearchList.addAll(object: airportSeachList)
     }
     
     private func _closeView(airportCode : String) {

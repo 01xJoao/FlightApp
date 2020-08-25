@@ -10,13 +10,8 @@ import UIKit
 import Foundation
 
 class BaseTabBarController<TViewModel : ViewModel> : UITabBarController {
-    private var _viewModel: TViewModel!
-    var viewModel: TViewModel {
-        get {
-            return _viewModel
-        }
-    }
-    
+    private(set) var viewModel: TViewModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         _instantiateViewModel()
@@ -24,8 +19,8 @@ class BaseTabBarController<TViewModel : ViewModel> : UITabBarController {
     
     private func _instantiateViewModel() {
         let vm : TViewModel = DiContainer.resolve()
-        _viewModel = vm
-        _viewModel.initialize()
+        viewModel = vm
+        viewModel.initialize()
     }
 }
 

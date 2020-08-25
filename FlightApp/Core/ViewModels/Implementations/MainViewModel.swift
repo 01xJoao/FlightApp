@@ -11,12 +11,7 @@ import Foundation
 class MainViewModel : ViewModelBase {
     private let _airportWebService : AirportWebService
     
-    private let _airports: DynamicValueList<Airport> = DynamicValueList<Airport>()
-    var airports : DynamicValueList<Airport> {
-        get {
-            return _airports
-        }
-    }
+    private(set) var airports: DynamicValueList<Airport> = DynamicValueList<Airport>()
     
     init(airportWebService: AirportWebService) {
         self._airportWebService = airportWebService
@@ -41,7 +36,7 @@ class MainViewModel : ViewModelBase {
             airportList.append(Airport(airport))
         }
         
-        _airports.addAll(object: airportList)
+        airports.addAll(object: airportList)
         
         isBusy.value = false
     }

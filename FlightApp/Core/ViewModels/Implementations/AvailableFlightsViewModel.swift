@@ -7,12 +7,7 @@
 //
 
 class AvailableFlightsViewModel : ViewModelBase {
-    private var _flights : Flights!
-    var flights : Flights {
-        get {
-            return _flights
-        }
-    }
+    private(set) var flights : Flights!
     
     override func prepare(dataObject: Any) {
         if let flights = dataObject as? FlightsStruct {
@@ -21,7 +16,7 @@ class AvailableFlightsViewModel : ViewModelBase {
     }
     
     private func _setFlights(_ flights : FlightsStruct) {
-        _flights = Flights(flights)
+        self.flights = Flights(flights)
     }
     
     private func _canExecute() -> Bool {

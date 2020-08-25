@@ -11,12 +11,7 @@ import UIKit
 class BaseViewController<TViewModel : ViewModel> : UIViewController {
     var parameterData: Any?
     
-    private var _viewModel: TViewModel!
-    var viewModel: TViewModel {
-        get {
-            return _viewModel
-        }
-    }
+    private(set) var viewModel: TViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +32,8 @@ class BaseViewController<TViewModel : ViewModel> : UIViewController {
             vm.prepare(dataObject: parameterData!)
         }
         
-        _viewModel = vm
-        _viewModel?.initialize()
+        viewModel = vm
+        viewModel?.initialize()
     }
     
     private func _createAppearingViewNotification() {
@@ -50,18 +45,18 @@ class BaseViewController<TViewModel : ViewModel> : UIViewController {
     
     @objc func _notifyViewOnAppearing(_ notification: NSNotification) {
         if let params = notification.userInfo as NSDictionary? {
-            _viewModel.dataNotify(dataObject: params["arguments"])
+            viewModel.dataNotify(dataObject: params["arguments"])
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        _viewModel?.appearing()
+        viewModel?.appearing()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        _viewModel?.disappearing()
+        viewModel?.disappearing()
     }
     
     deinit {

@@ -23,19 +23,8 @@ class FindFlightsViewModel : ViewModelBase {
         }
     }
     
-    private let _findFlight : DynamicValue<FindFlight> = DynamicValue<FindFlight>(FindFlight(FindFlightStruct()))
-    var findFlight : DynamicValue<FindFlight> {
-        get {
-            return _findFlight
-        }
-    }
-    
-    private var _airports : DynamicValueList<Airport>!
-    var airports : DynamicValueList<Airport> {
-        get {
-            return _airports
-        }
-    }
+    private(set) var findFlight : DynamicValue<FindFlight> = DynamicValue<FindFlight>(FindFlight(FindFlightStruct()))
+    private(set) var airports : DynamicValueList<Airport>!
     
     private var _openAirportListViewCommand: WPCommand<FlightAirportType>?
     var openAirportListViewCommand: WPCommand<FlightAirportType> {
@@ -86,21 +75,21 @@ class FindFlightsViewModel : ViewModelBase {
     }
     
     override func prepare(dataObject: Any) {
-        _airports = (dataObject as! DynamicValueList<Airport>)
+        airports = (dataObject as! DynamicValueList<Airport>)
     }
     
     private func _openAirportListView(_ flightAirportType : FlightAirportType) {
         if(_canOpenAirportList(flightAirportType)) {
             let airportList = DynamicValueList<Airport>()
-            airportList.addAll(object: _airports.data.value)
+            airportList.addAll(object: airports.data.value)
             
-            let airportObject = AirportSearchStruct(airports: airportList, market: _findFlight.value.getOriginCode(), flightAirportType: flightAirportType)
+            let airportObject = AirportSearchStruct(airports: airportList, market: findFlight.value.getOriginCode(), flightAirportType: flightAirportType)
             navigationService.navigateModal(viewModel: AirportListViewModel.self, arguments: airportObject)
         }
     }
     
     private func _canOpenAirportList(_ flightAirportType : FlightAirportType) -> Bool{
-        if(flightAirportType == FlightAirportType.destination && _findFlight.value.getOriginCode().isEmpty) {
+        if(flightAirportType == FlightAirportType.destination && findFlight.value.getOriginCode().isEmpty) {
             _dialogService.showInfo(selectOriginFirstLabel, informationType: .info)
             return false
         }
@@ -109,31 +98,31 @@ class FindFlightsViewModel : ViewModelBase {
     }
     
     private func _clearFlightData() {
-        _findFlight.value.clear()
+        findFlight.value.clear()
     }
     
     private func _swapAirports() {
         if(_canSwapAirports()) {
-            _findFlight.value.swapAirports()
+            findFlight.value.swapAirports()
         }
     }
     
     private func _canSwapAirports() -> Bool {
-        return !_findFlight.value.getDestinationCode().isEmpty
+        return !findFlight.value.getDestinationCode().isEmpty
     }
     
     private func _setDeparture(date : Date) {
-        _findFlight.value.setDeparture(date)
+        findFlight.value.setDeparture(date)
     }
     
     private func _setPassengers(passengers : PassengersStruct) {
-        _findFlight.value.setPassengers(passengers)
+        findFlight.value.setPassengers(passengers)
     }
     
     private func _getPassengers() -> String {
         var passengers = ""
         
-        let getPassengers = _findFlight.value.getPassengers()
+        let getPassengers = findFlight.value.getPassengers()
         
         if(getPassengers.adults > 0) {
             passengers += "\(getPassengers.adults) \(getPassengers.adults > 1 ? adultsLabel : adultLabel)"
@@ -157,7 +146,7 @@ class FindFlightsViewModel : ViewModelBase {
             isBusy.value = true
             
             DispatchQueue.main.async {
-                _ = self._findFlightsWebService.findAvailableFlights(findFlight: self._findFlight.value, completion: self._flightsFound)
+                _ = self._findFlightsWebService.findAvailableFlights(findFlight: self.findFlight.value, completion: self._flightsFound)
             }
         } else {
             _dialogService.showInfo(fillAllFieldsLabel, informationType: .info)
@@ -165,7 +154,7 @@ class FindFlightsViewModel : ViewModelBase {
     }
     
     private func _canFindFlight() -> Bool {
-        if(_findFlight.value.getOriginCode().isEmpty || _findFlight.value.getDestinationCode().isEmpty) {
+        if(findFlight.value.getOriginCode().isEmpty || findFlight.value.getDestinationCode().isEmpty) {
             return false
         }
         
@@ -195,17 +184,17 @@ class FindFlightsViewModel : ViewModelBase {
         let airport = airports.data.value.first(where: { $0.getCode() == airportSearch.market })!
         
         if(airportSearch.flightAirportType == .origin) {
-            _findFlight.value.setOrigin(originName: airport.getName(), originCode: airport.getCode())
+            findFlight.value.setOrigin(originName: airport.getName(), originCode: airport.getCode())
             
-            if(!_findFlight.value.getDestinationCode().isEmpty) {
-                let airportDestination = airports.data.value.first(where: { $0.getCode() == _findFlight.value.getDestinationCode() })!
+            if(!findFlight.value.getDestinationCode().isEmpty) {
+                let airportDestination = airports.data.value.first(where: { $0.getCode() == findFlight.value.getDestinationCode() })!
                 
                 if(!airportDestination.containsMarket(airportSearch.market!)) {
-                     _findFlight.value.clearDestination()
+                     findFlight.value.clearDestination()
                  }
             }
         } else {
-            _findFlight.value.setDestination(destinationName: airport.getName(), destinationCode: airport.getCode())
+            findFlight.value.setDestination(destinationName: airport.getName(), destinationCode: airport.getCode())
         }
     }
     
