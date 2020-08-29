@@ -50,18 +50,18 @@ class FindFlightsViewModel : ViewModelBase {
        }
     }
     
-    private var _setDepartureCommand : WPCommand<Date>?
-    var setDepartureCommand: WPCommand<Date> {
+    private var _setDepartureCommand : WPCommand<Date?>?
+    var setDepartureCommand: WPCommand<Date?> {
         get {
-            _setDepartureCommand ??= WPCommand<Date>(_setDeparture)
+            _setDepartureCommand ??= WPCommand<Date?>(_setDeparture)
             return _setDepartureCommand!
         }
     }
     
-    private var _setPassengersCommand : WPCommand<PassengersStruct>?
-    var setPassengersCommand: WPCommand<PassengersStruct> {
+    private var _setPassengersCommand : WPCommand<PassengersStruct?>?
+    var setPassengersCommand: WPCommand<PassengersStruct?> {
         get {
-            _setPassengersCommand ??= WPCommand<PassengersStruct>(_setPassengers)
+            _setPassengersCommand ??= WPCommand<PassengersStruct?>(_setPassengers)
             return _setPassengersCommand!
         }
     }
@@ -111,12 +111,16 @@ class FindFlightsViewModel : ViewModelBase {
         return !findFlight.value.getDestinationCode().isEmpty
     }
     
-    private func _setDeparture(date : Date) {
-        findFlight.value.setDeparture(date)
+    private func _setDeparture(date : Date?) {
+        if(date != nil) {
+            findFlight.value.setDeparture(date!)
+        }
     }
     
-    private func _setPassengers(passengers : PassengersStruct) {
-        findFlight.value.setPassengers(passengers)
+    private func _setPassengers(passengers : PassengersStruct?) {
+        if(passengers != nil) {
+            findFlight.value.setPassengers(passengers!)
+        }
     }
     
     private func _getPassengers() -> String {

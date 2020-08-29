@@ -142,8 +142,7 @@ class AvailableFlightsViewController : BaseViewController<AvailableFlightsViewMo
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if (self.isMovingToParent)
-        {
+        if (self.isMovingToParent) {
             if (navigationController?.visibleViewController is ContainerViewController) {
                 self.navigationController?.setNavigationBarHidden(true, animated: true)
             }

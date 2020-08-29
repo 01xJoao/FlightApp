@@ -13,7 +13,7 @@ class PassengersModalView : UIViewController {
     private var _passengers : PassengersStruct!
     private let _topBar = UIView(backgroundColor: UIColor.Theme.mainBlue)
     private let _applyButton = createMainBlueButton(name: "", target: self, action: #selector(_applyButtonAction))
-    private var _submitEventHandler : EventHandler?
+    private var _submitCompletionHandler : CompletionHandlerWithParam<PassengersStruct?>!
     private var _passengersLabels: [String] = []
     
     private let _adultLabel = UILabel(text: "", font: .systemFont(ofSize: 18, weight: .semibold), textColor: UIColor.Theme.mainBlue)
@@ -24,11 +24,11 @@ class PassengersModalView : UIViewController {
     private let _teenStepper = UIStepper()
     private let _childrenStepper = UIStepper()
     
-    func config(passengers : PassengersStruct, titleLabel : String, applyLabel : String, handler : @escaping EventHandler, labels: [String]) {
+    func config(passengers : PassengersStruct, titleLabel : String, applyLabel : String, handler : @escaping CompletionHandlerWithParam<PassengersStruct?>, labels: [String]) {
         _passengersLabels.append(contentsOf: labels)
         _passengers = passengers
         _applyButton.setTitle(applyLabel, for: .normal)
-        _submitEventHandler = handler
+        _submitCompletionHandler = handler
         _titleLabel = titleLabel
     }
     
@@ -107,10 +107,10 @@ class PassengersModalView : UIViewController {
     }
     
     @objc private func _applyButtonAction() {
-        _ = _submitEventHandler!(_passengers!)
+        _ = _submitCompletionHandler(_passengers!)
     }
     
     @objc private func _closeButtonAction() {
-        _ = _submitEventHandler!({})
+        _ = _submitCompletionHandler(nil)
     }
 }

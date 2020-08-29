@@ -26,8 +26,8 @@ class AirportListDataSource : NSObject, UITableViewDataSource, UITableViewDelega
     
     init(tableView : UITableView) {
         _tableView = tableView
-        tableView.separatorStyle = .none
-        tableView.register(AirportListCell.self, forCellReuseIdentifier: _cellIdentifier)
+        _tableView.separatorStyle = .none
+        _tableView.register(AirportListCell.self, forCellReuseIdentifier: _cellIdentifier)
         super.init()
     }
     

@@ -8,7 +8,9 @@
 
 import Foundation
 
-typealias EventHandler = (Any) -> (Any)
+typealias CompletionHandler = () -> Void
+typealias CompletionHandlerWithParam<T> = (T) -> Void
+typealias CanExecuteCompletionHandler = () -> (Bool)
 
 infix operator ??=
 func ??= <T>(left: inout T?, right: T) {

@@ -243,11 +243,8 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         _drawerDepartureView!.snapPositions = [.partiallyOpen, .closed]
     }
     
-    private func _datePickerSelection(_ obj : Any) {
-        if let date = obj as? Date {
-            viewModel.setDepartureCommand.executeIf(date)
-        }
-        
+    private func _datePickerSelection(_ date : Date?) {
+        viewModel.setDepartureCommand.executeIf(date)
         _drawerDepartureView?.removeFromSuperview(animated: true)
     }
     
@@ -263,11 +260,8 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
         _drawerPassengersView!.snapPositions = [.partiallyOpen, .closed]
     }
     
-    private func _passengersSelection(_ obj : Any) {
-        if let passengers = obj as? PassengersStruct {
-            viewModel.setPassengersCommand.executeIf(passengers)
-        }
-        
+    private func _passengersSelection(_ passangers : PassengersStruct?) {
+        viewModel.setPassengersCommand.executeIf(passangers)
         _drawerPassengersView?.removeFromSuperview(animated: true)
     }
     

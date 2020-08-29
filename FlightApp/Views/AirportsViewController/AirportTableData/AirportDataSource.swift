@@ -22,8 +22,8 @@ class AirportDataSource : NSObject, UITableViewDataSource, UITableViewDelegate {
     
     init(tableView : UITableView) {
         _tableView = tableView
-        tableView.separatorStyle = .none
-        tableView.register(AirportCell.self, forCellReuseIdentifier: _cellIdentifier)
+        _tableView.separatorStyle = .none
+        _tableView.register(AirportCell.self, forCellReuseIdentifier: _cellIdentifier)
         super.init()
     }
     

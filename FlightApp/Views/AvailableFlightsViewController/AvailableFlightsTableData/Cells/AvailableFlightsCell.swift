@@ -111,7 +111,8 @@ class FlightCell : UITableViewCell {
     private func _createCardShadow() {
         let shadowView = ShadowView(cornerRadius: 5)
         self.addSubview(shadowView)
-        shadowView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor, padding: .init(top: 5, left: 10, bottom: 5, right: 10))
+        shadowView.anchor(top: self.topAnchor, leading: self.leadingAnchor, bottom: self.bottomAnchor, trailing: self.trailingAnchor,
+                          padding: .init(top: 5, left: 10, bottom: 5, right: 10))
     }
 }
 

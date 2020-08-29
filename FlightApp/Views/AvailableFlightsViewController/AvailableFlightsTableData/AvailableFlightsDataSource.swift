@@ -23,8 +23,8 @@ class AvailableFlightsDataSource : NSObject, UITableViewDataSource, UITableViewD
     
     init(tableView : UITableView) {
         _tableView = tableView
-        tableView.separatorStyle = .none
-        tableView.register(FlightCell.self, forCellReuseIdentifier: _cellIdentifier)
+        _tableView.separatorStyle = .none
+        _tableView.register(FlightCell.self, forCellReuseIdentifier: _cellIdentifier)
         super.init()
     }
     

@@ -11,8 +11,8 @@ import Sentry
 class ReportServiceImp : ReportService {
     func sendError(error: Error, message: String?) {
         let nsError = error as NSError
-        let exception = self._createException(nsError)
-        let event = self._createErrorEvent(nsError, exception, message)
+        let exception = _createException(nsError)
+        let event = _createErrorEvent(nsError, exception, message)
         SentrySDK.capture(event: event)
     }
     

@@ -9,10 +9,10 @@
 import Foundation
 
 struct Command {
-    private let action: () -> ()
-    private let canExecuteAction: () -> (Bool)
+    private var action : CompletionHandler
+    private let canExecuteAction : CanExecuteCompletionHandler
 
-    init(_ action: @escaping () -> (), canExecute: @escaping () -> (Bool) = {true}) {
+    init(_ action: @escaping CompletionHandler, canExecute: @escaping CanExecuteCompletionHandler = { true }) {
         self.action = action
         self.canExecuteAction = canExecute
     }

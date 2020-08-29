@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias CompletionHandler = (() -> Void)
-
 class DynamicValue<T> {
     private var _observers = [String: CompletionHandler]()
     var value : T { didSet { notify() } }
@@ -19,6 +17,7 @@ class DynamicValue<T> {
     }
     
     func addObserver(_ observer: NSObject, completionHandler: @escaping CompletionHandler) {
+        print(observer.description)
         _observers[observer.description] = completionHandler
     }
     

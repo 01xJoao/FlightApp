@@ -9,10 +9,10 @@
 import Foundation
 
 struct WPCommand<T> {
-    private let actionWithParam: (T) -> ()
-    private let canExecuteAction: () -> (Bool)
+    private let actionWithParam : CompletionHandlerWithParam<T>
+    private let canExecuteAction: CanExecuteCompletionHandler
 
-    init(_ actionWithParam: @escaping (T) -> (), canExecute: @escaping () -> (Bool) = {true}) {
+    init(_ actionWithParam: @escaping CompletionHandlerWithParam<T>, canExecute: @escaping CanExecuteCompletionHandler = { true }) {
         self.actionWithParam = actionWithParam
         self.canExecuteAction = canExecute
     }

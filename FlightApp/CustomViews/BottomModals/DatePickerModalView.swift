@@ -14,12 +14,12 @@ class DatePickerModalView : UIViewController {
     private let _datePicker = UIDatePicker()
     private let _topBar = UIView(backgroundColor: UIColor.Theme.mainBlue)
     private let _submitButton = createMainBlueButton(name: "", target: self, action: #selector(_submitButtonAction))
-    private var _submitEventHandler : EventHandler?
+    private var _submitCompletitionHandler : CompletionHandlerWithParam<Date?>!
     
-    func config(date : Date, titleLabel : String, confirmLabel : String, handler : @escaping EventHandler) {
+    func config(date : Date, titleLabel : String, confirmLabel : String, handler : @escaping CompletionHandlerWithParam<Date?>) {
         _datePicker.date = date
         _submitButton.setTitle(confirmLabel, for: .normal)
-        _submitEventHandler = handler
+        _submitCompletitionHandler = handler
         _titleLabel = titleLabel
     }
     
@@ -50,10 +50,10 @@ class DatePickerModalView : UIViewController {
     }
     
     @objc private func _submitButtonAction() {
-        _ = _submitEventHandler!(_datePicker.date)
+        _ = _submitCompletitionHandler(_datePicker.date)
     }
     
     @objc private func _closeButtonAction() {
-        _ = _submitEventHandler!({})
+        _ = _submitCompletitionHandler(nil)
     }
 }
