@@ -17,11 +17,3 @@ class ViewModelBase : ViewModel {
     func backAction() {}
     func dataNotify(dataObject: Any?) {}
 }
-
-//class ViewModelBaseWithArguments<TObject> : ViewModelBase {
-//    override func prepare(dataObject: Any) {
-//        prepare(data: dataObject as! TObject)
-//    }
-//
-//    func prepare(data: TObject) {}
-//}
