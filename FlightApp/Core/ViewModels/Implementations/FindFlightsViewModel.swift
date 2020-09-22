@@ -112,14 +112,14 @@ class FindFlightsViewModel : ViewModelBase {
     }
     
     private func _setDeparture(date : Date?) {
-        if(date != nil) {
-            findFlight.value.setDeparture(date!)
+        if let value = date {
+            findFlight.value.setDeparture(value)
         }
     }
     
     private func _setPassengers(passengers : PassengersStruct?) {
-        if(passengers != nil) {
-            findFlight.value.setPassengers(passengers!)
+        if let passenger = passengers {
+            findFlight.value.setPassengers(passenger)
         }
     }
     

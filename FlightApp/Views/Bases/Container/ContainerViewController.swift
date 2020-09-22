@@ -30,7 +30,7 @@ class ContainerViewController: UIViewController {
     }
     
     func _removeCurrentViewController() {
-        if(currentViewController != nil) {
+        if (currentViewController != nil) {
             self.willMove(toParent: nil)
             currentViewController?.removeFromParent()
             currentViewController?.view.removeFromSuperview()

@@ -40,8 +40,8 @@ class AirportCell: UITableViewCell {
         cardView.addSubview(backgroundImage)
         backgroundImage.anchor(top: cardView.topAnchor, leading: cardView.leadingAnchor, bottom: cardView.bottomAnchor, trailing: cardView.trailingAnchor)
         
-        if(imageURL != nil) {
-            ImageLoader.request(with: imageURL!, onCompletion: { image ,_ ,_ in
+        if let url = imageURL {
+            ImageLoader.request(with: url, onCompletion: { image ,_ ,_ in
                 DispatchQueue.main.async {
                     backgroundImage.image = image
                 }

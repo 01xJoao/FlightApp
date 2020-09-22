@@ -40,8 +40,8 @@ struct Airport {
     }
     
     func getImageUrl() -> URL? {
-        if(_airport.tripCardImageUrl != nil) {
-            return URL(string: _airport.tripCardImageUrl!)
+        if let url = _airport.tripCardImageUrl {
+            return URL(string: url)
         }
         
         return nil

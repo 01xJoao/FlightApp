@@ -36,9 +36,9 @@ class NavigationServiceImp : NavigationService {
         let viewModelName = String(describing: TViewModel.self)
         let viewController: UIViewController = DiContainer.resolveViewController(name: viewModelName)
         
-        if(args != nil) {
+        if let arguments = args {
             if let vc = viewController as? BaseViewController<TViewModel> {
-                vc.parameterData = args
+                vc.parameterData = arguments
             }
         }
     
@@ -74,11 +74,11 @@ class NavigationServiceImp : NavigationService {
     }
     
     private func _notifyView(_ viewController : String,  _ arguments: Any?) {
-        if(arguments != nil) {
+        if let args = arguments {
             NotificationCenter.default.post(
                 name: NSNotification.Name(rawValue: viewController),
                 object: nil,
-                userInfo: ["arguments": arguments!]
+                userInfo: ["arguments": args]
             )
         }
     }

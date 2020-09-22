@@ -28,8 +28,8 @@ class BaseViewController<TViewModel : ViewModel> : UIViewController {
     private func _instantiateViewModel() {
         let vm : TViewModel = DiContainer.resolve()
         
-        if(parameterData != nil) {
-            vm.prepare(dataObject: parameterData!)
+        if let data = parameterData {
+            vm.prepare(dataObject: data)
         }
         
         viewModel = vm
