@@ -55,13 +55,14 @@ class AirportsViewController : BaseViewController<AirportsViewModel>, UISearchCo
     }
     
     private func _createObservers() {
-        viewModel.airports.data.addObserver(self, completionHandler: {
+        viewModel.airports.data.addObserver(self, completionHandler: { [weak self] in
+            guard let self = self else { return }
             self._stopLoadingAnimation()
             self._dataSourceProvider.airports = self.viewModel.airports.data.value
         })
         
-        viewModel.airportSearchList.data.addObserver(self, completionHandler: {
-            self._dataSourceProvider.airports = self.viewModel.airportSearchList.data.value
+        viewModel.airportSearchList.data.addObserver(self, completionHandler: { [weak self] in
+            self?._dataSourceProvider.airports = self.viewModel.airportSearchList.data.value
         })
     }
     

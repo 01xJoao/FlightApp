@@ -70,7 +70,9 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
     }
     
     private func _createObservers() {
-        viewModel.isBusy.addObserver(self, completionHandler: {
+        viewModel.isBusy.addObserver(self, completionHandler: { [weak self] in
+            guard let self = self else { return }
+            
             if(self.viewModel.isBusy.value) {
                 self._activityIndicatorView.startAnimating()
             } else {
@@ -78,7 +80,9 @@ class FindFlightsViewController : FormBaseViewController<FindFlightsViewModel> {
             }
         })
         
-        viewModel.findFlight.addObserver(self, completionHandler: {
+        viewModel.findFlight.addObserver(self, completionHandler: { [weak self] in
+            guard let self = self else { return }
+            
             self._setAirportNamesAndCodes(self._originCodeLabel, self._originNameLabel,
                                           self.viewModel.originPlaceholderCodeLabel,
                                           self.viewModel.originPlaceholderNameLabel,

@@ -55,11 +55,13 @@ class AirportListViewController : BaseViewController<AirportListViewModel>, UISe
     
     
     private func _createObservers() {
-        viewModel.airports.data.addObserver(self, completionHandler: {
+        viewModel.airports.data.addObserver(self, completionHandler: { [weak self] in
+            guard let self = self else { return }
             self._dataSourceProvider.airportList = self.viewModel.airports.data.value
         })
         
-        viewModel.airportSearchList.data.addObserver(self, completionHandler: {
+        viewModel.airportSearchList.data.addObserver(self, completionHandler: { [weak self] in
+            guard let self = self else { return }
             self._dataSourceProvider.airportList = self.viewModel.airportSearchList.data.value
         })
     }

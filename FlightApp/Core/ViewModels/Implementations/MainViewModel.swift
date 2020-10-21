@@ -25,7 +25,9 @@ class MainViewModel : ViewModelBase {
         isBusy.value = true
         
         DispatchQueue.main.async {
-            _ = self._airportWebService.getAvailableStations(completion: { stationList in self._airportsCompletion(stationList) })
+            _ = self._airportWebService.getAvailableStations(completion: { [weak self] stationList in
+                self?._airportsCompletion(stationList)
+            })
         }
     }
     

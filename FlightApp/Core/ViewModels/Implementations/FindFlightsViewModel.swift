@@ -150,7 +150,7 @@ class FindFlightsViewModel : ViewModelBase {
             isBusy.value = true
             
             DispatchQueue.main.async {
-                _ = self._findFlightsWebService.findAvailableFlights(findFlight: self.findFlight.value, completion: self._flightsFound)
+                _ = self._findFlightsWebService.findAvailableFlights(findFlight: self.findFlight.value, completion: { [weak self] val in self?._flightsFound(val) } )
             }
         } else {
             _dialogService.showInfo(fillAllFieldsLabel, informationType: .info)
@@ -165,7 +165,7 @@ class FindFlightsViewModel : ViewModelBase {
         return true
     }
     
-    private func _flightsFound(flights : FlightsStruct?) {
+    private func _flightsFound(_ flights : FlightsStruct?) {
         isBusy.value = false
         
         if(flights == nil || flights!.trips.isEmpty) {

@@ -41,7 +41,9 @@ class InfoDialogView: UIView {
     }
     
     private func _hide() {
-        Animations.slideVerticaly(self, showAnimation: false, delay: 2.75, completion: { success in
+        Animations.slideVerticaly(self, showAnimation: false, delay: 2.75, completion: { [weak self] success in
+            guard let self = self else { return }
+            
             self._removeView()
         })
     }

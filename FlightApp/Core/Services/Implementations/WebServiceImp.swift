@@ -18,8 +18,8 @@ class WebServiceImp : WebService {
     }
     
     func getRequest<T>(baseUrl: baseURL, requestUri: String, completion: @escaping (T?) -> Void) -> String where T : Decodable, T : Encodable {
-        let requestId = _networking.get(baseUrl.url + requestUri) { result in
-            self._handleJSONResult(result, completion)
+        let requestId = _networking.get(baseUrl.url + requestUri) { [weak self] result in
+            self?._handleJSONResult(result, completion)
         }
         
         return requestId
